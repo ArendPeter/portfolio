@@ -23,6 +23,11 @@
 
 import * as sandcastle from "@ai-hero/sandcastle";
 import { docker } from "@ai-hero/sandcastle/sandboxes/docker";
+import { z } from "zod";
+
+const infoSchema = z.object({
+  id: z.string(),
+});
 
 // ---------------------------------------------------------------------------
 // Configuration
@@ -81,6 +86,7 @@ for (let iteration = 1; iteration <= MAX_ITERATIONS; iteration++) {
       maxIterations: 1,
       agent: sandcastle.claudeCode("claude-opus-4-7"),
       promptFile: "./.sandcastle/implement-prompt.md",
+      output: sandcastle.Output.object({ tag: "info", schema: infoSchema }),
     });
 
     if (!implement.commits.length) {

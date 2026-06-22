@@ -37,7 +37,7 @@ Pick the highest-priority open issue that is not blocked by another open issue.
    - List key decisions made
    - List files changed
    - Note any blockers for the next iteration
-5. **Close** — close the issue with `gh issue close <ID> --comment "Completed by Sandcastle"` explaining what was done.
+5. **Comment** — close the issue with `gh issue comment <ID> --body "Completed by Sandcastle"` explaining what was done.
 
 ## Rules
 
@@ -48,6 +48,12 @@ Pick the highest-priority open issue that is not blocked by another open issue.
 
 # Done
 
-When all actionable issues are complete (or you are blocked on all remaining ones), or the open-issues block at the top of this prompt is empty, output the completion signal:
+When all actionable issues are complete (or you are blocked on all remaining ones), or the open-issues block at the top of this prompt is empty. Output some context as a JSON object wrapped in `<info>` tags:
+
+<info>
+{"id": <TASK ID>}
+</plan>
+
+Then output the completion signal:
 
 <promise>COMPLETE</promise>

@@ -49,6 +49,7 @@ If you find improvements to make:
 1. Make the changes directly on this branch
 2. Run tests and type checking to ensure nothing is broken
 3. Commit describing the refinements
+4. Create a PR with these changes, along with manual QA steps in the description to be completed by the reviewer. Also ensure that the PR includes "closes {{TASK_ID}}
 
 If the code is already clean and well-structured, do nothing.
 
