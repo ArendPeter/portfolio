@@ -1,4 +1,5 @@
 import { Nav } from '../components/Nav'
+import { scrollToFragment } from '../utils/scroll'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { ProjectCard } from '../components/ProjectCard'
 import { InlineLink } from '../components/InlineLink'
@@ -78,10 +79,7 @@ export function HomePage() {
             <a
               href="#portfolio"
               className="rounded-md px-4 py-2 font-medium transition-colors border border-accent text-accent hover:bg-accent/10"
-              onClick={(e) => {
-                e.preventDefault()
-                document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })
-              }}
+              onClick={(e) => scrollToFragment(e, '#portfolio')}
             >
               View My Work
             </a>
