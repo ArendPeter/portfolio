@@ -97,15 +97,26 @@ export function Stylebook() {
 
         <section id="buttons" className="mb-16">
           <SectionLabel>Buttons</SectionLabel>
-          <div className="flex gap-4 flex-wrap items-center">
-            <Button variant="primary">Primary</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="primary" disabled>
-              Primary Disabled
-            </Button>
-            <Button variant="secondary" disabled>
-              Secondary Disabled
-            </Button>
+          <div className="space-y-4">
+            <div className="flex gap-4 flex-wrap items-center">
+              <Button variant="primary">Primary</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="primary" disabled>
+                Primary Disabled
+              </Button>
+              <Button variant="secondary" disabled>
+                Secondary Disabled
+              </Button>
+            </div>
+            <p className="text-sm text-muted font-semibold">Opens in new tab (external link)</p>
+            <div className="flex gap-4 flex-wrap items-center">
+              <Button variant="primary" href="https://example.com" external>
+                Primary External
+              </Button>
+              <Button variant="secondary" href="https://example.com" external>
+                Secondary External
+              </Button>
+            </div>
           </div>
         </section>
 

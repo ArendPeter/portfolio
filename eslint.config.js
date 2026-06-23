@@ -31,4 +31,8 @@ export default tseslint.config(
     files: ['vite.config.ts', 'postcss.config.js', 'eslint.config.js'],
     ...tseslint.configs.disableTypeChecked,
   },
+  {
+    files: ['**/*.test.{ts,tsx}'],
+    ...tseslint.configs.disableTypeChecked,
+  },
 )
