@@ -2,6 +2,7 @@ import { Button } from './components/Button'
 import { InlineLink } from './components/InlineLink'
 import { Nav } from './components/Nav'
 import { ProjectCard } from './components/ProjectCard'
+import { useActiveSection } from './hooks/useActiveSection'
 
 const colorTokens = [
   { name: '--color-bg', hex: '#0f0f0f' },
@@ -20,6 +21,8 @@ const navLinks = [
   { label: 'Links', href: '#links' },
   { label: 'Cards', href: '#cards' },
 ]
+
+const sectionIds = navLinks.map((l) => l.href.slice(1))
 
 const sampleCards = [
   {
@@ -48,9 +51,12 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function App() {
+  const activeSectionId = useActiveSection(sectionIds)
+  const activeHref = activeSectionId ? `#${activeSectionId}` : undefined
+
   return (
     <>
-      <Nav siteName="Stylebook" links={navLinks} activeHref="#buttons" />
+      <Nav siteName="Stylebook" links={navLinks} activeHref={activeHref} />
       <div className="min-h-screen bg-bg text-body font-sans px-8 py-12 max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-2">Stylebook</h1>
         <p className="text-muted mb-16">Design system reference — colors, type, and components</p>
@@ -121,6 +127,7 @@ function App() {
             ))}
           </div>
         </section>
+        <div className="h-[60vh]" aria-hidden="true" />
       </div>
     </>
   )
