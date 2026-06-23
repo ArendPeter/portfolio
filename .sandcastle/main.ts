@@ -17,9 +17,12 @@
 // issues are picked up after each round of merges.
 //
 // Usage:
-//   npx tsx .sandcastle/main.ts
+//   npx tsx .sandcastle/main.ts [--noqa]
 // Or add to package.json:
 //   "scripts": { "sandcastle": "npx tsx .sandcastle/main.ts" }
+//
+// Flags:
+//   --noqa   Skip Phase 4 (QA issue creation)
 
 import * as sandcastle from "@ai-hero/sandcastle";
 import { docker } from "@ai-hero/sandcastle/sandboxes/docker";
@@ -43,6 +46,8 @@ const qaIssueSchema = z.object({
 // ---------------------------------------------------------------------------
 // Configuration
 // ---------------------------------------------------------------------------
+
+const noqa = process.argv.includes("--noqa");
 
 // Maximum number of plan→execute→merge cycles before stopping.
 // Raise this if your backlog is large; lower it for a quick smoke-test run.
@@ -236,17 +241,21 @@ for (let iteration = 1; iteration <= MAX_ITERATIONS; iteration++) {
 // what was built along with manual QA steps for the human reviewer to follow
 // before pushing.
 // ---------------------------------------------------------------------------
-console.log("\n=== Creating QA issue ===\n");
+if (noqa) {
+  console.log("\nSkipping QA issue (--noqa). All done.");
+} else {
+  console.log("\n=== Creating QA issue ===\n");
 
-const qaIssue = await sandcastle.run({
-  hooks,
-  sandbox: docker(),
-  name: "qa-issue",
-  maxIterations: 1,
-  agent: sandcastle.claudeCode("claude-sonnet-4-6"),
-  promptFile: "./.sandcastle/qa-issue-prompt.md",
-  output: sandcastle.Output.object({ tag: "qa-issue", schema: qaIssueSchema }),
-});
+  const qaIssue = await sandcastle.run({
+    hooks,
+    sandbox: docker(),
+    name: "qa-issue",
+    maxIterations: 1,
+    agent: sandcastle.claudeCode("claude-sonnet-4-6"),
+    promptFile: "./.sandcastle/qa-issue-prompt.md",
+    output: sandcastle.Output.object({ tag: "qa-issue", schema: qaIssueSchema }),
+  });
 
-console.log(`\nAll done. Review the QA issue, then push when ready:`);
-console.log(`  ${qaIssue.output.url}`);
+  console.log(`\nAll done. Review the QA issue, then push when ready:`);
+  console.log(`  ${qaIssue.output.url}`);
+}

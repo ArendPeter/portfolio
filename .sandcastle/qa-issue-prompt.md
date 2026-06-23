@@ -22,7 +22,7 @@ A bullet list of the meaningful changes made (grouped by feature/fix if there ar
 
 ## Manual QA Steps
 
-Numbered steps a human can follow to verify the changes work correctly in the browser or CLI. Be specific: mention which pages, interactions, or commands to test. Include expected outcomes for each step.
+Checkbox list steps a human can follow to verify the changes work correctly in the browser or CLI. Be specific: mention which pages, interactions, or commands to test. Include expected outcomes for each step.
 
 ## Notes
 
