@@ -1,3 +1,4 @@
+import { Button } from '../components/Button'
 import { Nav } from '../components/Nav'
 import { scrollToFragment } from '../utils/scroll'
 import { useActiveSection } from '../hooks/useActiveSection'
@@ -68,21 +69,16 @@ export function HomePage() {
             Full Stack Engineer with a track-record of leadership
           </p>
           <div className="flex flex-wrap gap-4 items-center">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-md px-4 py-2 font-medium transition-colors bg-accent text-white hover:bg-accent-dark"
-            >
+            <Button href={CALENDLY_URL} external>
               Schedule a Call
-            </a>
-            <a
+            </Button>
+            <Button
               href="#portfolio"
-              className="rounded-md px-4 py-2 font-medium transition-colors border border-accent text-accent hover:bg-accent/10"
+              variant="secondary"
               onClick={(e) => scrollToFragment(e, '#portfolio')}
             >
               View My Work
-            </a>
+            </Button>
             <InlineLink href={GITHUB_URL} external>
               GitHub
             </InlineLink>
