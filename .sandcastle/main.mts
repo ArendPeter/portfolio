@@ -86,6 +86,7 @@ for (let iteration = 1; iteration <= MAX_ITERATIONS; iteration++) {
       maxIterations: 1,
       agent: sandcastle.claudeCode("claude-opus-4-7"),
       promptFile: "./.sandcastle/implement-prompt.md",
+      // not sure why the line is erroring, this matches the example
       output: sandcastle.Output.object({ tag: "info", schema: infoSchema }),
     });
 
