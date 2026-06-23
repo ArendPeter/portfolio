@@ -9,9 +9,10 @@ describe('Button', () => {
 
   it('renders as an anchor when href is provided', () => {
     render(<Button href="https://example.com">Visit</Button>)
-    const link = screen.getByRole('link', { name: 'Visit' })
-    expect(link.tagName).toBe('A')
-    expect(link).toHaveAttribute('href', 'https://example.com')
+    expect(screen.getByRole('link', { name: 'Visit' })).toHaveAttribute(
+      'href',
+      'https://example.com',
+    )
   })
 
   it('shows external link icon, sets target and rel when external is true', () => {

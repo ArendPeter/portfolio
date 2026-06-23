@@ -53,10 +53,13 @@ export function Button({
   const cls = `${base} ${variants[variant]} ${className}`
 
   if ('href' in props && props.href !== undefined) {
-    const anchorProps = props as React.AnchorHTMLAttributes<HTMLAnchorElement>
-    const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {}
     return (
-      <a className={cls} {...externalProps} {...anchorProps}>
+      <a
+        className={cls}
+        target={external ? '_blank' : undefined}
+        rel={external ? 'noopener noreferrer' : undefined}
+        {...props}
+      >
         {children}
         {external && <ExternalLinkIcon />}
       </a>
