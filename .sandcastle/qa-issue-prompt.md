@@ -28,4 +28,10 @@ Numbered steps a human can follow to verify the changes work correctly in the br
 
 Any caveats, known issues, or things the reviewer should be aware of.
 
-Once the issue is created, print its URL and output <promise>COMPLETE</promise>.
+Once the issue is created, output its details as JSON wrapped in `<qa-issue>` tags:
+
+<qa-issue>
+{"id": "123", "url": "https://github.com/owner/repo/issues/123"}
+</qa-issue>
+
+Then output <promise>COMPLETE</promise>.

@@ -35,6 +35,11 @@ const planSchema = z.object({
   ),
 });
 
+const qaIssueSchema = z.object({
+  id: z.string(),
+  url: z.string(),
+});
+
 // ---------------------------------------------------------------------------
 // Configuration
 // ---------------------------------------------------------------------------
@@ -233,13 +238,15 @@ for (let iteration = 1; iteration <= MAX_ITERATIONS; iteration++) {
 // ---------------------------------------------------------------------------
 console.log("\n=== Creating QA issue ===\n");
 
-await sandcastle.run({
+const qaIssue = await sandcastle.run({
   hooks,
   sandbox: docker(),
   name: "qa-issue",
   maxIterations: 1,
   agent: sandcastle.claudeCode("claude-sonnet-4-6"),
   promptFile: "./.sandcastle/qa-issue-prompt.md",
+  output: sandcastle.Output.object({ tag: "qa-issue", schema: qaIssueSchema }),
 });
 
-console.log("\nAll done. Review the QA issue above, then push when ready.");
+console.log(`\nAll done. Review the QA issue, then push when ready:`);
+console.log(`  ${qaIssue.output.url}`);
