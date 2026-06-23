@@ -52,4 +52,24 @@ If you find improvements to make:
 
 If the code is already clean and well-structured, do nothing.
 
+# CREATE PULL REQUEST
+
+After reviewing (and applying any changes), create a pull request with a body that includes:
+- A short summary of what was implemented and any key decisions made
+- A **Manual QA** checklist of steps the reviewer should follow to verify the feature works correctly in the browser or CLI
+
+```
+gh pr create --title "{{ISSUE_TITLE}}" --body "$(cat <<'EOF'
+Closes #{{TASK_ID}}
+
+## Summary
+<what was done>
+
+## Manual QA
+- [ ] <step 1>
+- [ ] <step 2>
+EOF
+)" --head {{BRANCH}}
+```
+
 Once complete, output <promise>COMPLETE</promise>.
