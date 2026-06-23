@@ -14,6 +14,9 @@ const navLinks = [
 
 const sectionIds = navLinks.map((l) => l.href.slice(1))
 
+const CALENDLY_URL = 'https://calendly.com/arendpeter/30min'
+const GITHUB_URL = 'https://github.com/ArendPeter/'
+
 const projects = [
   {
     name: 'bettervoting.com',
@@ -65,7 +68,7 @@ export function HomePage() {
           </p>
           <div className="flex flex-wrap gap-4 items-center">
             <a
-              href="https://calendly.com/arendpeter/30min"
+              href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-md px-4 py-2 font-medium transition-colors bg-accent text-white hover:bg-accent-dark"
@@ -78,7 +81,7 @@ export function HomePage() {
             >
               View My Work
             </a>
-            <InlineLink href="https://github.com/ArendPeter/" external>
+            <InlineLink href={GITHUB_URL} external>
               GitHub
             </InlineLink>
           </div>
@@ -220,7 +223,7 @@ export function HomePage() {
             <div className="flex gap-2">
               <dt className="font-semibold">Schedule a call:</dt>
               <dd>
-                <InlineLink href="https://calendly.com/arendpeter/30min" external>
+                <InlineLink href={CALENDLY_URL} external>
                   calendly.com/arendpeter/30min
                 </InlineLink>
               </dd>
@@ -228,7 +231,7 @@ export function HomePage() {
             <div className="flex gap-2">
               <dt className="font-semibold">GitHub:</dt>
               <dd>
-                <InlineLink href="https://github.com/ArendPeter/" external>
+                <InlineLink href={GITHUB_URL} external>
                   github.com/ArendPeter
                 </InlineLink>
               </dd>
