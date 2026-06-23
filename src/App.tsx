@@ -4,15 +4,19 @@ import { Nav } from './components/Nav'
 import { ProjectCard } from './components/ProjectCard'
 import { useActiveSection } from './hooks/useActiveSection'
 
-const colorTokens = [
-  { name: '--color-bg', hex: '#0f0f0f' },
-  { name: '--color-surface', hex: '#1a1a1a' },
-  { name: '--color-border', hex: '#2e2e2e' },
-  { name: '--color-body', hex: '#e8e8e8' },
-  { name: '--color-muted', hex: '#888888' },
-  { name: '--color-accent', hex: '#f97316' },
-  { name: '--color-accent-dark', hex: '#ea6c0a' },
+const colorTokenNames = [
+  '--color-bg',
+  '--color-surface',
+  '--color-border',
+  '--color-body',
+  '--color-muted',
+  '--color-accent',
+  '--color-accent-dark',
 ]
+
+function getCssVar(name: string): string {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim()
+}
 
 const navLinks = [
   { label: 'Colors', href: '#colors' },
@@ -64,16 +68,19 @@ function App() {
         <section id="colors" className="mb-16">
           <SectionLabel>Color Palette</SectionLabel>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {colorTokens.map(({ name, hex }) => (
-              <div key={name}>
-                <div
-                  className="h-16 rounded-md border border-border mb-2"
-                  style={{ backgroundColor: hex }}
-                />
-                <p className="text-sm font-medium">{name}</p>
-                <p className="text-xs text-muted">{hex}</p>
-              </div>
-            ))}
+            {colorTokenNames.map((name) => {
+              const hex = getCssVar(name)
+              return (
+                <div key={name}>
+                  <div
+                    className="h-16 rounded-md border border-border mb-2"
+                    style={{ backgroundColor: hex }}
+                  />
+                  <p className="text-sm font-medium">{name}</p>
+                  <p className="text-xs text-muted">{hex}</p>
+                </div>
+              )
+            })}
           </div>
         </section>
 
