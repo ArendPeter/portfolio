@@ -57,6 +57,15 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
     return `text-sm transition-colors hover:text-accent ${activeHref === href ? 'text-accent' : 'text-muted'}`
   }
 
+  // HashRouter owns the URL hash for routing, so plain #fragment hrefs break navigation.
+  // Intercept fragment clicks and scroll to the target element instead.
+  function handleClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    if (!href.startsWith('#')) return
+    e.preventDefault()
+    const el = document.getElementById(href.slice(1))
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <nav className="sticky top-0 z-50 bg-surface border-b border-border">
       <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -68,7 +77,7 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
         <ul className="hidden sm:flex gap-6">
           {links.map(({ label, href }) => (
             <li key={href}>
-              <a href={href} className={linkClass(href)}>
+              <a href={href} className={linkClass(href)} onClick={(e) => handleClick(e, href)}>
                 {label}
               </a>
             </li>
@@ -93,7 +102,10 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
               <li key={href}>
                 <a
                   href={href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    handleClick(e, href)
+                    setMenuOpen(false)
+                  }}
                   className={`block ${linkClass(href)}`}
                 >
                   {label}

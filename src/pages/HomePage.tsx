@@ -78,6 +78,10 @@ export function HomePage() {
             <a
               href="#portfolio"
               className="rounded-md px-4 py-2 font-medium transition-colors border border-accent text-accent hover:bg-accent/10"
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })
+              }}
             >
               View My Work
             </a>
