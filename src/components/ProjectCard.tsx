@@ -37,6 +37,37 @@ export function ProjectCard({
     videoRef.current?.pause()
   }
 
+  function renderMedia() {
+    if (videoSrc) {
+      return (
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          poster={screenshotSrc}
+          muted
+          loop
+          playsInline
+          preload="none"
+          className="w-full h-full object-cover"
+        />
+      )
+    }
+    if (screenshotSrc) {
+      return (
+        <img
+          src={screenshotSrc}
+          alt={screenshotAlt ?? name}
+          className="w-full h-full object-cover"
+        />
+      )
+    }
+    return (
+      <div className="w-full h-full bg-border flex items-center justify-center">
+        <span className="text-sm text-muted">Screenshot</span>
+      </div>
+    )
+  }
+
   return (
     <div
       role="article"
@@ -46,30 +77,7 @@ export function ProjectCard({
     >
       <h3 className="text-xl font-bold mb-3">{name}</h3>
 
-      <div className="aspect-video w-full rounded-md overflow-hidden mb-3">
-        {videoSrc ? (
-          <video
-            ref={videoRef}
-            src={videoSrc}
-            poster={screenshotSrc}
-            muted
-            loop
-            playsInline
-            preload="none"
-            className="w-full h-full object-cover"
-          />
-        ) : screenshotSrc ? (
-          <img
-            src={screenshotSrc}
-            alt={screenshotAlt ?? name}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className="w-full h-full bg-border flex items-center justify-center">
-            <span className="text-sm text-muted">Screenshot</span>
-          </div>
-        )}
-      </div>
+      <div className="aspect-video w-full rounded-md overflow-hidden mb-3">{renderMedia()}</div>
 
       <p className="text-sm text-muted mb-2">{role}</p>
       <p className="text-sm leading-relaxed mb-4 flex-1">{hook}</p>
