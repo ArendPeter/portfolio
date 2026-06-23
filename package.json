@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "prepare": "husky",
-    "sandcastle": "npx tsx .sandcastle/main.mts"
+    "sandcastle": "npx tsx .sandcastle/main.ts"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
