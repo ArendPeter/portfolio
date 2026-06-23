@@ -3,15 +3,7 @@ import { scrollToFragment } from '../utils/scroll'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { ProjectCard } from '../components/ProjectCard'
 import { InlineLink } from '../components/InlineLink'
-
-const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Impact', href: '#business-impact' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
-]
+import { navLinks } from './homeNavLinks'
 
 const sectionIds = navLinks.map((l) => l.href.slice(1))
 
