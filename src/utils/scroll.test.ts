@@ -3,13 +3,16 @@ import { smoothScrollTo, scrollToFragment } from './scroll'
 import type React from 'react'
 
 let rafSpy: ReturnType<typeof vi.spyOn<Window, 'requestAnimationFrame'>>
-let nowSpy: ReturnType<typeof vi.spyOn<Performance, 'now'>>
+
+function makeBoundingClientRect(top: number) {
+  return { top, bottom: 0, left: 0, right: 0, height: 0, width: 0, x: 0, y: 0, toJSON: () => '' }
+}
 
 beforeEach(() => {
   Object.defineProperty(window, 'scrollY', { value: 0, writable: true, configurable: true })
   window.scrollTo = vi.fn()
   rafSpy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation(() => 0)
-  nowSpy = vi.spyOn(window.performance, 'now').mockReturnValue(0)
+  vi.spyOn(window.performance, 'now').mockReturnValue(0)
 })
 
 afterEach(() => {
@@ -28,7 +31,6 @@ describe('smoothScrollTo', () => {
       capturedStep = cb
       return 0
     })
-    nowSpy.mockReturnValue(0)
 
     smoothScrollTo(300, 700)
 
@@ -42,7 +44,6 @@ describe('smoothScrollTo', () => {
       capturedStep = cb
       return 0
     })
-    nowSpy.mockReturnValue(0)
 
     smoothScrollTo(1000, 700)
 
@@ -66,17 +67,7 @@ describe('scrollToFragment', () => {
   it('calls preventDefault for fragment hrefs', () => {
     const el = document.createElement('div')
     el.id = 'about'
-    el.getBoundingClientRect = () => ({
-      top: 200,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: 0,
-      width: 0,
-      x: 0,
-      y: 0,
-      toJSON: () => '',
-    })
+    el.getBoundingClientRect = () => makeBoundingClientRect(200)
     document.body.appendChild(el)
 
     const preventDefault = vi.fn()
@@ -90,17 +81,7 @@ describe('scrollToFragment', () => {
   it('starts animation when target element exists', () => {
     const el = document.createElement('div')
     el.id = 'portfolio'
-    el.getBoundingClientRect = () => ({
-      top: 400,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: 0,
-      width: 0,
-      x: 0,
-      y: 0,
-      toJSON: () => '',
-    })
+    el.getBoundingClientRect = () => makeBoundingClientRect(400)
     document.body.appendChild(el)
 
     const preventDefault = vi.fn()
