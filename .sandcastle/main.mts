@@ -84,7 +84,7 @@ for (let iteration = 1; iteration <= MAX_ITERATIONS; iteration++) {
     const implement = await sandbox.run({
       name: "implementer",
       maxIterations: 1,
-      agent: sandcastle.claudeCode("claude-opus-4-7"),
+      agent: sandcastle.claudeCode("claude-sonnet-4-6"),
       promptFile: "./.sandcastle/implement-prompt.md",
       // not sure why the line is erroring, this matches the example
       output: sandcastle.Output.object({ tag: "info", schema: infoSchema }),
@@ -110,10 +110,11 @@ for (let iteration = 1; iteration <= MAX_ITERATIONS; iteration++) {
     await sandbox.run({
       name: "reviewer",
       maxIterations: 1,
-      agent: sandcastle.claudeCode("claude-opus-4-7"),
+      agent: sandcastle.claudeCode("claude-sonnet-4-6"),
       promptFile: "./.sandcastle/review-prompt.md",
       promptArgs: {
         BRANCH: branch,
+        TASK_ID: implement.output.info.id,
       },
     });
 

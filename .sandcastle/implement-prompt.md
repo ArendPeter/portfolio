@@ -25,6 +25,8 @@ Work on issues in this order:
 
 Pick the highest-priority open issue that is not blocked by another open issue.
 
+The id of the issue will be referred to as <ID>
+
 ## Workflow
 
 1. **Explore** — read the issue carefully. Pull in the parent PRD if referenced. Read the relevant source files and tests before writing any code.
@@ -51,7 +53,7 @@ Pick the highest-priority open issue that is not blocked by another open issue.
 When all actionable issues are complete (or you are blocked on all remaining ones), or the open-issues block at the top of this prompt is empty. Output some context as a JSON object wrapped in `<info>` tags:
 
 <info>
-{"id": <TASK ID>}
+{"id": <ID>}
 </plan>
 
 Then output the completion signal:
