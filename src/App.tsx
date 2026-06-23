@@ -1,6 +1,7 @@
 import { Button } from './components/Button'
 import { InlineLink } from './components/InlineLink'
 import { Nav } from './components/Nav'
+import { ProjectCard } from './components/ProjectCard'
 
 const colorTokens = [
   { name: '--color-bg', hex: '#0f0f0f' },
@@ -17,6 +18,27 @@ const navLinks = [
   { label: 'Typography', href: '#typography' },
   { label: 'Buttons', href: '#buttons' },
   { label: 'Links', href: '#links' },
+  { label: 'Cards', href: '#cards' },
+]
+
+const sampleCards = [
+  {
+    name: 'Pixel Platformer',
+    role: 'Solo developer — design, code, and art',
+    hook: 'A retro-style 2D platformer built in Unity with procedurally generated levels and a chiptune soundtrack.',
+    stack: ['Unity', 'C#', 'Aseprite'],
+    links: [
+      { label: 'Live Site', href: 'https://example.com/pixel-platformer' },
+      { label: 'Source', href: 'https://github.com/example/pixel-platformer' },
+    ],
+  },
+  {
+    name: 'Recipe Keeper',
+    role: 'Full-stack developer',
+    hook: 'A mobile-first web app for saving, tagging, and scaling recipes, with offline support via service workers.',
+    stack: ['React', 'TypeScript', 'Tailwind CSS'],
+    links: [{ label: 'Live Site', href: 'https://example.com/recipe-keeper' }],
+  },
 ]
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -88,6 +110,15 @@ function App() {
             <p>
               <InlineLink href="#">Standalone link →</InlineLink>
             </p>
+          </div>
+        </section>
+
+        <section id="cards" className="mb-16">
+          <SectionLabel>Project Cards</SectionLabel>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {sampleCards.map((card) => (
+              <ProjectCard key={card.name} {...card} />
+            ))}
           </div>
         </section>
       </div>
