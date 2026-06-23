@@ -59,6 +59,22 @@ Once complete:
    ```
    gh issue edit {{TASK_ID}} --remove-label "ready-for-agent" --add-label "ready-for-review"
    ```
+2. Create a pull request for the branch with a body that includes:
+   - A short summary of what was implemented and any key decisions made
+   - A **Manual QA** checklist of steps the reviewer should follow to verify the feature works correctly in the browser or CLI
+   ```
+   gh pr create --title "{{ISSUE_TITLE}}" --body "$(cat <<'EOF'
+   Closes #{{TASK_ID}}
+
+   ## Summary
+   <what was done>
+
+   ## Manual QA
+   - [ ] <step 1>
+   - [ ] <step 2>
+   EOF
+   )" --head {{BRANCH}}
+   ```
 
 Then output <promise>COMPLETE</promise>.
 
