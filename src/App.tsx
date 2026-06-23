@@ -22,6 +22,8 @@ const navLinks = [
   { label: 'Cards', href: '#cards' },
 ]
 
+const sectionIds = navLinks.map((l) => l.href.slice(1))
+
 const sampleCards = [
   {
     name: 'Pixel Platformer',
@@ -49,7 +51,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function App() {
-  const sectionIds = navLinks.map((l) => l.href.slice(1))
   const activeSectionId = useActiveSection(sectionIds)
   const activeHref = activeSectionId ? `#${activeSectionId}` : undefined
 
