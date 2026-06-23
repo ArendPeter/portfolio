@@ -11,11 +11,50 @@ interface NavProps {
   activeHref?: string
 }
 
+function MenuIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  )
+}
+
 export function Nav({ siteName, links, activeHref }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false)
 
-  function handleLinkClick() {
-    setMenuOpen(false)
+  function linkClass(href: string) {
+    return `text-sm transition-colors hover:text-accent ${activeHref === href ? 'text-accent' : 'text-muted'}`
   }
 
   return (
@@ -29,12 +68,7 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
         <ul className="hidden sm:flex gap-6">
           {links.map(({ label, href }) => (
             <li key={href}>
-              <a
-                href={href}
-                className={`text-sm transition-colors hover:text-accent ${
-                  activeHref === href ? 'text-accent' : 'text-muted'
-                }`}
-              >
+              <a href={href} className={linkClass(href)}>
                 {label}
               </a>
             </li>
@@ -47,38 +81,7 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen((v) => !v)}
         >
-          {menuOpen ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          )}
+          {menuOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
       </div>
 
@@ -90,10 +93,8 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
               <li key={href}>
                 <a
                   href={href}
-                  onClick={handleLinkClick}
-                  className={`block text-sm transition-colors hover:text-accent ${
-                    activeHref === href ? 'text-accent' : 'text-muted'
-                  }`}
+                  onClick={() => setMenuOpen(false)}
+                  className={`block ${linkClass(href)}`}
                 >
                   {label}
                 </a>
