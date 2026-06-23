@@ -48,6 +48,15 @@ const sampleCards = [
   },
 ]
 
+const videoCard = {
+  name: 'Video Demo Card',
+  role: 'Demo',
+  hook: 'This card plays a video on hover when videoSrc is provided.',
+  stack: ['React', 'HTML5 Video'],
+  links: [{ label: 'Example', href: 'https://example.com' }],
+  videoSrc: 'https://www.w3schools.com/html/mov_bbb.mp4',
+}
+
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <p className="text-sm font-semibold uppercase tracking-widest text-muted mb-6">{children}</p>
@@ -139,10 +148,15 @@ export function Stylebook() {
 
         <section id="cards" className="mb-16">
           <SectionLabel>Project Cards</SectionLabel>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <p className="text-sm text-muted font-semibold mb-2">Hover to see lift + border effect</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
             {sampleCards.map((card) => (
               <ProjectCard key={card.name} {...card} />
             ))}
+          </div>
+          <p className="text-sm text-muted font-semibold mb-2">With video (hover to play)</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <ProjectCard {...videoCard} />
           </div>
         </section>
         <div className="h-[60vh]" aria-hidden="true" />

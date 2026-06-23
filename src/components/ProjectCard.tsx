@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { InlineLink } from './InlineLink'
 
 interface ProjectLink {
@@ -13,6 +14,7 @@ interface ProjectCardProps {
   links: ProjectLink[]
   screenshotSrc?: string
   screenshotAlt?: string
+  videoSrc?: string
 }
 
 export function ProjectCard({
@@ -23,13 +25,40 @@ export function ProjectCard({
   links,
   screenshotSrc,
   screenshotAlt,
+  videoSrc,
 }: ProjectCardProps) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  function handleMouseEnter() {
+    void videoRef.current?.play()
+  }
+
+  function handleMouseLeave() {
+    videoRef.current?.pause()
+  }
+
   return (
-    <div className="bg-surface border border-border rounded-lg p-5 flex flex-col">
+    <div
+      role="article"
+      className="bg-surface border border-border rounded-lg p-5 flex flex-col transition-all duration-200 hover:border-accent/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/40 cursor-default"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <h3 className="text-xl font-bold mb-3">{name}</h3>
 
       <div className="aspect-video w-full rounded-md overflow-hidden mb-3">
-        {screenshotSrc ? (
+        {videoSrc ? (
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            poster={screenshotSrc}
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="w-full h-full object-cover"
+          />
+        ) : screenshotSrc ? (
           <img
             src={screenshotSrc}
             alt={screenshotAlt ?? name}
