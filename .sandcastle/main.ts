@@ -223,4 +223,23 @@ for (let iteration = 1; iteration <= MAX_ITERATIONS; iteration++) {
   console.log("\nBranches merged.");
 }
 
-console.log("\nAll done.");
+// ---------------------------------------------------------------------------
+// Phase 4: QA Issue
+//
+// After all merge cycles complete, one agent inspects the local commits
+// (everything ahead of origin/main) and creates a GitHub issue summarising
+// what was built along with manual QA steps for the human reviewer to follow
+// before pushing.
+// ---------------------------------------------------------------------------
+console.log("\n=== Creating QA issue ===\n");
+
+await sandcastle.run({
+  hooks,
+  sandbox: docker(),
+  name: "qa-issue",
+  maxIterations: 1,
+  agent: sandcastle.claudeCode("claude-sonnet-4-6"),
+  promptFile: "./.sandcastle/qa-issue-prompt.md",
+});
+
+console.log("\nAll done. Review the QA issue above, then push when ready.");
