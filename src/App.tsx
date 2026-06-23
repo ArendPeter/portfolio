@@ -1,4 +1,3 @@
-import './App.css'
 import { Button } from './components/Button'
 
 const colorTokens = [
@@ -23,7 +22,6 @@ function App() {
       <h1 className="text-4xl font-bold mb-2">Stylebook</h1>
       <p className="text-muted mb-16">Design system reference — colors, type, and components</p>
 
-      {/* Color Palette */}
       <section className="mb-16">
         <SectionLabel>Color Palette</SectionLabel>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -40,7 +38,6 @@ function App() {
         </div>
       </section>
 
-      {/* Typography */}
       <section className="mb-16">
         <SectionLabel>Typography</SectionLabel>
         <div className="space-y-4">
@@ -52,7 +49,6 @@ function App() {
         </div>
       </section>
 
-      {/* Buttons */}
       <section className="mb-16">
         <SectionLabel>Buttons</SectionLabel>
         <div className="flex gap-4 flex-wrap items-center">
