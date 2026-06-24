@@ -65,6 +65,9 @@ Word Factori is a factory building game where you build letters from the letter 
 
 A standalone web project explaining a complex political issue — problems with ranked choice voting in Alaska — through physics-based interactive animations. I applied techniques from game development (physics simulation, real-time rendering) to create a frontend experience that makes an otherwise abstract concept visually intuitive and engaging. 
 
+https://youtu.be/x7uyfWKzC4o?t=2007
+https://www.youtube.com/watch?v=x7uyfWKzC4o&t=3944
+
 **Highlights:**
 - Physics-based animations built from scratch in the browser
 - Demonstrates full ownership of design, frontend engineering, and content

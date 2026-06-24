@@ -63,6 +63,11 @@ export function HomePage() {
           <p className="text-xl text-muted mb-8">
             Full Stack Engineer with a track-record of leadership
           </p>
+          <p className="leading-relaxed mb-4">
+            I'm a full stack engineer with 10+ years of experience. I have a track record of finding
+            the bottlenecks that hold teams back — and building the tools, processes, and
+            infrastructure to remove them.
+          </p>
           <div className="flex flex-wrap gap-4 items-center">
             <Button href={CALENDLY_URL} external>
               Schedule a Call
@@ -74,18 +79,11 @@ export function HomePage() {
             >
               View My Work
             </Button>
-            <InlineLink href={GITHUB_URL} external>
-              GitHub
-            </InlineLink>
           </div>
         </section>
 
         <section id="about" className="mb-16">
           <h2 className="text-2xl font-bold mb-6">About</h2>
-          <p className="leading-relaxed mb-4">
-            I'm a full stack engineer with a track record of finding the bottlenecks that hold teams
-            back — and building the tools, processes, and infrastructure to remove them.
-          </p>
           <ul className="list-disc pl-5 space-y-2 leading-relaxed">
             <li>
               As a <strong>Software Engineer at Amazon</strong> I faced legacy workflows built on
