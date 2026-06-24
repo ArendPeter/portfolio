@@ -18,9 +18,13 @@ Full Stack Engineer with a track-record of leadership
 
 ## 2. About
 
-I'm a full stack engineer with a track record of finding the bottlenecks that hold teams back — and building the tools, processes, and infrastructure to remove them. 
+I'm a full stack engineer with a track record of finding the bottlenecks that hold teams back — and building the tools, processes, and infrastructure to remove them.
 
-As a Software Engineer at at Amazon I turned faced legacy workflows built on tribal knowledge, and built them into documented and automated processes. As the Programming Lead at at Star Garden Games I was responsible for delivering an optimized production ready game and built the tooling that gave our artist full creative independence. As the Production Lead at Equal Vote I led a team of volunteers to build an elections project into a service that has now processed tens of thousands of votes. Now as the Program Director at Equal Vote I've also grown as a leader, managing dozens of volunteers and helping to standardize processes across the organization. The AI era has allowed to take my work to the next level without sacrificing quality, whether it's writing quality test driven code, building custom auditing tools, or brainstorming nuanced ideas.
+- As a **Software Engineer at Amazon** I faced legacy workflows built on tribal knowledge, and built them into documented and automated processes.
+- As the **Programming Lead at Star Garden Games** I was responsible for delivering an optimized production ready game and built the tooling that gave our artist full creative independence.
+- As the **Production Lead at Equal Vote** I led a team of volunteers to build an elections project into a service that has now processed tens of thousands of votes.
+- Now as the **Program Director at Equal Vote** I've also grown as a leader, managing dozens of volunteers and helping to standardize processes across the organization.
+- The AI era has allowed me to take my work to the next level without sacrificing quality, whether it's writing quality test driven code, building custom auditing tools, or using extended planning sessions so agents have the context to one shot the implementation.
 
 ---
 
@@ -57,7 +61,7 @@ Word Factori is a factory building game where you build letters from the letter 
 
 ### rcvchangedalaska.com
 **Role:** Solo Developer
-**Links:** [rcvchangedalaska.com](https://rcvchangedalaska.com)
+**Links:** [rcvchangedalaska.com](https://rcvchangedalaska.com) · [Source Code](https://github.com/Equal-Vote/alaska-rcv)
 
 A standalone web project explaining a complex political issue — problems with ranked choice voting in Alaska — through physics-based interactive animations. I applied techniques from game development (physics simulation, real-time rendering) to create a frontend experience that makes an otherwise abstract concept visually intuitive and engaging. 
 
