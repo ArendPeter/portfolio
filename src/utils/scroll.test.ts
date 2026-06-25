@@ -99,51 +99,36 @@ describe('scrollToFragment', () => {
     expect(rafSpy).not.toHaveBeenCalled()
   })
 
-  it('offsets scroll by nav height (56px) so sections are not hidden behind sticky nav', () => {
-    const el = document.createElement('div')
-    el.id = 'experience'
-    el.getBoundingClientRect = () => makeBoundingClientRect(500)
-    document.body.appendChild(el)
+  it.each([
+    { id: 'experience', top: 500, scrollY: 0, expected: 444 }, // 500 + 0   - 56
+    { id: 'skills', top: 300, scrollY: 800, expected: 1044 }, // 300 + 800 - 56
+  ])(
+    'scrolls to top + scrollY - NAV_HEIGHT (scrollY=$scrollY)',
+    ({ id, top, scrollY, expected }) => {
+      Object.defineProperty(window, 'scrollY', {
+        value: scrollY,
+        writable: true,
+        configurable: true,
+      })
 
-    let capturedStep: FrameRequestCallback | null = null
-    rafSpy.mockImplementation((cb) => {
-      capturedStep = cb
-      return 0
-    })
+      const el = document.createElement('div')
+      el.id = id
+      el.getBoundingClientRect = () => makeBoundingClientRect(top)
+      document.body.appendChild(el)
 
-    const preventDefault = vi.fn()
-    const e = { preventDefault } as unknown as React.MouseEvent<HTMLAnchorElement>
-    scrollToFragment(e, '#experience')
+      let capturedStep: FrameRequestCallback | null = null
+      rafSpy.mockImplementation((cb) => {
+        capturedStep = cb
+        return 0
+      })
 
-    capturedStep!(700) // advance animation to completion (elapsed = duration)
-    // targetY = getBoundingClientRect().top (500) + scrollY (0) - NAV_HEIGHT (56) = 444
-    expect(window.scrollTo).toHaveBeenCalledWith(0, 444)
+      const e = { preventDefault: vi.fn() } as unknown as React.MouseEvent<HTMLAnchorElement>
+      scrollToFragment(e, `#${id}`)
 
-    document.body.removeChild(el)
-  })
+      capturedStep!(700)
+      expect(window.scrollTo).toHaveBeenCalledWith(0, expected)
 
-  it('accounts for current scroll position when computing nav offset', () => {
-    const el = document.createElement('div')
-    el.id = 'skills'
-    el.getBoundingClientRect = () => makeBoundingClientRect(300) // 300px from viewport top
-    document.body.appendChild(el)
-
-    Object.defineProperty(window, 'scrollY', { value: 800, writable: true, configurable: true })
-
-    let capturedStep: FrameRequestCallback | null = null
-    rafSpy.mockImplementation((cb) => {
-      capturedStep = cb
-      return 0
-    })
-
-    const preventDefault = vi.fn()
-    const e = { preventDefault } as unknown as React.MouseEvent<HTMLAnchorElement>
-    scrollToFragment(e, '#skills')
-
-    capturedStep!(700)
-    // targetY = 300 (viewport top) + 800 (scrollY) - 56 (NAV_HEIGHT) = 1044
-    expect(window.scrollTo).toHaveBeenCalledWith(0, 1044)
-
-    document.body.removeChild(el)
-  })
+      document.body.removeChild(el)
+    },
+  )
 })
