@@ -64,7 +64,7 @@ export function HomePage() {
   return (
     <>
       <Nav siteName="Arend Peter Castelein" links={navLinks} activeHref={activeHref} />
-      <div className="min-h-screen bg-bg text-body font-sans px-8 py-12 max-w-4xl mx-auto">
+      <div className="min-h-screen bg-bg text-body font-sans px-8 py-12 max-w-230 mx-auto">
         <section id="hero" className="flex items-center min-h-[calc(75vh-6rem)] mb-16">
           <div className="flex flex-col sm:flex-row items-center gap-8 w-full">
             <div className="flex-1 min-w-0">
