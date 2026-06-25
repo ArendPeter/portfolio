@@ -81,16 +81,16 @@ export function HomePage() {
       <div className="min-h-screen bg-bg text-body font-sans px-8 py-12 max-w-230 mx-auto flex flex-col gap-16">
         <section id="hero" className="flex gap-16 items-center min-h-[calc(75vh-6rem)]">
           <div className="flex flex-col md:flex-row items-center gap-8 w-full">
-            <div className="flex-1 min-w-0 text-center md:text-left justify-center">
-              <h1 className="text-4xl font-bold mb-2">Arend Peter Castelein</h1>
-              <p className="text-xl text-muted mb-8">Ex-Amazon Full Stack Engineer</p>
+            <div className="flex flex-col min-w-0 text-center items-center md:text-left md:items-start gap-4">
+              <h1 className="text-4xl font-bold">Arend Peter Castelein</h1>
+              <p className="text-xl text-muted">Ex-Amazon Full Stack Engineer</p>
               <Photo className="flex md:hidden" />
-              <p className="leading-relaxed mb-8">
+              <p className="leading-relaxed">
                 I have 10+ years of experience, and a{' '}
                 <InlineLink href="#experience" onClick={(e) => scrollToFragment(e, '#experience')}>
                   track record
                 </InlineLink>{' '}
-                of leadership. I&nbsp;identify team bottlenecks and resolve them.
+                of leadership. I&nbsp;identify&nbsp;team&nbsp;bottlenecks and resolve them.
                 {/* — and building the tools, processes, and infrastructure to remove them.*/}
               </p>
               <div className="flex flex-wrap gap-4 items-center">
