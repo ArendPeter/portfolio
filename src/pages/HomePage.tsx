@@ -56,36 +56,41 @@ const projects = [
   },
 ]
 
+type PhotoProps = React.HTMLAttributes<HTMLDivElement>
+const Photo = ({ className }: PhotoProps) => (
+  <div
+    className={cn(
+      'shrink-0 w-56 h-56 md:w-72 md:h-72 rounded-full bg-muted/20 border-2 border-muted/30 flex items-center justify-center overflow-hidden',
+      className,
+    )}
+  >
+    {/* Replace src with selfie photo when available */}
+    <span className="text-muted text-sm">Photo coming soon</span>
+  </div>
+)
+
 export function HomePage() {
   const activeSectionId = useActiveSection(sectionIds)
   const activeHref = activeSectionId ? `#${activeSectionId}` : undefined
 
   const currentYear = new Date().getFullYear()
 
-  const Photo = ({className} :{className: string}) =>
-    <div className={cn(
-      "shrink-0 w-56 h-56 md:w-72 md:h-72 rounded-full bg-muted/20 border-2 border-muted/30 flex items-center justify-center overflow-hidden",
-      className
-    )}>
-      {/* Replace src with selfie photo when available */}
-      <span className="text-muted text-sm">Photo coming soon</span>
-    </div>
-
   return (
     <>
       <Nav siteName="Arend Peter Castelein" links={navLinks} activeHref={activeHref} />
       <div className="min-h-screen bg-bg text-body font-sans px-8 py-12 max-w-230 mx-auto flex flex-col gap-16">
-        <section id="hero" className="flex items-center min-h-[calc(75vh-6rem)]">
-          <div className="flex flex-col sm:flex-row items-center gap-8 w-full">
-            <div className="flex-1 min-w-0">
+        <section id="hero" className="flex gap-16 items-center min-h-[calc(75vh-6rem)]">
+          <div className="flex flex-col md:flex-row items-center gap-8 w-full">
+            <div className="flex-1 min-w-0 text-center md:text-left justify-center">
               <h1 className="text-4xl font-bold mb-2">Arend Peter Castelein</h1>
               <p className="text-xl text-muted mb-8">Ex-Amazon Full Stack Engineer</p>
+              <Photo className="flex md:hidden" />
               <p className="leading-relaxed mb-8">
                 I have 10+ years of experience, and a{' '}
                 <InlineLink href="#experience" onClick={(e) => scrollToFragment(e, '#experience')}>
                   track record
                 </InlineLink>{' '}
-                of leadership. I identify team bottlenecks and resolve them.
+                of leadership. I&nbsp;identify team bottlenecks and resolve them.
                 {/* — and building the tools, processes, and infrastructure to remove them.*/}
               </p>
               <div className="flex flex-wrap gap-4 items-center">
@@ -102,12 +107,12 @@ export function HomePage() {
               </div>
             </div>
           </div>
-          <Photo className="hidden md:flex"/>
+          <Photo className="hidden md:flex" />
         </section>
 
         <section id="portfolio" className="">
           <h2 className="text-2xl font-bold mb-6">Portfolio</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project) => (
               <ProjectCard key={project.name} {...project} />
             ))}

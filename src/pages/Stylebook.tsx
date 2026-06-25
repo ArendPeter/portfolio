@@ -76,7 +76,7 @@ export function Stylebook() {
 
         <section id="colors" className="mb-16">
           <SectionLabel>Color Palette</SectionLabel>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {colorTokenNames.map((name) => {
               const hex = getCssVar(name)
               return (
@@ -149,13 +149,13 @@ export function Stylebook() {
         <section id="cards" className="mb-16">
           <SectionLabel>Project Cards</SectionLabel>
           <p className="text-sm text-muted font-semibold mb-2">Hover to see lift + border effect</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {sampleCards.map((card) => (
               <ProjectCard key={card.name} {...card} />
             ))}
           </div>
           <p className="text-sm text-muted font-semibold mb-2">With video (hover to play)</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ProjectCard {...videoCard} />
           </div>
         </section>

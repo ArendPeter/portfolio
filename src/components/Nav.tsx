@@ -107,7 +107,7 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
         </a>
 
         {/* Desktop links */}
-        <ul className="hidden sm:flex gap-6">
+        <ul className="hidden md:flex gap-6">
           {links.map((link) => (
             <li key={link.href}>{renderLink(link)}</li>
           ))}
@@ -115,7 +115,7 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
 
         {/* Mobile hamburger */}
         <button
-          className="sm:hidden flex items-center justify-center w-8 h-8 text-body hover:text-accent transition-colors"
+          className="md:hidden flex items-center justify-center w-8 h-8 text-body hover:text-accent transition-colors"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen((v) => !v)}
         >
@@ -125,7 +125,7 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="sm:hidden border-t border-border bg-surface">
+        <div className="md:hidden border-t border-border bg-surface">
           <ul className="max-w-4xl mx-auto px-6 py-3 flex flex-col gap-3">
             {links.map((link) => (
               <li key={link.href}>{renderLink(link, 'block', () => setMenuOpen(false))}</li>
