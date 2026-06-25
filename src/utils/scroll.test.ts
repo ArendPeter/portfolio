@@ -98,4 +98,52 @@ describe('scrollToFragment', () => {
     scrollToFragment(e, '#nonexistent')
     expect(rafSpy).not.toHaveBeenCalled()
   })
+
+  it('offsets scroll by nav height (56px) so sections are not hidden behind sticky nav', () => {
+    const el = document.createElement('div')
+    el.id = 'experience'
+    el.getBoundingClientRect = () => makeBoundingClientRect(500)
+    document.body.appendChild(el)
+
+    let capturedStep: FrameRequestCallback | null = null
+    rafSpy.mockImplementation((cb) => {
+      capturedStep = cb
+      return 0
+    })
+
+    const preventDefault = vi.fn()
+    const e = { preventDefault } as unknown as React.MouseEvent<HTMLAnchorElement>
+    scrollToFragment(e, '#experience')
+
+    capturedStep!(700) // advance animation to completion (elapsed = duration)
+    // targetY = getBoundingClientRect().top (500) + scrollY (0) - NAV_HEIGHT (56) = 444
+    expect(window.scrollTo).toHaveBeenCalledWith(0, 444)
+
+    document.body.removeChild(el)
+  })
+
+  it('accounts for current scroll position when computing nav offset', () => {
+    const el = document.createElement('div')
+    el.id = 'skills'
+    el.getBoundingClientRect = () => makeBoundingClientRect(300) // 300px from viewport top
+    document.body.appendChild(el)
+
+    Object.defineProperty(window, 'scrollY', { value: 800, writable: true, configurable: true })
+
+    let capturedStep: FrameRequestCallback | null = null
+    rafSpy.mockImplementation((cb) => {
+      capturedStep = cb
+      return 0
+    })
+
+    const preventDefault = vi.fn()
+    const e = { preventDefault } as unknown as React.MouseEvent<HTMLAnchorElement>
+    scrollToFragment(e, '#skills')
+
+    capturedStep!(700)
+    // targetY = 300 (viewport top) + 800 (scrollY) - 56 (NAV_HEIGHT) = 1044
+    expect(window.scrollTo).toHaveBeenCalledWith(0, 1044)
+
+    document.body.removeChild(el)
+  })
 })
