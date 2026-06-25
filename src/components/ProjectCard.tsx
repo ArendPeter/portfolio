@@ -93,7 +93,7 @@ export function ProjectCard({
       <div className="flex flex-wrap gap-4">
         {links.map(({ label, href }) => (
           <InlineLink key={href} href={href} external>
-            {label} →
+            {label}
           </InlineLink>
         ))}
       </div>

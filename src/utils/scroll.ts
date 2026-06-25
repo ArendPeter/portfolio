@@ -2,6 +2,7 @@ import React from 'react'
 
 // h-14 / scroll-padding-top: 3.5rem = 56px
 const NAV_HEIGHT = 56
+const HEADER_PADDING = 20 // extra padding in addition to the NAV_HEIGHT
 
 function easeInOutCubic(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
@@ -29,6 +30,6 @@ export function scrollToFragment(e: React.MouseEvent<HTMLAnchorElement>, href: s
   e.preventDefault()
   const target = document.getElementById(href.slice(1))
   if (!target) return
-  const targetY = target.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT
+  const targetY = target.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT - HEADER_PADDING
   smoothScrollTo(targetY)
 }

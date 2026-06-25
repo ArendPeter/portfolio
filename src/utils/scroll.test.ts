@@ -100,8 +100,8 @@ describe('scrollToFragment', () => {
   })
 
   it.each([
-    { id: 'experience', top: 500, scrollY: 0, expected: 444 }, // 500 + 0   - 56
-    { id: 'skills', top: 300, scrollY: 800, expected: 1044 }, // 300 + 800 - 56
+    { id: 'experience', top: 500, scrollY: 0, expected: 424 }, // 500 + 0   - 56 - 20
+    { id: 'skills', top: 300, scrollY: 800, expected: 1024 }, // 300 + 800 - 56 - 20
   ])(
     'scrolls to top + scrollY - NAV_HEIGHT (scrollY=$scrollY)',
     ({ id, top, scrollY, expected }) => {

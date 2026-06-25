@@ -64,8 +64,8 @@ export function HomePage() {
   return (
     <>
       <Nav siteName="Arend Peter Castelein" links={navLinks} activeHref={activeHref} />
-      <div className="min-h-screen bg-bg text-body font-sans px-8 py-12 max-w-230 mx-auto">
-        <section id="hero" className="flex items-center min-h-[calc(75vh-6rem)] mb-16">
+      <div className="min-h-screen bg-bg text-body font-sans px-8 py-12 max-w-230 mx-auto flex flex-col gap-16">
+        <section id="hero" className="flex items-center min-h-[calc(75vh-6rem)]">
           <div className="flex flex-col sm:flex-row items-center gap-8 w-full">
             <div className="flex-1 min-w-0">
               <h1 className="text-4xl font-bold mb-2">Arend Peter Castelein</h1>
@@ -98,7 +98,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="portfolio" className="mb-16">
+        <section id="portfolio" className="">
           <h2 className="text-2xl font-bold mb-6">Portfolio</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {projects.map((project) => (
@@ -107,7 +107,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="resume" className="mb-16">
+        <section id="resume" className="">
           <h2 className="text-2xl font-bold mb-6">Resume</h2>
           <div className="flex justify-center">
             <Button href="/arend-peter-resume.pdf" external>
@@ -116,7 +116,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="experience" className="mb-16">
+        <section id="experience" className="">
           <h2 className="text-2xl font-bold mb-6">Experience</h2>
 
           <div className="mb-8">
@@ -171,7 +171,7 @@ export function HomePage() {
             </ul>
           </div>
 
-          <div className="mb-8">
+          <div className="">
             <h3 className="text-xl font-semibold">Amazon — Software Development Engineer II</h3>
             <InlineLink href="https://amazonaws.com" external>
               amazonaws.com
@@ -199,7 +199,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="skills" className="mb-16">
+        <section id="skills" className="">
           <h2 className="text-2xl font-bold mb-6">Skills</h2>
           <dl className="space-y-2">
             <div className="flex gap-2">
@@ -236,11 +236,11 @@ export function HomePage() {
           </dl>
         </section>
 
-        <section id="github" className="mb-16">
+        <section id="github" className="">
           <h2 className="text-2xl font-bold mb-6">GitHub</h2>
           <div className="flex flex-col gap-8">
             <p className="flex justify-center">
-              5+ years of consistent hands-on coding alongside leadership roles.
+              Years of consistent hands-on coding alongside leadership roles.
             </p>
             <div className="flex justify-center">
               <Button href={GITHUB_URL} external>
@@ -262,32 +262,19 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="contact" className="mb-16">
+        <section id="contact" className="">
           <h2 className="text-2xl font-bold mb-6">Contact</h2>
-          <dl className="space-y-3">
-            <div className="flex gap-2">
-              <dt className="font-semibold">Schedule a call:</dt>
-              <dd>
-                <InlineLink href={CALENDLY_URL} external>
-                  calendly.com/arendpeter/30min
-                </InlineLink>
-              </dd>
-            </div>
-            <div className="flex gap-2">
-              <dt className="font-semibold">GitHub:</dt>
-              <dd>
-                <InlineLink href={GITHUB_URL} external>
-                  github.com/ArendPeter
-                </InlineLink>
-              </dd>
-            </div>
-            <div className="flex gap-2">
-              <dt className="font-semibold">Email:</dt>
-              <dd>
-                <InlineLink href="mailto:apc1993@gmail.com">apc1993@gmail.com</InlineLink>
-              </dd>
-            </div>
-          </dl>
+          <div className="flex justify-center items-center gap-6">
+            <Button href={CALENDLY_URL} external>
+              Schedule a Call
+            </Button>
+            <span>
+              Email Me:&nbsp;
+              <InlineLink href="mailto:apc1993@gmail.com" external>
+                apc1993@gmail.com
+              </InlineLink>
+            </span>
+          </div>
         </section>
 
         <div className="h-[60vh]" aria-hidden="true" />
