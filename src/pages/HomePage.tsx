@@ -1,3 +1,4 @@
+import { GitHubCalendar } from 'react-github-calendar'
 import { Button } from '../components/Button'
 import { Nav } from '../components/Nav'
 import { scrollToFragment } from '../utils/scroll'
@@ -5,6 +6,10 @@ import { useActiveSection } from '../hooks/useActiveSection'
 import { ProjectCard } from '../components/ProjectCard'
 import { InlineLink } from '../components/InlineLink'
 import { navLinks } from './homeNavLinks'
+
+const githubCalendarTheme = {
+  dark: ['#1a1a1a', '#3a1f00', '#7a3f00', '#c46200', '#f97316'],
+}
 
 const sectionIds = navLinks.map((l) => l.href.slice(1))
 
@@ -187,6 +192,19 @@ export function HomePage() {
               </li>
             </ul>
           </div>
+        </section>
+
+        <section id="github" className="mb-16">
+          <h2 className="text-2xl font-bold mb-6">GitHub</h2>
+          <p className="mb-6">
+            Five years of consistent hands-on coding alongside leadership roles.
+          </p>
+          <div className="hidden sm:block mb-6">
+            <GitHubCalendar username="ArendPeter" theme={githubCalendarTheme} colorScheme="dark" />
+          </div>
+          <InlineLink href={GITHUB_URL} external>
+            github.com/ArendPeter
+          </InlineLink>
         </section>
 
         <section id="skills" className="mb-16">
