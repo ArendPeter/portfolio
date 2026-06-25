@@ -6,6 +6,7 @@ import { useActiveSection } from '../hooks/useActiveSection'
 import { ProjectCard } from '../components/ProjectCard'
 import { InlineLink } from '../components/InlineLink'
 import { navLinks } from './homeNavLinks'
+import { cn } from '../utils/utils'
 
 const githubCalendarTheme = {
   dark: ['#1a1a1a', '#3a1f00', '#7a3f00', '#c46200', '#f97316'],
@@ -61,6 +62,15 @@ export function HomePage() {
 
   const currentYear = new Date().getFullYear()
 
+  const Photo = ({className} :{className: string}) =>
+    <div className={cn(
+      "shrink-0 w-56 h-56 md:w-72 md:h-72 rounded-full bg-muted/20 border-2 border-muted/30 flex items-center justify-center overflow-hidden",
+      className
+    )}>
+      {/* Replace src with selfie photo when available */}
+      <span className="text-muted text-sm">Photo coming soon</span>
+    </div>
+
   return (
     <>
       <Nav siteName="Arend Peter Castelein" links={navLinks} activeHref={activeHref} />
@@ -91,11 +101,8 @@ export function HomePage() {
                 </Button>
               </div>
             </div>
-            <div className="shrink-0 w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-muted/20 border-2 border-muted/30 flex items-center justify-center overflow-hidden">
-              {/* Replace src with selfie photo when available */}
-              <span className="text-muted text-sm">Photo coming soon</span>
-            </div>
           </div>
+          <Photo className="hidden md:flex"/>
         </section>
 
         <section id="portfolio" className="">
@@ -240,7 +247,7 @@ export function HomePage() {
           <h2 className="text-2xl font-bold mb-6">GitHub</h2>
           <div className="flex flex-col gap-8">
             <p className="flex justify-center">
-              Years of consistent hands-on coding alongside leadership roles.
+              5+ years of consistent hands-on coding alongside leadership roles.
             </p>
             <div className="flex justify-center">
               <Button href={GITHUB_URL} external>
