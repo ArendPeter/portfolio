@@ -112,12 +112,22 @@ export function HomePage() {
           </ul>
         </section>
 
+        <section id="resume" className="mb-16">
+          <div className="flex justify-center">
+            <Button href="/arend-peter-resume.pdf" external>
+              View Resume
+            </Button>
+          </div>
+        </section>
+
         <section id="experience" className="mb-16">
           <h2 className="text-2xl font-bold mb-6">Experience</h2>
 
           <div className="mb-8">
             <h3 className="text-xl font-semibold">Equal Vote Coalition — Program Director</h3>
-            <InlineLink href="https://equal.vote">equal.vote</InlineLink>
+            <InlineLink href="https://equal.vote" external>
+              equal.vote
+            </InlineLink>
             <p className="mt-3">
               Began as a volunteer Frontend Developer and grew into a staff leadership role over
               five years.
@@ -150,7 +160,9 @@ export function HomePage() {
 
           <div className="mb-8">
             <h3 className="text-xl font-semibold">Star Garden Games — Programming Lead</h3>
-            <InlineLink href="https://stargardengames.com">stargardengames.com</InlineLink>
+            <InlineLink href="https://stargardengames.com" external>
+              stargardengames.com
+            </InlineLink>
             <ul className="mt-3 list-disc pl-5 space-y-2">
               <li>
                 <strong>Programming Lead</strong>{' '}
@@ -165,7 +177,9 @@ export function HomePage() {
 
           <div className="mb-8">
             <h3 className="text-xl font-semibold">Amazon — Software Development Engineer II</h3>
-            <InlineLink href="https://amazonaws.com">amazonaws.com</InlineLink>
+            <InlineLink href="https://amazonaws.com" external>
+              amazonaws.com
+            </InlineLink>
             <ul className="mt-3 list-disc pl-5 space-y-2">
               <li>
                 <strong>CodeCommit Team</strong>{' '}

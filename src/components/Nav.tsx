@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { scrollToFragment } from '../utils/scroll'
+import { ExternalLinkIcon } from './ExternalLinkIcon'
 
 interface NavLink {
   label: string
   href: string
+  external?: boolean
+  externalHref?: string
 }
 
 interface NavProps {
@@ -58,6 +61,44 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
     return `text-sm transition-colors hover:text-accent ${activeHref === href ? 'text-accent' : 'text-muted'}`
   }
 
+  function renderLink(
+    { label, href, external, externalHref }: NavLink,
+    extraClass?: string,
+    onClick?: () => void,
+  ) {
+    if (external && externalHref) {
+      return (
+        <a
+          href={href}
+          className={`${extraClass ?? ''} ${linkClass(href)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => {
+            e.preventDefault()
+            window.open(externalHref, '_blank', 'noopener,noreferrer')
+            onClick?.()
+          }}
+        >
+          {label}
+          <ExternalLinkIcon />
+        </a>
+      )
+    }
+
+    return (
+      <a
+        href={href}
+        className={`${extraClass ?? ''} ${linkClass(href)}`}
+        onClick={(e) => {
+          scrollToFragment(e, href)
+          onClick?.()
+        }}
+      >
+        {label}
+      </a>
+    )
+  }
+
   return (
     <nav className="sticky top-0 z-50 bg-surface border-b border-border">
       <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -67,12 +108,8 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
 
         {/* Desktop links */}
         <ul className="hidden sm:flex gap-6">
-          {links.map(({ label, href }) => (
-            <li key={href}>
-              <a href={href} className={linkClass(href)} onClick={(e) => scrollToFragment(e, href)}>
-                {label}
-              </a>
-            </li>
+          {links.map((link) => (
+            <li key={link.href}>{renderLink(link)}</li>
           ))}
         </ul>
 
@@ -90,19 +127,8 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
       {menuOpen && (
         <div className="sm:hidden border-t border-border bg-surface">
           <ul className="max-w-4xl mx-auto px-6 py-3 flex flex-col gap-3">
-            {links.map(({ label, href }) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  onClick={(e) => {
-                    scrollToFragment(e, href)
-                    setMenuOpen(false)
-                  }}
-                  className={`block ${linkClass(href)}`}
-                >
-                  {label}
-                </a>
-              </li>
+            {links.map((link) => (
+              <li key={link.href}>{renderLink(link, 'block', () => setMenuOpen(false))}</li>
             ))}
           </ul>
         </div>

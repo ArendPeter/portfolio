@@ -1,3 +1,5 @@
+import { ExternalLinkIcon } from './ExternalLinkIcon'
+
 interface InlineLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   external?: boolean
 }
@@ -11,6 +13,7 @@ export function InlineLink({ external = false, children, ...props }: InlineLinkP
       {...props}
     >
       {children}
+      {external && <ExternalLinkIcon />}
     </a>
   )
 }
