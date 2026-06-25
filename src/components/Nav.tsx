@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { scrollToFragment } from '../utils/scroll'
 import { ExternalLinkIcon } from './ExternalLinkIcon'
 
-interface NavLink {
+export interface NavLink {
   label: string
   href: string
   external?: boolean
@@ -70,7 +70,7 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
       return (
         <a
           href={href}
-          className={`${extraClass ?? ''} ${linkClass(href)}`}
+          className={[extraClass, linkClass(href)].filter(Boolean).join(' ')}
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => {
@@ -88,7 +88,7 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
     return (
       <a
         href={href}
-        className={`${extraClass ?? ''} ${linkClass(href)}`}
+        className={[extraClass, linkClass(href)].filter(Boolean).join(' ')}
         onClick={(e) => {
           scrollToFragment(e, href)
           onClick?.()
