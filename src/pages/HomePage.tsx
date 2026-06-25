@@ -59,6 +59,8 @@ export function HomePage() {
   const activeSectionId = useActiveSection(sectionIds)
   const activeHref = activeSectionId ? `#${activeSectionId}` : undefined
 
+  const currentYear = new Date().getFullYear()
+
   return (
     <>
       <Nav siteName="Arend Peter Castelein" links={navLinks} activeHref={activeHref} />
@@ -105,19 +107,8 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="about" className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">About</h2>
-          <ul className="list-disc pl-5 space-y-2 leading-relaxed">
-            <li>
-              The AI era has allowed me to take my work to the next level without sacrificing
-              quality, whether it's writing quality test driven code, building custom auditing
-              tools, or using extended planning sessions so agents have the context to one shot the
-              implementation.
-            </li>
-          </ul>
-        </section>
-
         <section id="resume" className="mb-16">
+          <h2 className="text-2xl font-bold mb-6">Resume</h2>
           <div className="flex justify-center">
             <Button href="/arend-peter-resume.pdf" external>
               View Resume
@@ -208,19 +199,6 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="github" className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">GitHub</h2>
-          <p className="mb-6">
-            Five years of consistent hands-on coding alongside leadership roles.
-          </p>
-          <div className="hidden sm:block mb-6">
-            <GitHubCalendar username="ArendPeter" theme={githubCalendarTheme} colorScheme="dark" />
-          </div>
-          <InlineLink href={GITHUB_URL} external>
-            github.com/ArendPeter
-          </InlineLink>
-        </section>
-
         <section id="skills" className="mb-16">
           <h2 className="text-2xl font-bold mb-6">Skills</h2>
           <dl className="space-y-2">
@@ -256,6 +234,32 @@ export function HomePage() {
               <dd>Claude Code, Descript, AI-native development workflows</dd>
             </div>
           </dl>
+        </section>
+
+        <section id="github" className="mb-16">
+          <h2 className="text-2xl font-bold mb-6">GitHub</h2>
+          <div className="flex flex-col gap-8">
+            <p className="flex justify-center">
+              5+ years of consistent hands-on coding alongside leadership roles.
+            </p>
+            <div className="flex justify-center">
+              <Button href={GITHUB_URL} external>
+                View GitHub
+              </Button>
+            </div>
+            {Array.from({ length: 3 }).map((_, i: number) => (
+              <>
+                <GitHubCalendar
+                  key={i}
+                  year={currentYear - i}
+                  username="ArendPeter"
+                  theme={githubCalendarTheme}
+                  colorScheme="dark"
+                  showColorLegend
+                />
+              </>
+            ))}
+          </div>
         </section>
 
         <section id="contact" className="mb-16">

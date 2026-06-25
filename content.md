@@ -260,3 +260,10 @@ Led the Los Angeles chapter of STAR Voting through the LA Charter Reform process
 
 **GitHub Contributions Chart**
 The personal GitHub activity graph (github.com/ArendPeter) shows consistent, high-volume engineering output across personal and open source projects. Worth featuring visually on the website as a proof point of continued hands-on coding.
+
+## Appendix F — AI Nuggets
+
+The AI era has allowed me to take my work to the next level without sacrificing
+quality, whether it's writing quality test driven code, building custom auditing
+tools, or using extended planning sessions so agents have the context to one shot the
+implementation.
