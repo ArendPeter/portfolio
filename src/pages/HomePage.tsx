@@ -82,10 +82,12 @@ export function HomePage() {
         <section id="hero" className="flex gap-16 items-center min-h-[calc(75vh-6rem)]">
           <div className="flex flex-col md:flex-row items-center gap-8 w-full">
             <div className="flex flex-col min-w-0 text-center items-center md:text-left md:items-start gap-4">
-              <h1 className="text-4xl font-bold">Arend Peter Castelein</h1>
-              <p className="text-xl text-muted">Ex-Amazon Full Stack Engineer</p>
+              <div>
+                <h1 className="text-4xl font-bold">Arend Peter Castelein</h1>
+                <p className="text-xl text-muted pt-2">Ex-Amazon Full Stack Engineer</p>
+              </div>
               <Photo className="flex md:hidden" />
-              <p className="leading-relaxed">
+              <p className="leading-relaxed py-4">
                 I have 10+ years of experience, and a{' '}
                 <InlineLink href="#experience" onClick={(e) => scrollToFragment(e, '#experience')}>
                   track record
