@@ -95,7 +95,7 @@ export function HomePage() {
                 of leadership. I&nbsp;identify&nbsp;team&nbsp;bottlenecks and resolve them.
                 {/* — and building the tools, processes, and infrastructure to remove them.*/}
               </p>
-              <div className="flex flex-wrap gap-4 items-center">
+              <div className="flex flex-wrap gap-4 items-center justify-center">
                 <Button href={CALENDLY_URL} external>
                   Schedule a Call
                 </Button>
