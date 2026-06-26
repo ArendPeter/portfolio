@@ -278,7 +278,7 @@ export function HomePage() {
 
         <section id="contact" className="">
           <h2 className="text-2xl font-bold mb-6">Contact</h2>
-          <div className="flex justify-center items-center gap-6">
+          <div className="flex justify-center items-center gap-6 flex-col md:flex-row">
             <Button href={CALENDLY_URL} external>
               Schedule a Call
             </Button>
