@@ -52,6 +52,10 @@ const projects = [
       { label: 'rcvchangedalaska.com', href: 'https://rcvchangedalaska.com' },
       { label: 'Source Code', href: 'https://github.com/Equal-Vote/alaska-rcv' },
     ],
+    screenshotSrc: '/rcvchangedalaska-screenshot.png',
+    screenshotAlt:
+      'RCVChangedAlaska: An interactive explainer featuring the 2022 Alaska RCV election',
+    videoSrc: '/rcvchangedalaska-video.mp4',
   },
   {
     name: 'ieltsboost.ai',
