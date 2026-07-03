@@ -19,7 +19,7 @@ const GITHUB_URL = 'https://github.com/ArendPeter/'
 
 const projects = [
   {
-    name: 'bettervoting.com',
+    name: 'Better Voting',
     role: 'Production Lead → Program Director, Equal Vote Coalition',
     hook: 'A professional-grade, open source election platform built by a distributed volunteer team. I was a leader in the project through every phase of development: from early ideation, to the development, to working directly with clients running real elections.',
     stack: ['React', 'Node.js', 'Kysely ORM', 'PostgreSQL', 'Kubernetes/ArgoCD', 'MUI'],
@@ -44,7 +44,7 @@ const projects = [
     videoSrc: '/wordfactori-video.mp4',
   },
   {
-    name: 'rcvchangedalaska.com',
+    name: 'RCV Changed Alaska',
     role: 'Solo Developer',
     hook: 'A standalone web project explaining a complex political issue — problems with ranked choice voting in Alaska — through physics-based interactive animations.',
     stack: ['JavaScript', 'React'],
@@ -58,7 +58,7 @@ const projects = [
     videoSrc: '/rcvchangedalaska-video.mp4',
   },
   {
-    name: 'ieltsboost.ai',
+    name: 'IELTS Boost',
     role: 'Software Contributor with ML Ventures',
     hook: 'An AI-native application to help non-native English speakers prepare for the IELTS exam. Built using AI-first development workflows from the ground up.',
     stack: ['Next.js', 'Tailwind'],
