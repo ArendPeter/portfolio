@@ -29,11 +29,11 @@ describe('ProjectCard', () => {
     expect(document.querySelector('video')).toBeNull()
   })
 
-  it('video element is muted and loops', () => {
+  it('video element is muted and does not loop', () => {
     render(<ProjectCard {...baseProps} videoSrc="project.mp4" />)
     const video = document.querySelector('video') as HTMLVideoElement
     expect(video.muted).toBe(true)
-    expect(video).toHaveAttribute('loop')
+    expect(video).not.toHaveAttribute('loop')
   })
 
   it('uses screenshotSrc as video poster when both are provided', () => {
@@ -47,6 +47,21 @@ describe('ProjectCard', () => {
     const img = screen.getByRole('img', { name: 'Test Alt' })
     expect(img).toHaveAttribute('src', 'screenshot.png')
     expect(document.querySelector('video')).toBeNull()
+  })
+
+  it('renders both screenshot img and video layers when both screenshotSrc and videoSrc are provided', () => {
+    render(
+      <ProjectCard
+        {...baseProps}
+        screenshotSrc="screenshot.png"
+        screenshotAlt="Test Alt"
+        videoSrc="project.mp4"
+      />,
+    )
+    const img = screen.getByRole('img', { name: 'Test Alt' })
+    expect(img).toHaveAttribute('src', 'screenshot.png')
+    const video = document.querySelector('video')
+    expect(video).toBeInTheDocument()
   })
 
   it('plays video on mouse enter and pauses on mouse leave', () => {

@@ -1,5 +1,7 @@
 import { useRef } from 'react'
 import { InlineLink } from './InlineLink'
+import { useCardActive } from '../hooks/useCardActive'
+import { useCardMedia } from '../hooks/useCardMedia'
 
 interface ProjectLink {
   label: string
@@ -27,17 +29,33 @@ export function ProjectCard({
   screenshotAlt,
   videoSrc,
 }: ProjectCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  function handleMouseEnter() {
-    void videoRef.current?.play()
-  }
-
-  function handleMouseLeave() {
-    videoRef.current?.pause()
-  }
+  const { isActive, onMouseEnter, onMouseLeave } = useCardActive(cardRef)
+  const { showVideo } = useCardMedia(isActive, videoRef)
 
   function renderMedia() {
+    if (screenshotSrc && videoSrc) {
+      return (
+        <div className="relative w-full h-full">
+          <img
+            src={screenshotSrc}
+            alt={screenshotAlt ?? name}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-400 ease-in-out ${showVideo ? 'opacity-0' : 'opacity-100'}`}
+          />
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            poster={screenshotSrc}
+            muted
+            playsInline
+            preload="none"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-400 ease-in-out ${showVideo ? 'opacity-100' : 'opacity-0'}`}
+          />
+        </div>
+      )
+    }
     if (videoSrc) {
       return (
         <video
@@ -45,7 +63,6 @@ export function ProjectCard({
           src={videoSrc}
           poster={screenshotSrc}
           muted
-          loop
           playsInline
           preload="none"
           className="w-full h-full object-cover"
@@ -70,10 +87,11 @@ export function ProjectCard({
 
   return (
     <div
+      ref={cardRef}
       role="article"
       className="bg-surface border border-border rounded-lg p-5 flex flex-col transition-all duration-200 hover:border-accent/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/40 cursor-default"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <h3 className="text-xl font-bold mb-3">{name}</h3>
 
