@@ -15,8 +15,7 @@ vi.stubGlobal('IntersectionObserver', MockIntersectionObserver)
 describe('HomePage', () => {
   it('renders a selfie profile image', () => {
     render(<HomePage />)
-    const selfie = screen.getAllByRole('img', { name: /arend peter/i })
-    expect(selfie.length).toBeGreaterThan(0)
-    expect(selfie[0]).toHaveAttribute('src', '/selfie.jpg')
+    const selfies = screen.getAllByRole('img', { name: /arend peter/i })
+    expect(selfies[0]).toHaveAttribute('src', '/selfie.jpg')
   })
 })
