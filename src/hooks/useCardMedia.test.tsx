@@ -48,31 +48,25 @@ describe('useCardMedia', () => {
     expect(pauseMock).toHaveBeenCalledTimes(1)
   })
 
-  it('resets currentTime to 0 after the fade delay following deactivation', () => {
+  it('preserves currentTime after deactivation instead of resetting', () => {
     const { rerender } = setup(false)
     rerender({ active: true })
     rerender({ active: false })
     videoEl.currentTime = 2.5
     act(() => vi.advanceTimersByTime(FADE_DURATION_MS))
-    expect(videoEl.currentTime).toBe(0)
+    expect(videoEl.currentTime).toBe(2.5)
   })
 
-  it('cancels pending reset when re-activated before fade delay elapses', () => {
+  it('reactivation resumes playback from the preserved currentTime', () => {
     const { rerender } = setup(false)
     rerender({ active: true })
     rerender({ active: false })
     videoEl.currentTime = 2.5
 
-    act(() => vi.advanceTimersByTime(FADE_DURATION_MS - 50))
-
-    // Re-activate before timer fires
     rerender({ active: true })
 
-    // Advance past where reset would have fired
-    act(() => vi.advanceTimersByTime(200))
-
-    // currentTime should NOT have been reset
     expect(videoEl.currentTime).toBe(2.5)
+    expect(playMock).toHaveBeenCalledTimes(2)
   })
 
   it('ended event triggers deactivation: showVideo false, pause(), then reset', () => {

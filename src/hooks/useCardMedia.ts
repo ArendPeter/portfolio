@@ -36,7 +36,6 @@ export function useCardMedia(
     } else {
       setShowVideo(false)
       videoRef.current?.pause()
-      scheduleReset()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive])
