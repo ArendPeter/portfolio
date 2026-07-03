@@ -37,12 +37,14 @@ export function ProjectCard({
 
   function renderMedia() {
     if (screenshotSrc && videoSrc) {
+      const crossfadeBase =
+        'absolute inset-0 w-full h-full object-cover transition-opacity duration-400 ease-in-out'
       return (
         <div className="relative w-full h-full">
           <img
             src={screenshotSrc}
             alt={screenshotAlt ?? name}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-400 ease-in-out ${showVideo ? 'opacity-0' : 'opacity-100'}`}
+            className={`${crossfadeBase} ${showVideo ? 'opacity-0' : 'opacity-100'}`}
           />
           <video
             ref={videoRef}
@@ -51,7 +53,7 @@ export function ProjectCard({
             muted
             playsInline
             preload="none"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-400 ease-in-out ${showVideo ? 'opacity-100' : 'opacity-0'}`}
+            className={`${crossfadeBase} ${showVideo ? 'opacity-100' : 'opacity-0'}`}
           />
         </div>
       )

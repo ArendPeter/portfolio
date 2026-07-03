@@ -10,14 +10,9 @@ export function useCardActive(ref: React.RefObject<Element | null>) {
     const el = ref.current
     if (!el) return
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          setCentered(entry.isIntersecting)
-        }
-      },
-      { rootMargin: '-50% 0px -50% 0px' },
-    )
+    const observer = new IntersectionObserver(([entry]) => setCentered(entry.isIntersecting), {
+      rootMargin: '-50% 0px -50% 0px',
+    })
 
     observer.observe(el)
     return () => observer.disconnect()
