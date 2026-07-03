@@ -64,8 +64,7 @@ const Photo = ({ className }: PhotoProps) => (
       className,
     )}
   >
-    {/* Replace src with selfie photo when available */}
-    <span className="text-muted text-sm">Photo coming soon</span>
+    <img src="/selfie.jpg" alt="Arend Peter Castelein" className="w-full h-full object-cover" />
   </div>
 )
 
