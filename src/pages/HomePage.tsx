@@ -27,6 +27,9 @@ const projects = [
       { label: 'bettervoting.com', href: 'https://bettervoting.com' },
       { label: 'Source Code', href: 'https://github.com/Equal-Vote/bettervoting' },
     ],
+    screenshotSrc: '/bettervoting-screenshot.png',
+    screenshotAlt: 'bettervoting.com election platform',
+    videoSrc: '/bettervoting-video.mp4',
   },
   {
     name: 'Word Factori',
@@ -36,6 +39,9 @@ const projects = [
     links: [
       { label: 'Steam Page', href: 'https://store.steampowered.com/app/2072840/Word_Factori/' },
     ],
+    screenshotSrc: '/wordfactori-screenshot.png',
+    screenshotAlt: 'Word Factori: Letter building steam game',
+    videoSrc: '/wordfactori-video.mp4',
   },
   {
     name: 'rcvchangedalaska.com',
