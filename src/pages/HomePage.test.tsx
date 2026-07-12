@@ -23,10 +23,7 @@ describe('HomePage', () => {
     render(<HomePage />)
     const img = screen.getByRole('img', { name: /ielts boost/i })
     expect(img).toHaveAttribute('src', '/ieltsboost-screenshot.png')
-    const videos = document.querySelectorAll('video')
-    const ieltsVideo = Array.from(videos).find(
-      (v) => v.getAttribute('src') === '/ieltsboost-video.mp4',
-    )
+    const ieltsVideo = document.querySelector('video[src="/ieltsboost-video.mp4"]')
     expect(ieltsVideo).toBeInTheDocument()
   })
 })
