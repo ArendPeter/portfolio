@@ -32,7 +32,8 @@ const sampleCards = [
   {
     name: 'Pixel Platformer',
     role: 'Solo developer — design, code, and art',
-    hook: 'A retro-style 2D platformer built in Unity with procedurally generated levels and a chiptune soundtrack.',
+    description:
+      'A retro-style 2D platformer built in Unity with procedurally generated levels and a chiptune soundtrack.',
     stack: ['Unity', 'C#', 'Aseprite'],
     links: [
       { label: 'Live Site', href: 'https://example.com/pixel-platformer' },
@@ -42,7 +43,8 @@ const sampleCards = [
   {
     name: 'Recipe Keeper',
     role: 'Full-stack developer',
-    hook: 'A mobile-first web app for saving, tagging, and scaling recipes, with offline support via service workers.',
+    description:
+      'A mobile-first web app for saving, tagging, and scaling recipes, with offline support via service workers.',
     stack: ['React', 'TypeScript', 'Tailwind CSS'],
     links: [{ label: 'Live Site', href: 'https://example.com/recipe-keeper' }],
   },
@@ -51,7 +53,7 @@ const sampleCards = [
 const videoCard = {
   name: 'Video Demo Card',
   role: 'Demo',
-  hook: 'This card plays a video on hover when videoSrc is provided.',
+  description: 'This card plays a video on hover when videoSrc is provided.',
   stack: ['React', 'HTML5 Video'],
   links: [{ label: 'Example', href: 'https://example.com' }],
   videoSrc: 'https://www.w3schools.com/html/mov_bbb.mp4',

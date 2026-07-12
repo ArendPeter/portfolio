@@ -71,7 +71,8 @@ const projects = [
   {
     name: 'IELTS Boost',
     role: 'Software Contributor with ML Ventures',
-    hook: 'A webapp to help non-native English speakers prepare for the IELTS exam with AI feedback. Built using AI-first development workflows from the ground up.',
+    description:
+      'A webapp to help non-native English speakers prepare for the IELTS exam with AI feedback. Built using AI-first development workflows from the ground up.',
     stack: ['Typescript', 'Next.js', 'Tailwind', 'Supabase'],
     links: [{ label: 'ieltsboost.ai', href: 'https://ieltsboost.ai' }],
     screenshotSrc: '/ieltsboost-screenshot.png',

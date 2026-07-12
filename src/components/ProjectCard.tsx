@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { InlineLink } from './InlineLink'
 import { useCardActive } from '../hooks/useCardActive'
 import { useCardMedia } from '../hooks/useCardMedia'
+import { parseDescriptionLinks } from '../utils/parseDescriptionLinks'
 
 interface ProjectLink {
   label: string
@@ -11,7 +12,7 @@ interface ProjectLink {
 interface ProjectCardProps {
   name: string
   role: string
-  hook: string
+  description: string
   stack: string[]
   links: ProjectLink[]
   screenshotSrc?: string
@@ -22,7 +23,7 @@ interface ProjectCardProps {
 export function ProjectCard({
   name,
   role,
-  hook,
+  description,
   stack,
   links,
   screenshotSrc,
@@ -100,7 +101,17 @@ export function ProjectCard({
       <div className="aspect-video w-full rounded-md overflow-hidden mb-3">{renderMedia()}</div>
 
       <p className="text-sm text-muted mb-2">{role}</p>
-      <p className="text-sm leading-relaxed mb-4 flex-1">{hook}</p>
+      <p className="text-sm leading-relaxed mb-4 flex-1">
+        {parseDescriptionLinks(description).map((segment, i) =>
+          segment.type === 'link' ? (
+            <InlineLink key={i} href={segment.href} external>
+              {segment.label}
+            </InlineLink>
+          ) : (
+            segment.value
+          ),
+        )}
+      </p>
 
       <div className="flex flex-wrap gap-2 mb-4">
         {stack.map((tag) => (

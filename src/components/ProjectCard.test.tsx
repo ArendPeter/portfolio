@@ -4,7 +4,7 @@ import { ProjectCard } from './ProjectCard'
 const baseProps = {
   name: 'Test Project',
   role: 'Solo Developer',
-  hook: 'A test project.',
+  description: 'A test project.',
   stack: ['React'],
   links: [{ label: 'Live Site', href: 'https://example.com' }],
 }
@@ -62,6 +62,24 @@ describe('ProjectCard', () => {
     expect(img).toHaveAttribute('src', 'screenshot.png')
     const video = document.querySelector('video')
     expect(video).toBeInTheDocument()
+  })
+
+  it('renders inline markdown links in description as anchor elements', () => {
+    render(
+      <ProjectCard
+        {...baseProps}
+        description="Check out [my site](https://example.com/site) for more."
+      />,
+    )
+    const link = screen.getByRole('link', { name: /my site/i })
+    expect(link).toHaveAttribute('href', 'https://example.com/site')
+    expect(link).toHaveAttribute('target', '_blank')
+  })
+
+  it('renders plain description text without any anchor elements', () => {
+    render(<ProjectCard {...baseProps} description="No links here." />)
+    expect(screen.queryByRole('link', { name: /no links/i })).toBeNull()
+    expect(screen.getByText('No links here.')).toBeInTheDocument()
   })
 
   it('plays video on mouse enter and pauses on mouse leave', () => {
