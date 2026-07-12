@@ -63,6 +63,9 @@ const projects = [
     hook: 'An AI-native application to help non-native English speakers prepare for the IELTS exam. Built using AI-first development workflows from the ground up.',
     stack: ['Next.js', 'Tailwind'],
     links: [{ label: 'ieltsboost.ai', href: 'https://ieltsboost.ai' }],
+    screenshotSrc: '/ieltsboost-screenshot.png',
+    screenshotAlt: 'IELTS Boost: AI-native IELTS exam preparation app',
+    videoSrc: '/ieltsboost-video.mp4',
   },
 ]
 

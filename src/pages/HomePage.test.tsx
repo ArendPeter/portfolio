@@ -18,4 +18,15 @@ describe('HomePage', () => {
     const selfies = screen.getAllByRole('img', { name: /arend peter/i })
     expect(selfies[0]).toHaveAttribute('src', '/selfie.jpg')
   })
+
+  it('renders IELTS Boost card with screenshot and video', () => {
+    render(<HomePage />)
+    const img = screen.getByRole('img', { name: /ielts boost/i })
+    expect(img).toHaveAttribute('src', '/ieltsboost-screenshot.png')
+    const videos = document.querySelectorAll('video')
+    const ieltsVideo = Array.from(videos).find(
+      (v) => v.getAttribute('src') === '/ieltsboost-video.mp4',
+    )
+    expect(ieltsVideo).toBeInTheDocument()
+  })
 })
