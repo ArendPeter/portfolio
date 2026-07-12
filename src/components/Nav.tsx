@@ -73,7 +73,7 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
           className={[extraClass, linkClass(href)].filter(Boolean).join(' ')}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => onClick?.()}
+          onClick={onClick}
         >
           {label}
           <ExternalLinkIcon />

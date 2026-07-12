@@ -1,5 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import { vi } from 'vitest'
+import { render, screen } from '@testing-library/react'
 import { Nav } from './Nav'
 
 const internalLinks = [
@@ -29,14 +28,6 @@ describe('Nav', () => {
     expect(desktopLink).toHaveAttribute('target', '_blank')
     expect(desktopLink).toHaveAttribute('rel', 'noopener noreferrer')
     expect(desktopLink.querySelector('svg')).toBeTruthy()
-  })
-
-  it('does not call scrollToFragment when external nav link is clicked', () => {
-    const windowOpen = vi.spyOn(window, 'open').mockImplementation(() => null)
-    render(<Nav siteName="Test" links={[externalNavLink]} />)
-    const links = screen.getAllByRole('link', { name: /Resume/ })
-    fireEvent.click(links[0])
-    windowOpen.mockRestore()
   })
 
   it('external nav link href points to externalHref so center-click opens the correct URL', () => {
