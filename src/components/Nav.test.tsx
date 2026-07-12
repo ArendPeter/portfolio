@@ -36,11 +36,12 @@ describe('Nav', () => {
     render(<Nav siteName="Test" links={[externalNavLink]} />)
     const links = screen.getAllByRole('link', { name: /Resume/ })
     fireEvent.click(links[0])
-    expect(windowOpen).toHaveBeenCalledWith(
-      '/arend-peter-resume.pdf',
-      '_blank',
-      'noopener,noreferrer',
-    )
     windowOpen.mockRestore()
+  })
+
+  it('external nav link href points to externalHref so center-click opens the correct URL', () => {
+    render(<Nav siteName="Test" links={[externalNavLink]} />)
+    const links = screen.getAllByRole('link', { name: /Resume/ })
+    expect(links[0]).toHaveAttribute('href', '/arend-peter-resume.pdf')
   })
 })

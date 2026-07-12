@@ -69,15 +69,11 @@ export function Nav({ siteName, links, activeHref }: NavProps) {
     if (external && externalHref) {
       return (
         <a
-          href={href}
+          href={externalHref}
           className={[extraClass, linkClass(href)].filter(Boolean).join(' ')}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={(e) => {
-            e.preventDefault()
-            window.open(externalHref, '_blank', 'noopener,noreferrer')
-            onClick?.()
-          }}
+          onClick={() => onClick?.()}
         >
           {label}
           <ExternalLinkIcon />
