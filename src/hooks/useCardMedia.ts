@@ -9,6 +9,8 @@ export function useCardMedia(
   const [showVideo, setShowVideo] = useState(isActive)
   const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const isFirstRender = useRef(true)
+  const isActiveRef = useRef(isActive)
+  isActiveRef.current = isActive
 
   function cancelReset() {
     if (resetTimerRef.current !== null) {
@@ -45,9 +47,14 @@ export function useCardMedia(
     if (!video) return
 
     function handleEnded() {
-      setShowVideo(false)
-      video!.pause()
-      scheduleReset()
+      if (isActiveRef.current) {
+        video!.currentTime = 0
+        void video!.play()
+      } else {
+        setShowVideo(false)
+        video!.pause()
+        scheduleReset()
+      }
     }
 
     video.addEventListener('ended', handleEnded)

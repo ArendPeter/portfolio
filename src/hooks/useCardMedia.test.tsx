@@ -69,10 +69,10 @@ describe('useCardMedia', () => {
     expect(playMock).toHaveBeenCalledTimes(2)
   })
 
-  it('ended event triggers deactivation: showVideo false, pause(), then reset', () => {
+  it('ended event while inactive triggers deactivation: showVideo false, pause(), then reset', () => {
     const { result, rerender } = setup(false)
     rerender({ active: true })
-    expect(result.current.showVideo).toBe(true)
+    rerender({ active: false }) // deactivate before ended fires
 
     act(() => {
       videoEl.dispatchEvent(new Event('ended'))
@@ -86,16 +86,19 @@ describe('useCardMedia', () => {
     expect(videoEl.currentTime).toBe(0)
   })
 
-  it('ended event fires deactivation regardless of isActive prop', () => {
+  it('when ended while still active, video loops: resets currentTime and plays again', () => {
     const { result, rerender } = setup(false)
     rerender({ active: true })
+    expect(result.current.showVideo).toBe(true)
+    expect(playMock).toHaveBeenCalledTimes(1)
 
-    // Simulate ended while still hovered (isActive stays true)
+    videoEl.currentTime = 5.0
     act(() => {
       videoEl.dispatchEvent(new Event('ended'))
     })
 
-    // showVideo should be false even though isActive is still true
-    expect(result.current.showVideo).toBe(false)
+    expect(result.current.showVideo).toBe(true)
+    expect(videoEl.currentTime).toBe(0)
+    expect(playMock).toHaveBeenCalledTimes(2)
   })
 })
