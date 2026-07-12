@@ -20,9 +20,18 @@ const GITHUB_URL = 'https://github.com/ArendPeter/'
 const projects = [
   {
     name: 'Better Voting',
-    role: 'Production Lead → Program Director, Equal Vote Coalition',
-    hook: 'A professional-grade, open source election platform built by a distributed volunteer team. I was a leader in the project through every phase of development: from early ideation, to the development, to working directly with clients running real elections.',
-    stack: ['React', 'Node.js', 'Kysely ORM', 'PostgreSQL', 'Kubernetes/ArgoCD', 'MUI'],
+    role: 'Project Lead, Equal Vote Coalition',
+    description:
+      'An open-source election platform developed by a distributed volunteer team. I led the project through every phase of development and worked directly with users to support their unique needs. BetterVoting has helped elect leaders in the Python Steering Council, the Libertarian Party of Oregon, the Democractic Soclialists of Los Angeles, and more.',
+    stack: [
+      'Typescript',
+      'React',
+      'Node.js',
+      'Kysely ORM',
+      'PostgreSQL',
+      'Kubernetes/ArgoCD',
+      'MUI',
+    ],
     links: [
       { label: 'bettervoting.com', href: 'https://bettervoting.com' },
       { label: 'Source Code', href: 'https://github.com/Equal-Vote/bettervoting' },
@@ -34,7 +43,8 @@ const projects = [
   {
     name: 'Word Factori',
     role: 'Programming Lead, Star Garden Games',
-    hook: 'Word Factori is a factory building game where you build letters from the letter I, built by a three-person team. Word Factori sold over 47,000 copies and has been played by high profile streamers such as the Northern Lion and Real Civil Engineer.',
+    description:
+      'Word Factori is a factory building game where you build letters from the letter I, built by a three-person team. Word Factori sold over 47,000 copies and has been played by high profile streamers such as the Northern Lion and Real Civil Engineer.',
     stack: ['Game Maker'],
     links: [
       { label: 'Steam Page', href: 'https://store.steampowered.com/app/2072840/Word_Factori/' },
@@ -46,7 +56,8 @@ const projects = [
   {
     name: 'RCV Changed Alaska',
     role: 'Solo Developer',
-    hook: 'A standalone web project explaining a complex political issue — problems with ranked choice voting in Alaska — through physics-based interactive animations.',
+    description:
+      'A standalone web project explaining a complex political issue — problems with ranked choice voting in Alaska — through physics-based interactive animations. The site been highly acclaimed including [being cited by an Oregon House Representative in debate](https://www.youtube.com/watch?v=x7uyfWKzC4o&t=3944s)',
     stack: ['JavaScript', 'React'],
     links: [
       { label: 'rcvchangedalaska.com', href: 'https://rcvchangedalaska.com' },
@@ -60,8 +71,8 @@ const projects = [
   {
     name: 'IELTS Boost',
     role: 'Software Contributor with ML Ventures',
-    hook: 'An AI-native application to help non-native English speakers prepare for the IELTS exam. Built using AI-first development workflows from the ground up.',
-    stack: ['Next.js', 'Tailwind'],
+    hook: 'A webapp to help non-native English speakers prepare for the IELTS exam with AI feedback. Built using AI-first development workflows from the ground up.',
+    stack: ['Typescript', 'Next.js', 'Tailwind', 'Supabase'],
     links: [{ label: 'ieltsboost.ai', href: 'https://ieltsboost.ai' }],
     screenshotSrc: '/ieltsboost-screenshot.png',
     screenshotAlt: 'IELTS Boost: AI-native IELTS exam preparation app',
