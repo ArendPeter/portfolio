@@ -10,7 +10,9 @@ export function useCardMedia(
   const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const isFirstRender = useRef(true)
   const isActiveRef = useRef(isActive)
-  isActiveRef.current = isActive
+  useEffect(() => {
+    isActiveRef.current = isActive
+  }, [isActive])
 
   function cancelReset() {
     if (resetTimerRef.current !== null) {
