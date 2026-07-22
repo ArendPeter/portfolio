@@ -104,6 +104,8 @@ An AI-native application to help non-native English speakers prepare for the IEL
 
 Began as a volunteer frontend developer and grew into a staff leadership role over five years.
 
+*Note: See Appendix G for the personal motivation and origin story behind why voting reform, specifically.*
+
 - **Program Director:** Oversee the full program map across technical teams (bettervoting.com dev), volunteer onboarding pipeline, and communications committee. Lead cross-functional initiatives including the LA STAR voting chapter. Board Director at Star Voting Action.
 - **Production Lead:** Led bettervoting.com from ideation through production. Managed volunteer engineers, client relationships, documentation, and infrastructure. Owned the full technical stack to ensure coverage across all roles.
 
@@ -227,6 +229,34 @@ What I've learned:
 
 ---
 
+## Appendix G — Personal Motivation: From Naturalist to Voting Reform
+
+*Context for cover letters and behavioral interview prep — the throughline connecting a lifelong pull toward mission-driven work to why voting reform, specifically, is where that pull has landed. Not website copy.*
+
+As a kid, watching nature documentaries made me want to be a naturalist working with animals. That evolved into wanting to help the environment more broadly, which pointed me toward environmental engineering. In high school, AP Environmental Science became a genuine passion — my class had a real complaint that the course structure wasn't preparing us well for the AP exam, but I still scored well because I'd read the prep book cover to cover on my own. The material was fascinating enough that it just stuck.
+
+I started college planning to pursue environmental engineering, but two things changed my direction. First, I realized my programming skill and hobby was a better long-term fit for a career than I'd given it credit for. Second — and more importantly — I got frustrated realizing that most of the barriers to responding to climate change were political, not technical. The engineering problems were largely solved; the blockers were about which ideas could get enough political support to be implemented.
+
+That frustration didn't go away just because I changed majors. Early in my career I kept looking for ways to act on it: volunteering at homeless shelters, volunteering at a prison, canvassing for candidates whose ideas I believed in. That last one is where the real pattern showed up — I kept noticing that the conversation around candidates was almost entirely about electability, not about which ideas were actually good. Voting reform is what stuck, because it goes straight at that problem: if the voting method itself is fixed, candidates with good ideas become viable to win without having to win an electability contest first. That, in turn, reduces the leverage of money in politics, and issues that are already broadly popular — environmental policy, paid family leave, among others — become politically viable once politicians actually represent what people want.
+
+So while my day-to-day work at Equal Vote isn't environmental work, I think of it as addressing the actual bottleneck upstream of the environmental (and other) outcomes I originally wanted to work on. I'd still love to do hands-on environmental work again someday — I still find it fascinating — but I see voting reform as the higher-leverage place to spend this specific window of my career.
+
+### Mock Interview Q&A
+
+**Q: What draws you to mission-driven work?**
+
+*Strong answer:* It goes back further than my current job. I wanted to be a naturalist as a kid, then got fascinated by environmental engineering in high school — I did well enough on the AP exam that my own reading, not the class, is what got me there. In college I realized two things: programming was a better fit for me professionally, and the barriers to climate action were mostly political, not technical. That second realization is why I've stayed drawn to mission-driven work ever since, even as the specific mission shifted.
+
+**Q: Why voting reform, specifically?**
+
+*Strong answer:* I spent some time early in my career trying to act on that frustration directly — volunteering at shelters, at a prison, canvassing for candidates whose ideas I believed in. Canvassing is where the pattern clicked: the debate was always about who could win, not who had the best ideas. Voting reform fixes that at the root. If we change the voting method, candidates don't have to win an electability contest before they can win on ideas — and that in turn takes leverage away from money in politics. Once politicians actually represent what people want, broadly popular issues like the environment and paid family leave stop being politically blocked. I see it as the highest-leverage place to work on the outcomes I originally cared about.
+
+**Q: Do you see yourself going back to environmental work?**
+
+*Strong answer:* I'd genuinely love to. It's still fascinating to me. But I think of my current work as environmental work on a longer timeline — fixing the voting system is upstream of getting good climate policy passed. I'm not in a hurry to leave that unfinished.
+
+---
+
 ## Appendix E — Unused Nuggets
 
 Experience and stories that don't have a clean place on the main site but may be useful in interviews, cover letters, or future versions:
@@ -248,6 +278,15 @@ Led the Los Angeles chapter of STAR Voting through the LA Charter Reform process
 
 **GitHub Contributions Chart**
 The personal GitHub activity graph (github.com/ArendPeter) shows consistent, high-volume engineering output across personal and open source projects. Worth featuring visually on the website as a proof point of continued hands-on coding.
+
+**The Naturalist-to-Voting-Reform Throughline (loose, long-form version)**
+Growing up, watching TV planted the idea that I wanted to be a naturalist working with animals — that was the earliest version of wanting to do something good for the world. That morphed into wanting to help the environment, which is what pointed me at environmental engineering as a possible career. It got serious in AP Environmental Science: my classmates had a real complaint that the class wasn't structured to prepare us for the AP exam. I still did great on the exam anyway, because I'd read the entire prep book on my own out of pure fascination with the subject — the material stuck because I actually cared about it, not because of how it was taught.
+
+By the time I got to college, I still intended to go into environmental engineering, but reality intervened on two fronts. My programming hobby turned out to be the stronger fit for an actual career. And I got increasingly frustrated by a specific realization: most of the obstacles to solving climate change weren't technical anymore, they were political. That was a hard pill — I'd been ready to go solve an engineering problem, and the actual bottleneck was somewhere else entirely.
+
+I didn't let go of the underlying need easily. Early in my career I tried a few different ways of acting on it — volunteering at homeless shelters, volunteering in a prison, canvassing for candidates whose ideas I actually believed in. The canvassing is where something clicked: I kept noticing that all anyone wanted to talk about was electability — which candidate could win — never which candidate had the best ideas. That's the exact problem voting reform solves. Fix the voting method and you remove the electability bottleneck, so candidates can win on ideas instead. Do that, and you also drain a lot of the outsized leverage money has in politics, because you no longer need to out-spend an opponent in a two-horse electability race. Once that happens, stuff that's already broadly popular but currently stuck — climate policy, paid family leave — gets unblocked, because the politicians in office actually represent what people want.
+
+That's the throughline I use to make sense of my own career, even to myself: the environment is still the thing I'd love to go work on again someday, and I mean that, it's still fascinating to me. But voting reform is the more leveraged place to spend effort on it right now, because it's upstream of basically every issue I care about, environmental or otherwise.
 
 ## Appendix F — AI Nuggets
 
