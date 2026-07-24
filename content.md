@@ -90,9 +90,10 @@ An AI-native application to help non-native English speakers prepare for the IEL
 ## 4. Business Impact
 
 - Generated **$200,000 in revenue** from Word Factori as one half of a three-person indie game studio
-- Led **[X]+ volunteers** to secure a 20-minute presentation slot before the Los Angeles Charter Reform Commission, advancing STAR voting in the city's reform process
+- Led volunteers to secure a 20-minute presentation slot before the Los Angeles Charter Reform Commission, advancing STAR voting in the city's reform process
+- Coorindate over 100 cross functional volunteers nationally
 - Scaled Equal Vote's volunteer onboarding from a **single-staff bottleneck** to a fully volunteer-run repeatable process, enabling consistent growth without staff dependency
-- Supported **[X] elections** on bettervoting.com as production lead, ensuring the platform met client needs and election security requirements throughout
+- Supported **2,000+ elections** with **50,000 votes cast** on bettervoting.com as production lead, ensuring the platform met client needs and election security requirements throughout
 
 ---
 
@@ -162,19 +163,6 @@ These were considered and may be useful for A/B testing, subheadings, or context
 4. **"Ex-Amazon Full Stack Engineer building technology for civic impact"** *(mission-first — speaks directly to mission-driven audience)*
 
 ---
-
-## Appendix B — Business Impact (Extended Notes)
-
-Placeholders to fill in with real numbers in a future iteration:
-
-| Bullet | Placeholder | Where to find the number |
-|--------|-------------|--------------------------|
-| Word Factori revenue | $200,000 ✓ | Confirmed |
-| LA Charter Reform volunteers | [X]+ volunteers | Count from team roster |
-| Elections on bettervoting.com | [X] elections | Check Equal Vote records |
-| Volunteer onboarding throughput | [X] volunteers onboarded per [period] | Check onboarding logs |
-| Word Factori player count / reviews | [X] players, [X] Steam reviews | Steam dashboard |
-| Astra fund | Competitive acceptance, [X] months of funded development | Grant records |
 
 ---
 
