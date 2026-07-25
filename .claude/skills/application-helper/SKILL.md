@@ -93,6 +93,7 @@ draft vs. just inform it.
      Arend Peter Castelein
      arendpeter.com
      calendly.com/arendpeter/30min
+     github.com/ArendPeter
      linkedin.com/in/arend-peter-castelein-530a5070
      ```
    - **Cold email** (more casual — labeled with emoji):
@@ -101,6 +102,7 @@ draft vs. just inform it.
      💻 Portfolio: arendpeter.com
      📅 Let's meet: calendly.com/arendpeter/30min
      💼 LinkedIn: linkedin.com/in/arend-peter-castelein-530a5070
+     🐙 GitHub: github.com/ArendPeter
      ```
 7. **Personalize with name.** Work "Arend" or "Arend Peter Castelein" in more
    than just the sign-off:
