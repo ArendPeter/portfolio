@@ -121,7 +121,7 @@ Engineering lead for an independent game studio. Shipped 3 production titles and
 ### Amazon — Software Development Engineer
 *2016 – 2021*
 
-- **CodeCommit Team (2019–2021):** Designed and built a new search platform. Established infrastructure-as-code standards using AWS CDK and end-to-end testing practices. Mentored junior engineers.
+- **CodeCommit Team (2019–2021):** Designed and built a new search platform using Lambda and DynamoDB. Established infrastructure-as-code standards using AWS CDK and end-to-end testing practices. Mentored junior engineers.
 - **Amazon Linux Team (2017–2019):** Built EC2 boot time monitoring system feeding leadership dashboards. Reduced deployment process risk through documentation and automation of a previously tribal, manual process.
 - **Intern (2016):** Built automated testing infrastructure for EC2 t2 instance credit logic — legacy code that no engineer was willing to touch. The test suite gave the team confidence to iterate on thousands of lines of untouched code.
 
@@ -132,7 +132,7 @@ Engineering lead for an independent game studio. Shipped 3 production titles and
 **Languages:** JavaScript, TypeScript, HTML/CSS, Python, Java
 **Frontend:** React, physics/animation (browser-native)
 **Backend:** Node.js, Kysely ORM, database migrations
-**Infrastructure:** Kubernetes, ArgoCD, AWS CDK, EC2
+**Infrastructure:** Kubernetes, ArgoCD, AWS CDK, EC2, Lambda, DynamoDB
 **Game Development:** [Engine], event-driven systems, real-time tooling
 **Leadership:** Volunteer management, stakeholder communication, technical documentation, meeting design
 **AI Tooling:** Claude Code, Descript, AI-native development workflows
@@ -226,6 +226,12 @@ What I've learned:
 - **General practice** — Regularly use AI as a first-pass brainstorming partner on new projects and technical decisions.
 
 *Future additions: specific features shipped, measurable workflow improvements, any open source AI tooling contributions.*
+
+### AI Management Philosophy
+
+The AI workflow insight I keep coming back to: managing AI well takes the same discipline as managing people. I've found I need to be deliberate about giving an agent everything it needs to do the job well — real context, not just a task description — and about building in feedback mechanisms so its errors get caught rather than compounding silently. That's the same instinct behind the 1:1s and light-touch management described in [[Appendix C]].
+
+Taking that approach has let me deliver faster without sacrificing quality. It's also changed where I spend my attention — instead of being heads-down on execution, I get to stay at the level of the project and its bottlenecks, which is the same altitude I try to operate at as a people manager.
 
 ---
 
