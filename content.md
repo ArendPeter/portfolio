@@ -264,6 +264,18 @@ So while my day-to-day work at Equal Vote isn't environmental work, I think of i
 
 ---
 
+## Appendix H — Transit Background
+
+*Context for cover letters and interviews when applying to transit-related roles.*
+
+I live in the Arts District in Los Angeles and I'm a regular rider of LA Metro — both buses and trains — for getting around the city day to day. Living a transit-accessible lifestyle is one of the things I like most about the neighborhood: it's walkable enough, and close enough to Metro rail and bus lines, that I don't need to rely on a car for most of my daily life. That's a firsthand, ongoing relationship with the system as a rider, not just a professional interest from the outside.
+
+**Q: Why are you interested in working on transit?**
+
+*Strong answer:* I live it. I'm in the Arts District in LA, and I ride Metro — buses and trains — regularly to get around. I chose to live somewhere walkable and transit-connected specifically so I could rely on it, and that day-to-day experience as a rider gives me a real, practical sense of where the system works well and where it doesn't. That's the perspective I'd bring to the work, on top of the engineering background.
+
+---
+
 ## Appendix E — Unused Nuggets
 
 Experience and stories that don't have a clean place on the main site but may be useful in interviews, cover letters, or future versions:

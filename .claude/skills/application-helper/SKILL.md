@@ -20,6 +20,17 @@ Each invocation, the user provides:
 
 If either is missing or vague, ask before drafting.
 
+Arend often adds extra context beyond these two things — why he's applying this
+way, how he found the role, background on the company, etc. Treat this as
+**situational context to weigh, not literal instructions to include.** He's
+handing over signal for judgment calls, the same way content.md is signal, not
+a script. Don't surface the meta-context directly in the draft unless it
+actually strengthens the pitch (e.g. "cold emailing because I couldn't find a
+LinkedIn contact" is context for you, not a line for the message; but "a
+mutual contact suggested I reach out" might be worth keeping if it adds
+credibility). When in doubt, ask which pieces of what he said should shape the
+draft vs. just inform it.
+
 ## Process
 
 1. **Read `content.md`** (repo root) fresh each time — don't rely on memory of it,
