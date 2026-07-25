@@ -12,6 +12,7 @@ canonical source of Arend's experience, portfolio projects, and skills.
 ## Inputs
 
 Each invocation, the user provides:
+
 1. **The job/company** being applied to (name, and ideally the job posting or a
    description of the role — paste text or a link if available).
 2. **The writing type**: cover letter, cold email, or LinkedIn message (or another
@@ -52,11 +53,34 @@ If either is missing or vague, ask before drafting.
    `content.md`. Avoid over-claiming placeholders still marked `[X]` in the
    content file — either omit them or ask Arend for the real number first.
    Avoid "AI voice" — no em dashes, no formulaic tricolons, no hedging filler.
-   Write like a person, plainly.
+   Write like a person, plainly. In particular, don't quote or paraphrase the
+   target company's own marketing language/slogans/values back at them as
+   connective tissue, especially not wrapped in a "rather than X, Y" or similar
+   balanced-clause construction — that reads as distinctly AI-generated. Either
+   skip the connective sentence and jump straight to the proof point, or make
+   the connection concrete (a project, a number) instead of abstract
+   value-matching.
 5. **Call to action:** Point to both arendpeter.com (the portfolio, for anyone
    who wants to see the work) and calendly.com/arendpeter/30min (for a direct
    next step). Don't rely on the calendly link alone.
-6. **Output** the draft directly in the response (not written to a file, unless
+6. **Personalize with name.** Work "Arend" or "Arend Peter Castelein" in more
+   than just the sign-off:
+   - **Subject line** (cold email): include the name, e.g. "Arend Castelein —
+     Full Stack Engineer for [Role]" or "Introduction from Arend Castelein."
+   - **First sentence**: introduce by name AND signal this message is written
+     specifically for this company/role, not a template — reference something
+     concrete about the company (product, mission, a recent detail from the
+     job posting) rather than opening with a generic "I'm Arend, a full stack
+     engineer who...". A recruiter skims in seconds; the opening line has to
+     prove effort was put in before they read further. E.g. "My name is Arend
+     Peter Castelein — I've been following [Company]'s work on [specific
+     thing], and it reminded me of leading bettervoting.com from ideation to
+     production."
+   - **Sign-off**: name as before.
+   - Use first name alone in casual contexts (LinkedIn messages, cold emails to
+     a specific person), and full name in more formal contexts (cover letters,
+     first introduction to a company) or the subject line.
+7. **Output** the draft directly in the response (not written to a file, unless
    asked) so Arend can iterate on it in conversation.
 
 ## Notes
