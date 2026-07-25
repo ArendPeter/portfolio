@@ -71,7 +71,27 @@ If either is missing or vague, ask before drafting.
 5. **Call to action:** Point to both arendpeter.com (the portfolio, for anyone
    who wants to see the work) and calendly.com/arendpeter/30min (for a direct
    next step). Don't rely on the calendly link alone.
-6. **Personalize with name.** Work "Arend" or "Arend Peter Castelein" in more
+6. **Signature (cover letter and cold email only):** End with a signature block
+   after the sign-off, one link per line, in this order — portfolio, meeting
+   link, LinkedIn. This is separate from the in-body call to action in step 5 —
+   the signature is a fixed reference block, not phrased as a sentence. Skip it
+   for LinkedIn messages (the platform already surfaces the profile and links
+   read as clutter in a short DM). Style varies by formality:
+   - **Cover letter** (more formal — plain, no labels/emojis):
+     ```
+     Arend Peter Castelein
+     arendpeter.com
+     calendly.com/arendpeter/30min
+     linkedin.com/in/arend-peter-castelein-530a5070
+     ```
+   - **Cold email** (more casual — labeled with emoji):
+     ```
+     Arend Peter Castelein
+     💻 Portfolio: arendpeter.com
+     📅 Let's meet: calendly.com/arendpeter/30min
+     💼 LinkedIn: linkedin.com/in/arend-peter-castelein-530a5070
+     ```
+7. **Personalize with name.** Work "Arend" or "Arend Peter Castelein" in more
    than just the sign-off:
    - **Subject line** (cold email): include the name, e.g. "Arend Castelein —
      Full Stack Engineer for [Role]" or "Introduction from Arend Castelein."
@@ -88,7 +108,7 @@ If either is missing or vague, ask before drafting.
    - Use first name alone in casual contexts (LinkedIn messages, cold emails to
      a specific person), and full name in more formal contexts (cover letters,
      first introduction to a company) or the subject line.
-7. **Output** the draft directly in the response (not written to a file, unless
+8. **Output** the draft directly in the response (not written to a file, unless
    asked) so Arend can iterate on it in conversation.
 
 ## Notes
