@@ -285,6 +285,13 @@ Led the Los Angeles chapter of STAR Voting through the LA Charter Reform process
 **GitHub Contributions Chart**
 The personal GitHub activity graph (github.com/ArendPeter) shows consistent, high-volume engineering output across personal and open source projects. Worth featuring visually on the website as a proof point of continued hands-on coding.
 
+**Favorite Frontend Technologies Q&A**
+*From a Chainguard application short-answer question, reusable for similar prompts.*
+
+Q: What are your favorite frontend technologies? Where have you utilized them?
+
+A: React is my go-to — I've used it across every major project, most notably bettervoting.com, an election platform I led from ideation through production for 2,000+ real elections. I also built a physics-based interactive frontend from scratch (rcvchangedalaska.com) to make a complex political issue visually intuitive, which is where I leaned hardest on browser-native animation work outside a framework. Lately I've been using AI-assisted workflows more, and relied more heavily on tools like react-testing-library to increase the reliability of the AI output.
+
 **The Naturalist-to-Voting-Reform Throughline (loose, long-form version)**
 Growing up, watching TV planted the idea that I wanted to be a naturalist working with animals — that was the earliest version of wanting to do something good for the world. That morphed into wanting to help the environment, which is what pointed me at environmental engineering as a possible career. It got serious in AP Environmental Science: my classmates had a real complaint that the class wasn't structured to prepare us for the AP exam. I still did great on the exam anyway, because I'd read the entire prep book on my own out of pure fascination with the subject — the material stuck because I actually cared about it, not because of how it was taught.
 
