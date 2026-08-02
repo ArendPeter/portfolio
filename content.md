@@ -217,12 +217,21 @@ What I've learned:
 
 ---
 
+**Q: Describe a specific instance where you made a foundational architectural decision. What tradeoffs did you consider, how did you justify the choice, and what did you learn?**
+
+*Strong answer:* Early in BetterVoting.com's ideation, I advocated for a monorepo instead of splitting the frontend and backend across separate repos. I'd learned the hard way on past projects that microservices spread across multiple repos are difficult to manage. It also fit the shape of this project specifically — the frontend and backend were tightly coupled through their API contract, and a monorepo let us maintain a shared package to keep types consistent across both sides instead of duplicating them. That decision has paid off through years of development since.
+
+The other architectural instinct I come back to constantly, especially from game development, is "premature optimization is the root of all evil." I aim to ship the first implementation quickly, with only the most obvious optimizations in place, so the code stays easy to change while the design is still moving. I hold off on real optimization until the design has settled and something is a clear, measured bottleneck — not before. One of my proudest examples of that discipline paying off: once a game's save format had stabilized, I used Binary Indexed Trees to cut the save file size by an order of magnitude.
+
+---
+
 ## Appendix D — AI Experience
 
 *Note: This section is early-stage and should be updated as experience grows. Do not over-index on it until there are more substantial deliverables.*
 
 - **ieltsboost.ai** — Co-developed with my brother using AI-native workflows. An application to help non-native English speakers prepare for the IELTS exam.
 - **Claude Code** — Actively using AI coding tools as a core part of my development workflow. Enrolled in *AI for Real Engineers* (aihero.dev) to deepen applied AI engineering skills.
+- **Workflow depth** — Investing in the practices that make agent output reliable: deepening the spec-generation phase before implementation, running AFK (unattended, agent-driven) workflows in Claude Code, and building custom skills tailored to specific recurring tasks.
 - **Descript** — Integrated AI video editing into content workflows.
 - **General practice** — Regularly use AI as a first-pass brainstorming partner on new projects and technical decisions.
 

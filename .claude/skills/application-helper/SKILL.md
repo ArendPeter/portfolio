@@ -101,8 +101,8 @@ draft vs. just inform it.
      Arend Peter Castelein
      💻 Portfolio: arendpeter.com
      📅 Let's meet: calendly.com/arendpeter/30min
-     💼 LinkedIn: linkedin.com/in/arend-peter-castelein-530a5070
      🐙 GitHub: github.com/ArendPeter
+     💼 LinkedIn: linkedin.com/in/arend-peter-castelein-530a5070
      ```
 7. **Personalize with name.** Work "Arend" or "Arend Peter Castelein" in more
    than just the sign-off:
