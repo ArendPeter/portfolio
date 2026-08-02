@@ -59,7 +59,15 @@ If either is missing or vague, ask before drafting.
    balanced-clause construction — that reads as distinctly AI-generated. Either
    skip the connective sentence and jump straight to the proof point, or make
    the connection concrete (a project, a number) instead of abstract
-   value-matching.
+   value-matching. Same tell in a different shape: don't write a sentence that
+   explicitly names the abstraction connecting past work to the target role
+   (e.g. "which is the same shape of problem X faces: making large datasets
+   legible..."). State the concrete fact and let the reader draw the parallel;
+   explaining the parallel out loud reads as AI reasoning. Prefer one strong
+   proof point over two stacked ones. Prefer plain declaratives over hedges
+   ("X aligns with Y" beats "X isn't new territory for me"). Prefer modest
+   verbs over self-crediting ones ("used Kysely" beats "learned Kysely")
+   unless picking up a genuinely new skill is the actual point being made.
 5. **Call to action:** Point to both arendpeter.com (the portfolio, for anyone
    who wants to see the work) and calendly.com/arendpeter/30min (for a direct
    next step). Don't rely on the calendly link alone.
