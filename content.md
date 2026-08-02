@@ -33,13 +33,14 @@ I'm a full stack engineer with a track record of finding the bottlenecks that ho
 ### bettervoting.com
 **Role:** Production Lead → Program Director, Equal Vote Coalition
 **Links:** [bettervoting.com](https://bettervoting.com) · [Source Code](https://github.com/Equal-Vote/bettervoting)
-**Stack:** React, Node.js, Kysely ORM, Postgresql, Kubernetes/ArgoCD
+**Stack:** React, TypeScript, MUI, Node.js, Kysely ORM, Postgresql, Kubernetes/ArgoCD
 
 A professional-grade, open source election platform built by a distributed volunteer team. I was a leader in the project through every phase of development: from early ideation, to the development, to working directly with clients running real elections. Now it's been used by the [Python Core Development Team for their internal elections](https://peps.python.org/pep-8107/). In addition to software work (mostly frontend), I owned stakeholder/customer communication, onboarding documentation and volunteer management — while staying technically proficient across the entire stack so I could fill any gap the team needed.
 
 **Highlights:**
 - Led the project through client deployments and real-world election use
 - Personally learned infrastructure (Kubernetes, ArgoCD) and backend systems (Kysely, database migrations, election security) to ensure no single point of failure
+- Designed the backend to account for election-specific security edge cases (double voting, authentication approaches, race conditions), backed by unit and end-to-end testing to maintain high confidence for clients running real elections
 - Maintained open source contribution pipeline for volunteer engineers
 - Built meeting cadence balancing agendized planning, work sessions, and standups to maximize volunteer engagement
 
@@ -121,16 +122,16 @@ Engineering lead for an independent game studio. Shipped 3 production titles and
 ### Amazon — Software Development Engineer
 *2016 – 2021*
 
-- **CodeCommit Team (2019–2021):** Designed and built a new search platform using Lambda and DynamoDB. Established infrastructure-as-code standards using AWS CDK and end-to-end testing practices. Mentored junior engineers.
+- **CodeCommit Team (2019–2021):** Designed and built a new search platform's Python APIs using Lambda and DynamoDB. Established infrastructure-as-code standards using AWS CDK and end-to-end testing practices. Mentored junior engineers.
 - **Amazon Linux Team (2017–2019):** Built EC2 boot time monitoring system feeding leadership dashboards. Reduced deployment process risk through documentation and automation of a previously tribal, manual process.
-- **Intern (2016):** Built automated testing infrastructure for EC2 t2 instance credit logic — legacy code that no engineer was willing to touch. The test suite gave the team confidence to iterate on thousands of lines of untouched code.
+- **Intern (2016):** Built automated Python testing infrastructure for EC2 t2 instance credit logic — legacy code that no engineer was willing to touch. The test suite gave the team confidence to iterate on thousands of lines of untouched code.
 
 ---
 
 ## 6. Skills
 
 **Languages:** JavaScript, TypeScript, HTML/CSS, Python, Java
-**Frontend:** React, physics/animation (browser-native)
+**Frontend:** React, TypeScript, MUI, physics/animation (browser-native)
 **Backend:** Node.js, Kysely ORM, database migrations
 **Infrastructure:** Kubernetes, ArgoCD, AWS CDK, EC2, Lambda, DynamoDB
 **Game Development:** [Engine], event-driven systems, real-time tooling
@@ -229,7 +230,7 @@ What I've learned:
 
 ### AI Management Philosophy
 
-The AI workflow insight I keep coming back to: managing AI well takes the same discipline as managing people. I've found I need to be deliberate about giving an agent everything it needs to do the job well — real context, not just a task description — and about building in feedback mechanisms so its errors get caught rather than compounding silently. That's the same instinct behind the 1:1s and light-touch management described in [[Appendix C]].
+The AI workflow insight I keep coming back to: managing AI well takes the same discipline as managing people. I've found I need to be deliberate about giving an agent everything it needs to do the job well — real context, not just a task description — and about building in feedback mechanisms so its errors get caught rather than compounding silently. Test driven development and pre-commit hooks have been foundational for that second part — they catch low-quality agent output before it ever lands. That's the same instinct behind the 1:1s and light-touch management described in [[Appendix C]].
 
 Taking that approach has let me deliver faster without sacrificing quality. It's also changed where I spend my attention — instead of being heads-down on execution, I get to stay at the level of the project and its bottlenecks, which is the same altitude I try to operate at as a people manager.
 
@@ -268,7 +269,7 @@ So while my day-to-day work at Equal Vote isn't environmental work, I think of i
 Experience and stories that don't have a clean place on the main site but may be useful in interviews, cover letters, or future versions:
 
 **The Deployment Letter (Amazon)**
-During a weekend deployment that ran severely over schedule, I spent an additional 20% of my time writing a detailed letter cataloguing every error-prone step and manual process in the pipeline. I distributed it to the team and it successfully escalated the issue — multiple managers reached out for 1:1s to diagnose the problems and ensure I was satisfied with the response. This was one of my earliest experiences with leadership through documentation and advocacy rather than authority.
+During a weekend deployment that ran severely over schedule, I spent an additional 20% of my time writing a detailed letter cataloguing every error-prone step and manual process in the pipeline. I distributed it to the team and it successfully escalated the issue — multiple managers reached out for 1:1s to diagnose the problems and ensure I was satisfied with the response, and the transparency ended up influencing management to actually prioritize the technical debt. This was one of my earliest experiences with leadership through documentation and advocacy rather than authority.
 
 **Mentoring at CodeCommit**
 Mentored a junior engineer on the CodeCommit team who has since been promoted to senior. Not taking direct credit, but being part of someone's growth trajectory is meaningful.
@@ -284,6 +285,9 @@ Led the Los Angeles chapter of STAR Voting through the LA Charter Reform process
 
 **GitHub Contributions Chart**
 The personal GitHub activity graph (github.com/ArendPeter) shows consistent, high-volume engineering output across personal and open source projects. Worth featuring visually on the website as a proof point of continued hands-on coding.
+
+**"Cast Iron" Nickname (Amazon)**
+My Amazon work alias was "castaren" (from Castelein + Arend), which some coworkers shortened to "Cast Iron." It's a fun hook for "if you were a kitchen item" type questions — cast iron is versatile (works for almost anything) and gets better with consistent use rather than wearing out, which maps well onto moving between frontend, backend, and infrastructure across projects.
 
 **Favorite Frontend Technologies Q&A**
 *From a Chainguard application short-answer question, reusable for similar prompts.*
