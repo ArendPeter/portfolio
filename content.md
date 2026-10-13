@@ -123,7 +123,7 @@ Engineering lead for an independent game studio. Shipped 3 production titles and
 *2016 – 2021*
 
 - **CodeCommit Team (2019–2021):** Designed and built a new search platform's Python APIs using Lambda and DynamoDB. Established infrastructure-as-code standards using AWS CDK and end-to-end testing practices. Mentored junior engineers.
-- **Amazon Linux Team (2017–2019):** Built EC2 boot time monitoring system feeding leadership dashboards. Reduced deployment process risk through documentation and automation of a previously tribal, manual process.
+- **Amazon Linux Team (2017–2019):** Built EC2 boot time monitoring system feeding leadership dashboards. Reduced deployment process risk through documentation and automation of a previously tribal, manual process. Automated Amazon Linux deployments for 3+ new AWS regions, utilizing ITAR credentials for government deployments.
 - **Intern (2016):** Built automated Python testing infrastructure for EC2 t2 instance credit logic — legacy code that no engineer was willing to touch. The test suite gave the team confidence to iterate on thousands of lines of untouched code.
 
 ---
