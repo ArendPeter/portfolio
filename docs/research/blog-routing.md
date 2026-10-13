@@ -10,7 +10,7 @@ How should this Vite + React 19 SPA (currently `HashRouter`, deployed to GitHub 
 
 1. **Recommended: switch to `BrowserRouter`, keep the SPA, and add a small build step that writes one static `dist/blog/<slug>/index.html` per Post.** Each file is the built `index.html` with that Post's `<title>`, description, OG/Twitter tags and pre-rendered article HTML injected. The step can be a tiny Vite plugin or a post-build script next to the existing `cp` step. Markdown becomes HTML at build time. Migration cost: **small** (about a day). It touches the router, `scroll.ts`, the build script and one new pipeline module, and it doesn't add a framework.
 2. **Viable, heavier: React Router framework mode with `ssr: false` + `prerender`** for `/blog/*`. This is the officially supported route, but it means restructuring the app (`root.tsx` replaces `index.html`, `routes.ts`, route modules, `react-router build` writing to `build/client`). The repo also has to pick between staying on v7 and moving to v8 (npm `latest` is now 8.4.0). Migration cost: **medium** (2–3 days). It's worth it only if you want framework features later.
-3. **Not sufficient alone: the `404.html` SPA-redirect trick.** It makes `/blog/<slug>` *work in a browser*, but every such URL answers with **HTTP 404 and the generic `index.html` head**. Crawlers never see per-Post tags, and Google ignores 4xx content. It's still useful as the fallback for non-blog routes such as `/stylebook`.
+3. **Not sufficient alone: the `404.html` SPA-redirect trick.** It makes `/blog/<slug>` _work in a browser_, but every such URL answers with **HTTP 404 and the generic `index.html` head**. Crawlers never see per-Post tags, and Google ignores 4xx content. It's still useful as the fallback for non-blog routes such as `/stylebook`.
 4. **Rejected: `vite-react-ssg`.** Its peer dependency is `react-router-dom ^6.14.1`, and its own README tells React Router v7 users to use RR's built-in SSG instead.
 
 Prerender **only `/blog/*`** and leave the homepage and `/stylebook` client-rendered. Both still benefit from moving off `HashRouter`.
@@ -39,11 +39,11 @@ Prerender **only `/blog/*`** and leave the homepage and `/stylebook` client-rend
 - How it works: `404.html` rewrites `/one/two?a=b` to `/?/one/two&a=b` and redirects. A script in `index.html` then restores the path with `history.replaceState` ([rafgraph/spa-github-pages README](https://github.com/rafgraph/spa-github-pages); the copies are in alaska-rcv `public/404.html` and `public/index.html`).
 - The README itself says "Around 2019 Google changed their algorithm and no longer follows redirects in `404.html`." For sites where search matters it suggests a static site generator that generates "an `html` file for each page" instead.
 - alaska-rcv has since moved hosting to a Docker image served by `serve` (its `Dockerfile`, added 2025-12, and the argocd deploy in `.github/workflows/build-push-deploy.yml`). The GitHub Pages scripts are still present but aren't load-bearing any more, so the repo isn't evidence that the trick is sufficient.
-- **For this repo the redirect half is unnecessary.** `npm run build` already copies `index.html` to `404.html`. GitHub Pages serves that body *at the original URL*, so a `BrowserRouter` app reads the real `location.pathname` and routes correctly with no `?/` round-trip. The only defect is the 404 status and generic head, which no client-side trick can fix. Conclusion: keep the plain `404.html` copy as the SPA fallback for non-prerendered routes, and don't adopt the rafgraph redirect.
+- **For this repo the redirect half is unnecessary.** `npm run build` already copies `index.html` to `404.html`. GitHub Pages serves that body _at the original URL_, so a `BrowserRouter` app reads the real `location.pathname` and routes correctly with no `?/` round-trip. The only defect is the 404 status and generic head, which no client-side trick can fix. Conclusion: keep the plain `404.html` copy as the SPA fallback for non-prerendered routes, and don't adopt the rafgraph redirect.
 
 ### React Router v7/v8 framework mode prerendering
 
-- `prerender` lives in `react-router.config.ts`. `prerender: true` skips dynamic paths ("will not include any dynamic paths (i.e., `/blog/:slug`)"), so slugs are listed explicitly, e.g. `prerender: ["/", ...slugs.map(s => \`/blog/${s}\`)]` or `async prerender({ getStaticPaths })` ([RR: Pre-Rendering](https://reactrouter.com/how-to/pre-rendering)).
+- `prerender` lives in `react-router.config.ts`. `prerender: true` skips dynamic paths ("will not include any dynamic paths (i.e., `/blog/:slug`)"), so slugs are listed explicitly, e.g. `prerender: ["/", ...slugs.map(s => \`/blog/${s}\`)]`or`async prerender({ getStaticPaths })` ([RR: Pre-Rendering](https://reactrouter.com/how-to/pre-rendering)).
 - `ssr: false` + `prerender` = static hosting. Output goes to `build/client/blog/<slug>/index.html` plus `blog/<slug>.data` for client navigations. Prerendered routes may have `loader`s, which run at build time ("the build creates a `new Request()` and runs it through your app"). Loaders on non-prerendered routes are allowed only in the root (SPA mode) ([RR: Pre-Rendering](https://reactrouter.com/how-to/pre-rendering), [RR: SPA mode](https://reactrouter.com/how-to/spa)).
 - Paths that aren't prerendered are served from a "SPA Fallback". This is `build/client/__spa-fallback.html` if `/` is prerendered and `index.html` otherwise. The host must rewrite unknown paths to it. On GitHub Pages that means copying it to `404.html`, which reproduces the 404-status caveat for those routes ([RR: Pre-Rendering](https://reactrouter.com/how-to/pre-rendering)).
 - Per-route head: a route module exports `meta()` returning descriptors (`{ title }`, `{ name, content }`, `{ tagName: "link", rel: "canonical" }`), rendered by `<Meta />` in `root.tsx` ([RR: Meta how-to](https://reactrouter.com/how-to/meta)). `Meta`, `Links`, `Scripts` and static rendering are Framework-mode-only ([RR: Picking a mode](https://reactrouter.com/start/modes)).
@@ -63,22 +63,22 @@ Prerender **only `/blog/*`** and leave the homepage and `/stylebook` client-rend
 
 ## Options compared
 
-| | A. SPA + per-Post static HTML (custom step) | B. RR framework mode `ssr:false` + `prerender` | C. 404.html trick only |
-|---|---|---|---|
-| Crawler sees per-Post title/desc/OG | Yes (static HTML, 200) | Yes (static HTML, 200) | **No** (404, generic head) |
-| Google indexes Posts | Yes | Yes | **No** (4xx ignored) |
-| Router change | `HashRouter` → `BrowserRouter` | → framework mode (`HydratedRouter`, `routes.ts`, `root.tsx`) | `HashRouter` → `BrowserRouter` |
-| New deps | Markdown toolchain only (e.g. unified/remark/rehype + a highlighter) | `@react-router/dev`, `@react-router/node` (+ likely v8 upgrade) and the Markdown toolchain | none |
-| Build/deploy changes | one plugin or `postbuild` script; `dist/` unchanged | `react-router build`; publish `build/client`; copy `__spa-fallback.html` → `404.html` | none |
-| `index.html` | kept | deleted (becomes `root.tsx`) | kept |
-| Prerendered page body | article HTML from build-time Markdown (optionally full React SSR via a Vite `--ssr` entry) | full React render of the route | none |
-| Migration cost | **Small** (~1 day) | **Medium** (2–3 days + v8 upgrade risk) | Trivial, but doesn't meet the goal |
+|                                     | A. SPA + per-Post static HTML (custom step)                                                | B. RR framework mode `ssr:false` + `prerender`                                             | C. 404.html trick only             |
+| ----------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ---------------------------------- |
+| Crawler sees per-Post title/desc/OG | Yes (static HTML, 200)                                                                     | Yes (static HTML, 200)                                                                     | **No** (404, generic head)         |
+| Google indexes Posts                | Yes                                                                                        | Yes                                                                                        | **No** (4xx ignored)               |
+| Router change                       | `HashRouter` → `BrowserRouter`                                                             | → framework mode (`HydratedRouter`, `routes.ts`, `root.tsx`)                               | `HashRouter` → `BrowserRouter`     |
+| New deps                            | Markdown toolchain only (e.g. unified/remark/rehype + a highlighter)                       | `@react-router/dev`, `@react-router/node` (+ likely v8 upgrade) and the Markdown toolchain | none                               |
+| Build/deploy changes                | one plugin or `postbuild` script; `dist/` unchanged                                        | `react-router build`; publish `build/client`; copy `__spa-fallback.html` → `404.html`      | none                               |
+| `index.html`                        | kept                                                                                       | deleted (becomes `root.tsx`)                                                               | kept                               |
+| Prerendered page body               | article HTML from build-time Markdown (optionally full React SSR via a Vite `--ssr` entry) | full React render of the route                                                             | none                               |
+| Migration cost                      | **Small** (~1 day)                                                                         | **Medium** (2–3 days + v8 upgrade risk)                                                    | Trivial, but doesn't meet the goal |
 
 ### Prerender `/blog/*` only vs. whole site
 
 - **Blog only (recommended).** Blog Posts are the only pages that need distinct previews, and the homepage already has one fixed head that can be made static in `index.html`. Prerendering the homepage brings in SSR-safety work: `react-github-calendar`, `IntersectionObserver` hooks, `matchMedia`-based **Centered** logic and `Stylebook`'s `getComputedStyle` would all need auditing for build-time render. It also forces hydration (`hydrateRoot`) with mismatch risk, and buys nothing that matters to the stated goals.
 - **Whole site.** Only option B makes this cheap structurally, and it still needs the SSR audit above. Revisit if homepage SEO becomes a goal.
-- In option A, the homepage's preview tags can simply be hard-coded in `index.html` (they are the same on every build). `/stylebook` stays client-rendered via the `404.html` fallback (status 404, which is *desirable* for an internal page). Alternatively, emit a plain copy at `dist/stylebook/index.html` to get a 200.
+- In option A, the homepage's preview tags can simply be hard-coded in `index.html` (they are the same on every build). `/stylebook` stays client-rendered via the `404.html` fallback (status 404, which is _desirable_ for an internal page). Alternatively, emit a plain copy at `dist/stylebook/index.html` to get a 200.
 
 ### Effects on homepage anchors, scroll behaviour and `/stylebook`
 
@@ -95,6 +95,7 @@ Prerender **only `/blog/*`** and leave the homepage and `/stylebook` client-rend
   3. Later: the RSS feed, sitemap, and the per-Post feedback-widget slot keyed by slug.
 
   If the static body is the same HTML React will render, use `createRoot` (as today, replacing the content) rather than hydration, which avoids mismatch concerns entirely.
+
 - **B.** The same build-time Markdown module, but called from the Post route's `loader`. React Router runs it at build time per prerendered path and serialises the result to `blog/<slug>.data`. `meta({ loaderData })` produces the head tags. The pipeline is the same work. B adds only RR's plumbing around it.
 - **C.** Markdown could be fetched and rendered at runtime, but none of it reaches crawlers. Rendering at runtime also ships a Markdown parser and highlighter to every reader.
 
