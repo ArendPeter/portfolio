@@ -5,6 +5,11 @@ vi.mock('react-github-calendar', () => ({
   GitHubCalendar: () => null,
 }))
 
+vi.mock('virtual:posts', () => ({
+  posts: [],
+  getPostHtml: vi.fn().mockResolvedValue(null),
+}))
+
 class MockIntersectionObserver {
   observe = vi.fn()
   unobserve = vi.fn()
@@ -28,5 +33,11 @@ describe('App routing', () => {
     window.history.pushState({}, '', '/stylebook')
     render(<App />)
     expect(screen.getByRole('heading', { level: 1, name: /stylebook/i })).toBeInTheDocument()
+  })
+
+  it('renders BlogIndex at /blog', () => {
+    window.history.pushState({}, '', '/blog')
+    render(<App />)
+    expect(screen.getByRole('heading', { level: 1, name: /^blog$/i })).toBeInTheDocument()
   })
 })
