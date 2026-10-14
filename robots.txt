@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arendpeter.com/sitemap.xml
