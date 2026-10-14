@@ -7,6 +7,7 @@ import {
   generateBlogIndexHead,
   generateBlogIndexBody,
   SELFIE_URL,
+  BASE_URL,
 } from './generateHead'
 import type { Post } from './types'
 
@@ -135,7 +136,7 @@ export function postsPlugin(options: PluginOptions): Plugin {
         const refId = shareImageRefIds.get(post.slug)
         if (refId) {
           const hashedPath = this.getFileName(refId)
-          resolvedShareImageUrls.set(post.slug, `https://arendpeter.com/${hashedPath}`)
+          resolvedShareImageUrls.set(post.slug, `${BASE_URL}/${hashedPath}`)
         } else {
           resolvedShareImageUrls.set(post.slug, SELFIE_URL)
         }

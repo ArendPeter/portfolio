@@ -1,6 +1,6 @@
 import type { Post, PostSummary } from './types'
 
-const BASE_URL = 'https://arendpeter.com'
+export const BASE_URL = 'https://arendpeter.com'
 const RSS_URL = `${BASE_URL}/rss.xml`
 
 export const SELFIE_URL = `${BASE_URL}/selfie.jpg`
@@ -48,14 +48,16 @@ export function generatePostHead(
 
 export function generateBlogIndexHead(): string {
   const canonicalUrl = `${BASE_URL}/blog`
+  const title = 'Blog | Arend Peter'
+  const description = 'Writing by Arend Peter'
 
   return [
-    `<title>Blog | Arend Peter</title>`,
-    `<meta name="description" content="Writing by Arend Peter">`,
+    `<title>${title}</title>`,
+    `<meta name="description" content="${description}">`,
     `<link rel="canonical" href="${canonicalUrl}">`,
     `<meta property="og:type" content="website">`,
-    `<meta property="og:title" content="Blog | Arend Peter">`,
-    `<meta property="og:description" content="Writing by Arend Peter">`,
+    `<meta property="og:title" content="${title}">`,
+    `<meta property="og:description" content="${description}">`,
     `<meta property="og:url" content="${canonicalUrl}">`,
     `<link rel="alternate" type="application/rss+xml" href="${RSS_URL}" title="Arend Peter's Blog">`,
   ].join('\n')
@@ -63,7 +65,7 @@ export function generateBlogIndexHead(): string {
 
 export function generateBlogIndexBody(posts: PostSummary[]): string {
   const items = posts
-    .map((p) => `  <li><a href="/blog/${p.slug}">${escapeHtml(p.meta.title)}</a></li>`)
+    .map((post) => `  <li><a href="/blog/${post.slug}">${escapeHtml(post.meta.title)}</a></li>`)
     .join('\n')
   return `<ul>\n${items}\n</ul>`
 }
