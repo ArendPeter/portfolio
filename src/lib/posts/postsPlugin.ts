@@ -2,6 +2,13 @@ import * as fs from 'node:fs'
 import * as path from 'node:path'
 import type { Plugin } from 'vite'
 import { loadPosts } from './loadPosts'
+import {
+  generatePostHead,
+  generateBlogIndexHead,
+  generateBlogIndexBody,
+  SELFIE_URL,
+  BASE_URL,
+} from './generateHead'
 import type { Post } from './types'
 
 const VIRTUAL_POSTS = 'virtual:posts'
@@ -32,15 +39,40 @@ function generatePostHtmlModule(post: Post, postsDir: string): string {
   return `${importLines.join('\n')}\nexport default \`${escaped}\`;`
 }
 
+function buildStaticHtml(indexHtml: string, headHtml: string, rootContent: string): string {
+  return indexHtml
+    .replace(/<title>.*?<\/title>/s, '')
+    .replace('</head>', `${headHtml}\n  </head>`)
+    .replace('<div id="root"></div>', `<div id="root">${rootContent}</div>`)
+}
+
 export function postsPlugin(options: PluginOptions): Plugin {
   let posts: Post[] = []
   const { postsDir } = options
+  const shareImageRefIds = new Map<string, string>()
+  const resolvedShareImageUrls = new Map<string, string>()
+  let outDir: string | undefined
 
   return {
     name: 'vite-plugin-posts',
 
     async buildStart() {
       posts = await loadPosts(postsDir)
+      shareImageRefIds.clear()
+
+      for (const post of posts) {
+        if (post.shareImage) {
+          const imgPath = path.join(postsDir, post.slug, post.shareImage)
+          if (fs.existsSync(imgPath)) {
+            const refId = this.emitFile({
+              type: 'asset',
+              name: post.shareImage,
+              source: fs.readFileSync(imgPath),
+            })
+            shareImageRefIds.set(post.slug, refId)
+          }
+        }
+      }
     },
 
     resolveId(id) {
@@ -94,6 +126,46 @@ export function postsPlugin(options: PluginOptions): Plugin {
           if (mod) server.moduleGraph.invalidateModule(mod)
         }
       })
+    },
+
+    generateBundle(bundleOptions) {
+      outDir = bundleOptions.dir
+      resolvedShareImageUrls.clear()
+
+      for (const post of posts) {
+        const refId = shareImageRefIds.get(post.slug)
+        if (refId) {
+          const hashedPath = this.getFileName(refId)
+          resolvedShareImageUrls.set(post.slug, `${BASE_URL}/${hashedPath}`)
+        } else {
+          resolvedShareImageUrls.set(post.slug, SELFIE_URL)
+        }
+      }
+    },
+
+    closeBundle() {
+      if (!outDir) return
+
+      const indexHtmlPath = path.join(outDir, 'index.html')
+      if (!fs.existsSync(indexHtmlPath)) return
+
+      const indexHtml = fs.readFileSync(indexHtmlPath, 'utf-8')
+      const blogDir = path.join(outDir, 'blog')
+      fs.mkdirSync(blogDir, { recursive: true })
+
+      for (const post of posts) {
+        const shareImageUrl = resolvedShareImageUrls.get(post.slug) ?? SELFIE_URL
+        const twitterCard = post.shareImage !== null ? 'summary_large_image' : 'summary'
+        const headHtml = generatePostHead(post, shareImageUrl, twitterCard)
+        const staticHtml = buildStaticHtml(indexHtml, headHtml, post.html)
+        fs.writeFileSync(path.join(blogDir, `${post.slug}.html`), staticHtml)
+      }
+
+      const blogIndexHeadHtml = generateBlogIndexHead()
+      const blogIndexBodyHtml = generateBlogIndexBody(posts)
+      const blogIndexHtml = buildStaticHtml(indexHtml, blogIndexHeadHtml, blogIndexBodyHtml)
+      fs.writeFileSync(path.join(outDir, 'blog.html'), blogIndexHtml)
+      fs.writeFileSync(path.join(blogDir, 'index.html'), blogIndexHtml)
     },
   }
 }
