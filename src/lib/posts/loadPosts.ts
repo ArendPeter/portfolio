@@ -20,12 +20,8 @@ import type { Root as MdastRoot } from 'mdast'
 export type { Post, PostMeta, PostSummary } from './types'
 import type { Post, PostMeta } from './types'
 
-// --- Constants ---
-
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
 const IMAGE_EXTENSIONS = /\.(png|jpg|jpeg|gif|webp|svg|avif)$/i
-
-// --- Validation ---
 
 const frontMatterSchema = z.object({
   title: z.string(),
@@ -39,8 +35,6 @@ const frontMatterSchema = z.object({
   aliases: z.array(z.string()).optional(),
 })
 
-// --- Error ---
-
 export class PostError extends Error {
   constructor(message: string, slug: string) {
     super(`Post "${slug}": ${message}`)
@@ -48,10 +42,7 @@ export class PostError extends Error {
   }
 }
 
-// --- Helpers ---
-
 function stripLeadingEmoji(str: string): string {
-  // Strip common emoji (extended pictographics) and whitespace from the start
   return str.replace(/^[\p{Emoji_Presentation}\p{Extended_Pictographic}\s]*/u, '').trim()
 }
 
@@ -86,8 +77,6 @@ function extractFrontmatterRaw(md: string): Record<string, unknown> {
   }
 }
 
-// --- Name map for wikilink resolution ---
-
 interface PostRef {
   slug: string
   title: string
@@ -108,8 +97,6 @@ function buildNameMap(refs: PostRef[]): Map<string, string> {
   }
   return map
 }
-
-// --- Remark plugins ---
 
 const remarkCheckH1 =
   (slug: string): Plugin<[], MdastRoot> =>
@@ -133,7 +120,7 @@ const remarkCheckDataview =
     })
   }
 
-const remarkObsidianHighlight = (): Plugin<[], MdastRoot> => () => (tree) => {
+const remarkObsidianHighlight: Plugin<[], MdastRoot> = () => (tree) => {
   findAndReplace(tree, [
     [
       /==([^=\n]+)==/g,
@@ -241,8 +228,6 @@ const remarkVerifyImages =
     })
   }
 
-// --- Process a single post ---
-
 async function processPost(
   slug: string,
   postDir: string,
@@ -263,7 +248,7 @@ async function processPost(
     })
     .use(remarkCheckH1(slug))
     .use(remarkCheckDataview(slug))
-    .use(remarkObsidianHighlight())
+    .use(remarkObsidianHighlight)
     .use(remarkObsidianSyntax(slug, postDir, nameMap, images))
     .use(remarkVerifyImages(slug, postDir, images))
     .use(remarkRehype, { allowDangerousHtml: true })
@@ -286,12 +271,10 @@ async function processPost(
 
   const readingTime = computeReadingTime(html)
 
-  const shareImage = meta.image ?? (images.length > 0 ? images[0] : null)
+  const shareImage = meta.image ?? images[0] ?? null
 
   return { slug, meta, html, readingTime, shareImage, images }
 }
-
-// --- Public API ---
 
 export async function loadPosts(postsDir: string): Promise<Post[]> {
   if (!fs.existsSync(postsDir)) return []
@@ -309,11 +292,13 @@ export async function loadPosts(postsDir: string): Promise<Post[]> {
     }
   }
 
-  // First pass: collect titles/aliases for wikilink resolution
+  // Collect titles/aliases first so wikilinks can resolve across all posts
   const refs: PostRef[] = []
+  const validSlugs: string[] = []
   for (const slug of slugs) {
     const mdPath = path.join(postsDir, slug, 'index.md')
     if (!fs.existsSync(mdPath)) continue
+    validSlugs.push(slug)
     const rawMd = fs.readFileSync(mdPath, 'utf-8')
     const rawMeta = extractFrontmatterRaw(rawMd)
     if (typeof rawMeta.title === 'string') {
@@ -329,8 +314,6 @@ export async function loadPosts(postsDir: string): Promise<Post[]> {
 
   const nameMap = buildNameMap(refs)
 
-  // Second pass: process all posts
-  const validSlugs = slugs.filter((s) => fs.existsSync(path.join(postsDir, s, 'index.md')))
   const posts = await Promise.all(
     validSlugs.map((slug) => processPost(slug, path.join(postsDir, slug), nameMap)),
   )

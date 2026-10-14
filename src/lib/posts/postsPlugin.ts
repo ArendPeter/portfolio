@@ -18,29 +18,15 @@ function escapeForTemplateLiteral(str: string): string {
 }
 
 function generatePostHtmlModule(post: Post, postsDir: string): string {
-  let htmlTemplate = post.html
   const importLines: string[] = []
+  let escaped = escapeForTemplateLiteral(post.html)
 
   for (let i = 0; i < post.images.length; i++) {
     const img = post.images[i]
     const imgPath = path.join(postsDir, post.slug, img).replace(/\\/g, '/')
-    const varName = `_img${i}`
-    importLines.push(`import ${varName} from ${JSON.stringify(imgPath)};`)
-
-    // Replace src="<img>" with a placeholder, then swap for template expression
+    importLines.push(`import _img${i} from ${JSON.stringify(imgPath)};`)
     const escapedImg = img.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    const placeholder = `__POST_IMG_${i}__`
-    htmlTemplate = htmlTemplate.replace(
-      new RegExp(`src="${escapedImg}"`, 'g'),
-      `src="${placeholder}"`,
-    )
-  }
-
-  // Escape for template literal, then restore placeholders as interpolations
-  let escaped = escapeForTemplateLiteral(htmlTemplate)
-  for (let i = 0; i < post.images.length; i++) {
-    const placeholder = `__POST_IMG_${i}__`
-    escaped = escaped.replace(new RegExp(placeholder, 'g'), `\${_img${i}}`)
+    escaped = escaped.replace(new RegExp(`src="${escapedImg}"`, 'g'), `src="\${_img${i}}"`)
   }
 
   return `${importLines.join('\n')}\nexport default \`${escaped}\`;`
@@ -101,7 +87,6 @@ export function postsPlugin(options: PluginOptions): Plugin {
     },
 
     configureServer(server) {
-      // Invalidate virtual module on posts changes during dev
       server.watcher.add(postsDir)
       server.watcher.on('all', (_event, filePath) => {
         if (filePath.startsWith(postsDir)) {
@@ -113,7 +98,6 @@ export function postsPlugin(options: PluginOptions): Plugin {
   }
 }
 
-// Re-export for dev-server use if postsDir doesn't exist yet
 export function safePostsPlugin(options: PluginOptions): Plugin {
   if (!fs.existsSync(options.postsDir)) {
     fs.mkdirSync(options.postsDir, { recursive: true })
