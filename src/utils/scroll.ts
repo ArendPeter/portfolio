@@ -23,8 +23,7 @@ export function smoothScrollTo(targetY: number, duration = 700) {
   requestAnimationFrame(step)
 }
 
-// HashRouter owns the URL hash for routing, so plain #fragment hrefs break navigation.
-// Intercept fragment clicks and scroll to the target element instead.
+// Intercept fragment clicks to apply smooth scrolling with the nav-height offset.
 export function scrollToFragment(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
   if (!href.startsWith('#')) return
   e.preventDefault()
