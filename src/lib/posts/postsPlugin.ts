@@ -9,6 +9,7 @@ import {
   SELFIE_URL,
   BASE_URL,
 } from './generateHead'
+import { generateRss, generateSitemap, generateRobotsTxt } from './generateFeed'
 import type { Post } from './types'
 
 const VIRTUAL_POSTS = 'virtual:posts'
@@ -166,6 +167,10 @@ export function postsPlugin(options: PluginOptions): Plugin {
       const blogIndexHtml = buildStaticHtml(indexHtml, blogIndexHeadHtml, blogIndexBodyHtml)
       fs.writeFileSync(path.join(outDir, 'blog.html'), blogIndexHtml)
       fs.writeFileSync(path.join(blogDir, 'index.html'), blogIndexHtml)
+
+      fs.writeFileSync(path.join(outDir, 'rss.xml'), generateRss(posts))
+      fs.writeFileSync(path.join(outDir, 'sitemap.xml'), generateSitemap(posts))
+      fs.writeFileSync(path.join(outDir, 'robots.txt'), generateRobotsTxt())
     },
   }
 }

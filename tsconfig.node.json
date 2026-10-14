@@ -27,6 +27,7 @@
     "src/lib/posts/loadPosts.ts",
     "src/lib/posts/postsPlugin.ts",
     "src/lib/posts/generateHead.ts",
+    "src/lib/posts/generateFeed.ts",
     "src/lib/posts/types.ts"
   ]
 }
