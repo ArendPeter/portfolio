@@ -19,6 +19,12 @@ _Avoid_: notes repo, drafts folder
 The prose blurb on a **ProjectCard** summarizing what the project is and its impact. Supports inline links via markdown-style `[label](url)` syntax, parsed by a small custom regex-based parser (not a markdown library — the only supported syntax is links) and rendered as styled `InlineLink`s, always treated as external.
 _Avoid_: hook — the field was originally named `hook` in code; renamed to `description` to match how it's actually talked about.
 
+**Description** (Post field):
+The one- or two-sentence summary of a **Post**, written by Arend: shown under its title, on the **Blog Index**, and in link previews and the feed. Plain text, with no links. Not the same thing as a Project's **Description**.
+
+**Slug**:
+A **Post**'s permanent URL name (`/blog/<slug>`), taken from its folder name. A Post's title can change freely, but its slug never changes once published.
+
 **Active** (Project Card state):
 The state of a `ProjectCard`'s media where its video crossfades in over its screenshot and plays. The default/resting state is the screenshot; a card becomes Active via **Hover** or **Centered**, and returns to resting when the trigger ends or the video reaches its natural end.
 _Avoid_: Focused, focus — collides with DOM/accessibility `:focus`, which this is unrelated to (no keyboard interaction involved).

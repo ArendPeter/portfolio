@@ -4,14 +4,14 @@ Personal portfolio and blog for [arendpeter.com](https://arendpeter.com), built 
 
 ## Stack
 
-| Layer | Choice |
-|---|---|
-| Framework | React 19 |
-| Bundler | Vite 7 |
-| Language | TypeScript |
-| Styling | Tailwind CSS v4 |
-| Routing | React Router DOM v7 |
-| Testing | Vitest + Testing Library (jsdom) |
+| Layer      | Choice                                          |
+| ---------- | ----------------------------------------------- |
+| Framework  | React 19                                        |
+| Bundler    | Vite 7                                          |
+| Language   | TypeScript                                      |
+| Styling    | Tailwind CSS v4                                 |
+| Routing    | React Router DOM v7                             |
+| Testing    | Vitest + Testing Library (jsdom)                |
 | Deployment | GitHub Pages (via `peaceiris/actions-gh-pages`) |
 
 ## Getting started
@@ -25,16 +25,16 @@ npm run dev      # start dev server at http://localhost:5173
 
 ## Scripts
 
-| Command | What it does |
-|---|---|
-| `npm run dev` | Start Vite dev server |
-| `npm run build` | TypeScript compile + Vite build + copy `dist/index.html` → `dist/404.html` |
-| `npm run preview` | Serve the production build locally |
-| `npm run test` | Run all tests with Vitest |
-| `npm run typecheck` | TypeScript type-check without emitting |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier (writes in place) |
-| `npm run sandcastle` | Run the Sandcastle AI agent harness |
+| Command              | What it does                                                               |
+| -------------------- | -------------------------------------------------------------------------- |
+| `npm run dev`        | Start Vite dev server                                                      |
+| `npm run build`      | TypeScript compile + Vite build + copy `dist/index.html` → `dist/404.html` |
+| `npm run preview`    | Serve the production build locally                                         |
+| `npm run test`       | Run all tests with Vitest                                                  |
+| `npm run typecheck`  | TypeScript type-check without emitting                                     |
+| `npm run lint`       | ESLint                                                                     |
+| `npm run format`     | Prettier (writes in place)                                                 |
+| `npm run sandcastle` | Run the Sandcastle AI agent harness                                        |
 
 ## Project structure
 
@@ -87,7 +87,7 @@ The `build` script copies `dist/index.html` → `dist/404.html` so GitHub Pages 
 See [`docs/adr/`](docs/adr/) for recorded decisions:
 
 - [0001 — Vite over Next.js](docs/adr/0001-vite-over-nextjs.md)
-- [0002 — Base path for GitHub Pages](docs/adr/0002-base-path-portfolio.md) *(superseded)*
+- [0002 — Base path for GitHub Pages](docs/adr/0002-base-path-portfolio.md) _(superseded)_
 - [0003 — BrowserRouter with build-time static blog pages](docs/adr/0003-browserrouter-with-static-post-pages.md)
 
 ## Domain language
