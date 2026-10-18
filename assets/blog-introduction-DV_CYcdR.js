@@ -1,0 +1,3 @@
+const e=`<p>Hi, I'm Arend Peter Castelein. I'm a Software Engineer with 10 years of experience leading projects across the big tech, start up, and non-profit sectors. AI is changing our industry fast, and like so many others I'm find myself excited but also a little intimidated.</p>
+<p>The more I learn about the AI, the more I see it can allows us to become better engineers, and write more code while also increasing the quality.</p>
+<p>This blog documents my journey staying at the cutting edge of the Software Engineering world, and discovering the bits that are most useful to the projects I work on every day. If you're also on that journey, then read on!</p>`;export{e as default};
