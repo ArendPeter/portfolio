@@ -2,7 +2,7 @@ declare module 'virtual:posts' {
   interface PostMeta {
     title: string
     date: string
-    description: string
+    description?: string
     updated?: string
     image?: string
     aliases?: string[]

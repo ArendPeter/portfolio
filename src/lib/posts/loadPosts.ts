@@ -26,7 +26,7 @@ const IMAGE_EXTENSIONS = /\.(png|jpg|jpeg|gif|webp|svg|avif)$/i
 const frontMatterSchema = z.object({
   title: z.string(),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD'),
-  description: z.string(),
+  description: z.string().optional(),
   updated: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, 'updated must be YYYY-MM-DD')

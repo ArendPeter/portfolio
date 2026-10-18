@@ -141,6 +141,13 @@ describe('generatePostHead', () => {
     const html = generatePostHead(post, SELFIE_URL, 'summary')
     expect(html).toContain('&amp; &lt;a thing&gt;')
   })
+
+  it('omits description meta tags when description is absent', () => {
+    const post = makePost({ meta: { title: 'Title', date: '2024-01-15' } })
+    const html = generatePostHead(post, SELFIE_URL, 'summary')
+    expect(html).not.toContain('name="description"')
+    expect(html).not.toContain('og:description')
+  })
 })
 
 describe('generateBlogIndexHead', () => {

@@ -20,15 +20,15 @@ export function generatePostHead(
 ): string {
   const canonicalUrl = `${BASE_URL}/blog/${post.slug}`
   const title = escapeHtml(post.meta.title)
-  const description = escapeHtml(post.meta.description)
+  const description = post.meta.description ? escapeHtml(post.meta.description) : null
 
   const lines = [
     `<title>${title}</title>`,
-    `<meta name="description" content="${description}">`,
+    ...(description ? [`<meta name="description" content="${description}">`] : []),
     `<link rel="canonical" href="${canonicalUrl}">`,
     `<meta property="og:type" content="article">`,
     `<meta property="og:title" content="${title}">`,
-    `<meta property="og:description" content="${description}">`,
+    ...(description ? [`<meta property="og:description" content="${description}">`] : []),
     `<meta property="og:url" content="${canonicalUrl}">`,
     `<meta property="og:image" content="${shareImageUrl}">`,
     `<meta property="article:published_time" content="${post.meta.date}T00:00:00Z">`,

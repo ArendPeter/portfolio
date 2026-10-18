@@ -66,7 +66,9 @@ export function BlogIndex() {
                   <h2 className="text-xl font-semibold mt-1 group-hover:text-accent transition-colors">
                     {post.meta.title}
                   </h2>
-                  <p className="text-muted mt-1">{post.meta.description}</p>
+                  {post.meta.description && (
+                    <p className="text-muted mt-1">{post.meta.description}</p>
+                  )}
                 </Link>
               </li>
             ))}

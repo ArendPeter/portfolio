@@ -22,6 +22,10 @@ function setMetaTag(name: string, content: string) {
   el.content = content
 }
 
+function removeMetaTag(name: string) {
+  document.querySelector(`meta[name="${name}"]`)?.remove()
+}
+
 function setLinkTag(rel: string, type: string, href: string) {
   let el = document.querySelector<HTMLLinkElement>(`link[rel="${rel}"][type="${type}"]`)
   if (!el) {
@@ -52,7 +56,11 @@ export function PostPage() {
     const prevTitle = document.title
     if (postSummary) {
       document.title = `${postSummary.meta.title} | Arend Peter`
-      setMetaTag('description', postSummary.meta.description)
+      if (postSummary.meta.description) {
+        setMetaTag('description', postSummary.meta.description)
+      } else {
+        removeMetaTag('description')
+      }
       setLinkTag('alternate', 'application/rss+xml', '/rss.xml')
     } else {
       document.title = 'Post Not Found | Arend Peter'
@@ -90,7 +98,9 @@ export function PostPage() {
             {formatDate(meta.date)} · {readingTime} min read
           </p>
           <h1 className="text-4xl font-bold leading-tight mb-4">{meta.title}</h1>
-          <p className="text-lg text-muted leading-relaxed">{meta.description}</p>
+          {meta.description && (
+            <p className="text-lg text-muted leading-relaxed">{meta.description}</p>
+          )}
           {meta.updated && (
             <p className="text-sm text-muted mt-3">Updated {formatDate(meta.updated)}</p>
           )}
@@ -115,7 +125,9 @@ export function PostPage() {
                   >
                     {p.meta.title}
                   </Link>
-                  <p className="text-sm text-muted mt-1">{p.meta.description}</p>
+                  {p.meta.description && (
+                    <p className="text-sm text-muted mt-1">{p.meta.description}</p>
+                  )}
                 </li>
               ))}
             </ul>

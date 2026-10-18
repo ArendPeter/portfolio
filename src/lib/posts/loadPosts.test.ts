@@ -161,7 +161,7 @@ Content.
       await expect(loadPosts(dir)).rejects.toThrow('my-post')
     })
 
-    it('throws when description is missing, naming the post', async () => {
+    it('allows description to be omitted', async () => {
       const dir = makePostsDir({
         'my-post': `---
 title: Test Post
@@ -170,7 +170,8 @@ date: 2024-01-15
 Content.
 `,
       })
-      await expect(loadPosts(dir)).rejects.toThrow('my-post')
+      const [post] = await loadPosts(dir)
+      expect(post.meta.description).toBeUndefined()
     })
 
     it('throws for invalid date format', async () => {
