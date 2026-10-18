@@ -4,17 +4,22 @@
         <title>Arend Peter's Blog</title>
         <link>https://arendpeter.com/</link>
         <description>Writing by Arend Peter</description>
-        <lastBuildDate>Wed, 14 Oct 2026 08:46:54 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 18 Oct 2026 03:55:25 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <atom:link href="https://arendpeter.com/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title><![CDATA[A Software Engineer's journey at the frontier]]></title>
+            <title><![CDATA[5 solutions to AI Pull Request Load]]></title>
+            <link>https://arendpeter.com/blog/5-solutions-to-ai-pull-request-load</link>
+            <guid>https://arendpeter.com/blog/5-solutions-to-ai-pull-request-load</guid>
+            <pubDate>Sat, 17 Oct 2026 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Welcome to my blog, a Software Engineer's journey at the frontier]]></title>
             <link>https://arendpeter.com/blog/blog-introduction</link>
             <guid>https://arendpeter.com/blog/blog-introduction</guid>
             <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[Why I'm making this blog]]></description>
         </item>
     </channel>
 </rss>
