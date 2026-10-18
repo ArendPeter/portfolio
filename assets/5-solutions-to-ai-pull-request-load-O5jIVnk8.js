@@ -1,4 +1,4 @@
-const e="/assets/PR_Capacity-CkjkcHko.png",t=`<p><img src="${e}" alt="PR_Capacity.png"></p>
+const e="/assets/PR_Capacity-DUS8u6QL.png",t=`<p><img src="${e}" alt="PR_Capacity.png"></p>
 <p>With AI, all teams are going through the same problem right now. Our ability to generate code has increased massively, but our ability to review the code has not been able to keep up. I've been fascinated by this problem, and I've found 5 strategies that teams are using to address it. Here we go.</p>
 <h2 id="1-pr-review-culture">1. PR Review Culture</h2>
 <p>This article will have technical solutions as well, but for some teams the solution they need might just be human: <a href="https://medium.com/@oluwasayo/pull-requests-where-engineering-culture-lives-57f6327631d3">PR culture reflects the team culture</a>. On a well performing team, PRs should get reviewed within day (or ideally within a few hours), and they should be small enough to be reviewed quickly without too many revisions. A struggling team can have PRs in the queue for days or weeks, with many comments and an antagonistic review cycle.</p>
