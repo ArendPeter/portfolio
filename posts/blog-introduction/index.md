@@ -1,7 +1,6 @@
 ---
-title: A Software Engineer's journey at the frontier
+title: Why I'm writing this blog
 date: 2026-10-14
-description: Why I'm making this blog
 ---
 
 Hi, I'm Arend Peter Castelein. I'm a Software Engineer with 10 years of experience leading projects across the big tech, start up, and non-profit sectors. AI is changing our industry is changing fast, and like so many others I'm find myself excited but also a little intimidated.
