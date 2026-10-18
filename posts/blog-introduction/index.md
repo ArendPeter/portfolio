@@ -1,5 +1,5 @@
 ---
-title: Why I'm writing this blog
+title: Welcome to my blog, a Software Engineer's journey at the frontier
 date: 2026-10-14
 ---
 
