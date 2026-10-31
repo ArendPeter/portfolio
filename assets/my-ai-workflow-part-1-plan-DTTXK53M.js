@@ -56,22 +56,9 @@ agree on the rest
 <h2 id="prototype">Prototype</h2>
 <p><a href="https://www.youtube.com/watch?v=n0VhIVtviC0">The prototype skill</a> is great for iterating on ideas that are difficult to describe with text alone. The skill will generate throw-away prototypes so that we have a clearer view of the trade offs of the designs. It's mostly used for prototyping UI.</p>
 <p>Just like the other wayfinder tickets we start with <code>/mattpocock-skills:wayfinder https://github.com/Equal-Vote/bettervoting/issues/1702</code>. But then it generates a throw away branch and spends 93k tokens to generate prototype UIs based on my specification. Using the slider I can then click between the following 3 prototypes.</p>
-<table>
-<thead>
-<tr>
-<th>A</th>
-<th>B</th>
-<th>C</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="${a}" alt="prototype-a-inline-grid.png"></td>
-<td><img src="${n}" alt="prototype-b-group-by-group.png"></td>
-<td><img src="${r}" alt="prototype-c-race-by-race.png"></td>
-</tr>
-</tbody>
-</table>
+<p>| A                                | <img src="${a}" alt="prototype-a-inline-grid.png"> |
+| B                                | <img src="${n}" alt="prototype-b-group-by-group.png"> |
+| C                                | <img src="${r}" alt="prototype-c-race-by-race.png"> |</p>
 <p>These are each semi-functional. I can interact with them and see how the warnings and popups are displayed. Usually the design you want will be a combination of multiple prototypes. Here's the response I gave for this example:</p>
 <pre><code>I like the checkboxes in prototype A, and I like the "Edit Groups" pop up in prototype C.
 
