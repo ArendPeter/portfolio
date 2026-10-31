@@ -109,8 +109,7 @@ export function BlogIndex() {
             <p className="leading-relaxed">
               I&apos;m committed to growing as an engineer every day, and this blog is an effort to
               share my learnings. I'm currently most interested in the frontier of AI assisted
-              Software Development, however no AI is used in the writing of this blog. Hope you
-              enjoy!
+              Software Development. Hope you enjoy!
             </p>
           </div>
           <Photo className="hidden md:block" />

@@ -105,6 +105,9 @@ export function PostPage() {
           {meta.updated && (
             <p className="text-sm text-muted mt-3">Updated {formatDate(meta.updated)}</p>
           )}
+          <p className="text-sm text-muted text-center mt-8">
+            No AI was used in writing this post. Any grammar and spelling errors are my own.
+          </p>
         </header>
 
         {html && <article className="post-prose" dangerouslySetInnerHTML={{ __html: html }} />}

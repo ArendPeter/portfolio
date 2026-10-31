@@ -66,6 +66,12 @@ describe('PostPage', () => {
     expect(screen.getByText(/jan 15, 2024/i)).toBeInTheDocument()
   })
 
+  it('shows the no-AI disclaimer', async () => {
+    renderAtSlug('test-post')
+    await screen.findByRole('heading', { level: 1, name: /test post title/i })
+    expect(screen.getByText(/no ai was used in writing this post/i)).toBeInTheDocument()
+  })
+
   it('shows feedback slot keyed by slug', async () => {
     renderAtSlug('test-post')
     await screen.findByRole('heading', { level: 1, name: /test post title/i })
