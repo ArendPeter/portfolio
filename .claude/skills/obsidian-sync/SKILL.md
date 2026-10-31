@@ -24,7 +24,7 @@ Arend drafts **Posts** in their Obsidian **Vault** and publishes them on arendpe
 - **First publish is a one-time copy.** After that the **repo is the source of truth**; the Vault copy is allowed to drift. Formatting differences (whitespace, blank lines, front matter, image names) are expected and never worth syncing.
 - **Later syncs happen only when Arend asks**, in a direction Arend names (or asks you to judge). Then: run `diff`, separate real content changes (wording, added/removed sentences, sections) from noise, show Arend the content changes, and apply only the ones Arend wants. Edit the target file by hand — don't re-run `publish --force` over a Post that has repo-side edits, it would wipe them.
 - Arend will say what to do with status emoji (e.g. renaming 🐣 → ✅). Don't rename Vault files unasked.
-- Never edit the prose while copying. If you notice obvious typos, list them in your summary so Arend can decide.
+- **Proofread the repo copy** after publishing: fix spelling, typos and basic grammar (a/an, its/it's, missing words, doubled words, stray spaces before punctuation, missing end periods). Keep Arend's voice: casual phrasing, sentence structure and word choice stay as written, and nothing that changes meaning, tone or claims. When a fix is a judgement call (rewording a muddled sentence, cutting something), ask instead of editing. Leave quoted material alone (code blocks, prompts Arend shows verbatim) even if it has typos, since it's a record of what was actually typed. List every fix in your summary.
 
 ## Repo conventions (enforced by `npm run build` via `src/lib/posts/loadPosts.ts`)
 
@@ -43,10 +43,10 @@ Arend drafts **Posts** in their Obsidian **Vault** and publishes them on arendpe
    node .claude/skills/obsidian-sync/scripts/sync.mjs publish "<note>" --slug <slug> --title "<title>" [--date YYYY-MM-DD] [--description "..."] --rename '{"Pasted image 1.png":"good-name.png", ...}'
    ```
    It writes front matter, copies and renames images, rewrites embeds (keeping `|width`), strips trailing whitespace, adds blank lines around headings and after tables, and refuses to overwrite an existing Post. On Windows PowerShell, put the `--rename` JSON in single quotes and escape inner double quotes as needed, or write the JSON to a temp file and pass `--rename "$(cat file)"` from bash.
-4. **Review** the resulting `index.md` quickly (embeds renamed, nothing odd at table boundaries or code fences).
+4. **Review and proofread** the resulting `index.md`: embeds renamed, nothing odd at table boundaries or code fences, then the typo/grammar pass described under "Sync model". Proofread only the repo copy; the Vault stays as Arend wrote it.
 5. **Build**: `npm run build`. If it fails on missing modules or types (e.g. `feed`, `@types/node`), `node_modules` is stale — run `npm install` (use npm, not pnpm) and discard any `package-lock.json` churn it causes. Fix pipeline issues it reports; if the fix would mean changing Arend's prose, ask.
 6. **Commit and push** to `main` (pushing deploys the site): first run `npx prettier --write posts/<slug>` — the pre-commit hook runs Prettier over the whole repo _after_ staging, so unformatted Markdown otherwise leaves a dirty tree behind the commit. Then stage only `posts/<slug>/` (plus anything else you deliberately changed), commit as `Add <short post name> post`, `git push`. **Never force push** — if the push is rejected, `git pull --rebase` and retry, or stop and report.
-7. **Report**: the URL `https://arendpeter.com/blog/<slug>`, the image renames, any typos noticed, and remind Arend the Vault note's status emoji is theirs to change.
+7. **Report**: the URL `https://arendpeter.com/blog/<slug>`, the image renames, the proofreading fixes, anything you asked about rather than changed, and remind Arend the Vault note's status emoji is theirs to change.
 
 ## Comparing an existing Post
 
