@@ -1,5 +1,5 @@
 const e="/assets/voter-groups-race-grid-vision-D5qOO_Qo.png",t="/assets/wayfinder-first-questions-3Mqx_b9w.png",o="/assets/wayfinder-second-round-Brsfanqg.png",s="/assets/wayfinder-revised-tickets-B_SoRFlI.png",i="/assets/wayfinder-github-sub-issues-D_PfES55.png",a="/assets/prototype-a-inline-grid-CJyxOjdd.png",n="/assets/prototype-b-group-by-group-B8ZNjZvv.png",r="/assets/prototype-c-race-by-race-B8G4Na_P.png",h="/assets/prototype-d-final-design-C1Zz48pm.png",l=`<p>How has AI impacted my development workflow? Today, I'll be working on an real world task on my queue, and show you step by step how I do it.</p>
-<p>You'll largely find that this is a walkthrough of <a href="https://www.youtube.com/@mattpocockuk">Matt Pocock's AI Skills</a>, and this is on purpose. When someone is first getting into programming I recommend starting off by going deep on one programming language rather spreading across multiple. That's the fastest way to pick up all the paradigms and then they transfer really easily to other programming languages from there. Learning AI development is no different. When I started watching Matt's videos his style really clicked with me. Previously I was worried that AI programming would build bad habits, but his videos made me see how I could use AI to produce more, while also becoming a better engineer.  So I took his course, went all out on with his suite of tools, and now 6 months later here's where I'm at.</p>
+<p>You'll largely find that this is a walkthrough of <a href="https://www.youtube.com/@mattpocockuk">Matt Pocock's AI Skills</a>, and this is on purpose. When someone is first getting into programming I recommend starting off by going deep on one programming language rather spreading across multiple. That's the fastest way to pick up all the paradigms and then they transfer really easily to other programming languages from there. Learning AI development is no different. When I started watching Matt's videos his style really clicked with me. Previously I was worried that AI programming would build bad habits, but his videos made me see how I could use AI to produce more, while also becoming a better engineer. So I took his course, went all out on with his suite of tools, and now 6 months later here's where I'm at.</p>
 <h2 id="phases-of-ai-development">Phases of AI development</h2>
 <p>For some initial context, most people's AI coding workflows fall into one of these buckets:</p>
 <ul>
@@ -55,7 +55,7 @@ agree on the rest
 <p>I think you get the idea for the grilling tickets, so I'll spare you the details. Instead I'll breakdown the prototyping ticket next.</p>
 <h2 id="prototype">Prototype</h2>
 <p><a href="https://www.youtube.com/watch?v=n0VhIVtviC0">The prototype skill</a> is great for iterating on ideas that are difficult to describe with text alone. The skill will generate throw-away prototypes so that we have a clearer view of the trade offs of the designs. It's mostly used for prototyping UI</p>
-<p>Just like the other wayfinder tickets we start with  <code>/mattpocock-skills:wayfinder https://github.com/Equal-Vote/bettervoting/issues/1702</code>. But then it generates a throw away branch and spends 93k token to generate prototype UIs based on my specification. Using the slider I can then click between the following 3 prototypes.</p>
+<p>Just like the other wayfinder tickets we start with <code>/mattpocock-skills:wayfinder https://github.com/Equal-Vote/bettervoting/issues/1702</code>. But then it generates a throw away branch and spends 93k token to generate prototype UIs based on my specification. Using the slider I can then click between the following 3 prototypes.</p>
 <table>
 <thead>
 <tr>
@@ -72,7 +72,7 @@ agree on the rest
 </tr>
 </tbody>
 </table>
-<p>These are each semi-functional. I can interact with them and see how the warnings and popups are displayed.  Usually the design you want will be a combination of multiple prototypes. Here's the response I gave for this example:</p>
+<p>These are each semi-functional. I can interact with them and see how the warnings and popups are displayed. Usually the design you want will be a combination of multiple prototypes. Here's the response I gave for this example:</p>
 <pre><code>I like the checkboxes in prototype A, and I like the "Edit Groups" pop up in prototype C.
 
 The errors in prototype A for empty columns and empty rows are on the right track, but I want the visuals to be consistent with the skipped column handling on rank-choice ballots. We should use the same yellow warning color from that example, it shoud cover the whole row/column and there should be a warning message appended below the table.
