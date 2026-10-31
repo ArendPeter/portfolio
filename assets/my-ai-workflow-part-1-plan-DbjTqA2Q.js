@@ -65,15 +65,15 @@ agree on the rest
 </thead>
 <tbody>
 <tr>
-<td>A</td>
+<td>Prototype A</td>
 <td><img src="${a}" alt="prototype-a-inline-grid.png"></td>
 </tr>
 <tr>
-<td>B</td>
+<td>Prototype B</td>
 <td><img src="${n}" alt="prototype-b-group-by-group.png"></td>
 </tr>
 <tr>
-<td>C</td>
+<td>Prototype C</td>
 <td><img src="${r}" alt="prototype-c-race-by-race.png"></td>
 </tr>
 </tbody>
