@@ -5,15 +5,15 @@ date: 2026-10-30
 
 How has AI impacted my development workflow? Today, I'll be working on an real world task on my queue, and show you step by step how I do it.
 
-You'll largely find that this is a walkthrough of [Matt Pocock's AI Skills](https://www.youtube.com/@mattpocockuk), and this is on purpose. When someone is first getting into programming I recommend starting off by going deep on one programming language rather spreading across multiple. That's the fastest way to pick up all the paradigms and then they transfer really easily to other programming languages from there. Learning AI development is no different. When I started watching Matt's videos his style really clicked with me. Previously I was worried that AI programming would build bad habits, but his videos made me see how I could use AI to produce more, while also becoming a better engineer.  So I took his course, went all out on with his suite of tools, and now 6 months later here's where I'm at.
+You'll largely find that this is a walkthrough of [Matt Pocock's AI Skills](https://www.youtube.com/@mattpocockuk), and this is on purpose. When someone is first getting into programming I recommend starting off by going deep on one programming language rather spreading across multiple. That's the fastest way to pick up all the paradigms and then they transfer really easily to other programming languages from there. Learning AI development is no different. When I started watching Matt's videos his style really clicked with me. Previously I was worried that AI programming would build bad habits, but his videos made me see how I could use AI to produce more, while also becoming a better engineer. So I took his course, went all out on with his suite of tools, and now 6 months later here's where I'm at.
 
 ## Phases of AI development
 
 For some initial context, most people's AI coding workflows fall into one of these buckets:
 
-* **Human in the loop**: When we start out with Claude, we're iterating on the code. Describe the problem, review the code output, then describe changes to the code.
-* **Planning**: Next developers will shift to iterating on a plan instead of the raw code. This let's you iterate faster, and creates enough context for the AI to implement the feature fully AFK. At this phase you'll also have established back pressure so that the AI is forced to comply with unit tests, linters and other automations to ensure it's code output is high quality.
-* **Outer loop**: Once they have high enough confidence in their implementation workflow developers will build an outer loop to orchestrate the work. "Chief of staff" agents might triage ticket queues and resolve them on their own in the background. Developers are now managing the agent workflows rather than the tasks themselves.
+- **Human in the loop**: When we start out with Claude, we're iterating on the code. Describe the problem, review the code output, then describe changes to the code.
+- **Planning**: Next developers will shift to iterating on a plan instead of the raw code. This let's you iterate faster, and creates enough context for the AI to implement the feature fully AFK. At this phase you'll also have established back pressure so that the AI is forced to comply with unit tests, linters and other automations to ensure it's code output is high quality.
+- **Outer loop**: Once they have high enough confidence in their implementation workflow developers will build an outer loop to orchestrate the work. "Chief of staff" agents might triage ticket queues and resolve them on their own in the background. Developers are now managing the agent workflows rather than the tasks themselves.
 
 My workflow is very much in the planning phase, however I hope to dabble with an outer loop in future posts. At this point I feel like the planning approach will still be necessary for features, but I could totally see an outer loop being effective for optimization, bugs fixes, or technical debt.
 
@@ -36,6 +36,7 @@ I've written up [a GitHub issue](https://github.com/Equal-Vote/bettervoting/issu
 I start with [Matt's Wayfinder skill](https://www.youtube.com/watch?v=F3lL98Pj90o). I use Wayfinder to develop an ambiguous task into detailed spec for the agent. Wayfinder can handle tasks of any scope, because it's designed to iterate on the specification across multiple agent sessions. There also different types of sessions depending on which underlying skill is used, and the grill-with-docs skill is the most fundamental. grill-with-docs will inundate you with questions until the agent has the full unambiguous picture of the work that needs to be done.
 
 So I start off with the following prompt:
+
 ```
 /mattpocock-skills:wayfinder https://github.com/Equal-Vote/bettervoting/issues/727
 ```
@@ -53,6 +54,7 @@ Q2 is working to establish canonical terms. This is the "-with-docs" part of the
 The remainder of the questions (7 total) further specify the scope. For each question the agent gives a recommended answer. The combination of the recommendations, and using [Wispr Flow](https://wisprflow.ai/) to dictate my answers allows me to iterate very quickly with the agent.
 
 Here's what I answered for this example:
+
 ```
 Q3: I plan for the scope of this change to be frontend only. The backend data model should remain the same. We're just improving how the voter groups are configured in the UI. That also satisfies Q7 and makes this change backwards compatible with previous voter group elections.
 
@@ -68,6 +70,7 @@ With the first round questions answered the agent's frontier has expanded, and i
 This round actually made me change my mind about limiting the feature to the frontend. That shows the value of iterating via grilling. If I had changed my mind while writing the code, then reworking the decision would have been much more time consuming. I've also asked it to grill me further about that issue. In the initial round of wayfinder questions, it's totally okay to leave questions ambiguous. Wayfinder's initial goal is to just identify the list of open questions not the solutions. It can then dedicate separate sessions for those open questions. In this case it actually recommended a list of questions for further grilling in Q3, but I told it to rework them given my answer on Q1.
 
 My answer:
+
 ```
 Q1: This is making me second-guess my intuition to keep this on the frontend. Now I'm thinking the election should have a voter groups list. Voter groups must be specified in the settings first, and if the admin tries to add voters with groups outside of the list, then that's not allowed. This ensures that there won't be issues with typos between the voter roll and the election. This rule can still be backwards compatible with previous elections because it will only be enforced at the time of adding new voters. This decision might need to be grilled further in its own ticket.
 
@@ -92,7 +95,7 @@ The context usage so far is initial session was 76.3k tokens. [Matt currently re
 
 The research ticket was actually handled completely AFK. The wayfinder session immediately spawned a subagent to start researching the process for comparable election tools, and the ticket got resolved a minute later.
 
-The grilling tickets will be get handled the same way as the original wayfinder grilling session. I can just run ``/mattpocock-skills:wayfinder https://github.com/Equal-Vote/bettervoting/issues/1702`` in a fresh Claude Code session and then wayfinder will check the type of ticket and proceed accordingly. At the end of each session, the skill will automatically relay the relevant context in the corresponding ticket so it's available for future agents.
+The grilling tickets will be get handled the same way as the original wayfinder grilling session. I can just run `/mattpocock-skills:wayfinder https://github.com/Equal-Vote/bettervoting/issues/1702` in a fresh Claude Code session and then wayfinder will check the type of ticket and proceed accordingly. At the end of each session, the skill will automatically relay the relevant context in the corresponding ticket so it's available for future agents.
 
 I think you get the idea for the grilling tickets, so I'll spare you the details. Instead I'll breakdown the prototyping ticket next.
 
@@ -100,13 +103,13 @@ I think you get the idea for the grilling tickets, so I'll spare you the details
 
 [The prototype skill](https://www.youtube.com/watch?v=n0VhIVtviC0) is great for iterating on ideas that are difficult to describe with text alone. The skill will generate throw-away prototypes so that we have a clearer view of the trade offs of the designs. It's mostly used for prototyping UI
 
-Just like the other wayfinder tickets we start with  ``/mattpocock-skills:wayfinder https://github.com/Equal-Vote/bettervoting/issues/1702``. But then it generates a throw away branch and spends 93k token to generate prototype UIs based on my specification. Using the slider I can then click between the following 3 prototypes.
+Just like the other wayfinder tickets we start with `/mattpocock-skills:wayfinder https://github.com/Equal-Vote/bettervoting/issues/1702`. But then it generates a throw away branch and spends 93k token to generate prototype UIs based on my specification. Using the slider I can then click between the following 3 prototypes.
 
-| A                                    | B                                    | C                                    |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| A                                | B                                   | C                                 |
+| -------------------------------- | ----------------------------------- | --------------------------------- |
 | ![[prototype-a-inline-grid.png]] | ![[prototype-b-group-by-group.png]] | ![[prototype-c-race-by-race.png]] |
 
-These are each semi-functional. I can interact with them and see how the warnings and popups are displayed.  Usually the design you want will be a combination of multiple prototypes. Here's the response I gave for this example:
+These are each semi-functional. I can interact with them and see how the warnings and popups are displayed. Usually the design you want will be a combination of multiple prototypes. Here's the response I gave for this example:
 
 ```
 I like the checkboxes in prototype A, and I like the "Edit Groups" pop up in prototype C.
