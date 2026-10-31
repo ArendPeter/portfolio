@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://arendpeter.com/</loc>
+    <loc>https://arendpeter.com/blog</loc>
   </url>
   <url>
-    <loc>https://arendpeter.com/blog</loc>
+    <loc>https://arendpeter.com/about</loc>
   </url>
   <url>
     <loc>https://arendpeter.com/blog/my-ai-workflow-part-1-plan</loc>
