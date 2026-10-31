@@ -7,9 +7,20 @@ const RSS_URL = `${BASE_URL}/rss.xml`
 export const SELFIE_URL = `${BASE_URL}/selfie.jpg`
 export const TRAIN_SELFIE_URL = `${BASE_URL}/train_selfie.png`
 
+const STARTED_CODING = new Date(2008, 5, 2) // June 2, 2008 (months are 0-indexed)
+
+function fullYearsSince(start: Date, now = new Date()): number {
+  const years = now.getFullYear() - start.getFullYear()
+  const hadAnniversary =
+    now.getMonth() > start.getMonth() ||
+    (now.getMonth() === start.getMonth() && now.getDate() >= start.getDate())
+  return hadAnniversary ? years : years - 1
+}
+
+export const YEARS_CODING = fullYearsSince(STARTED_CODING)
+
 export const BLOG_INDEX_TITLE = 'Arend Peter'
-export const BLOG_INDEX_DESCRIPTION =
-  "I've been writing code for the last 15 years. This blog is an effort to share my learnings."
+export const BLOG_INDEX_DESCRIPTION = `I've been writing code for the last ${YEARS_CODING} years. This blog is an effort to share my learnings.`
 
 function escapeHtml(str: string): string {
   return str

@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom'
 import { posts } from 'virtual:posts'
 import { SiteNav } from '../../components/SiteNav'
 import { InlineLink } from '../../components/InlineLink'
-import { BLOG_INDEX_DESCRIPTION, BLOG_INDEX_TITLE } from '../../lib/posts/generateHead'
+import {
+  BLOG_INDEX_DESCRIPTION,
+  BLOG_INDEX_TITLE,
+  YEARS_CODING,
+} from '../../lib/posts/generateHead'
 import { cn } from '../../utils/utils'
 
 function formatDate(iso: string) {
@@ -63,7 +67,7 @@ export function BlogIndex() {
             <h1 className="text-4xl font-bold">{"Hi I'm Arend 👋"}</h1>
             <Photo className="md:hidden" />
             <p className="leading-relaxed">
-              I&apos;ve been writing code for the last 15 years. I&apos;ve developed{' '}
+              I&apos;ve been writing code for the last {YEARS_CODING} years. I&apos;ve developed{' '}
               <span className="whitespace-nowrap">
                 <InlineLink href="https://stargardengames.com/" external>
                   video games
@@ -104,7 +108,9 @@ export function BlogIndex() {
             </p>
             <p className="leading-relaxed">
               I&apos;m committed to growing as an engineer every day, and this blog is an effort to
-              share my learnings. Have fun!
+              share my learnings. I'm currently most interested in the frontier of AI assisted
+              Software Development, however no AI is used in the writing of this blog. Hope you
+              enjoy!
             </p>
           </div>
           <Photo className="hidden md:block" />
