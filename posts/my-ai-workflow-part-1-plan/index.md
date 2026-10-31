@@ -105,11 +105,11 @@ I think you get the idea for the grilling tickets, so I'll spare you the details
 
 Just like the other wayfinder tickets we start with `/mattpocock-skills:wayfinder https://github.com/Equal-Vote/bettervoting/issues/1702`. But then it generates a throw away branch and spends 93k tokens to generate prototype UIs based on my specification. Using the slider I can then click between the following 3 prototypes.
 
-|   |   |
-|---|---|
-| A | ![[prototype-a-inline-grid.png]] |
-| B | ![[prototype-b-group-by-group.png]] |
-| C | ![[prototype-c-race-by-race.png]] |
+|             |                                     |
+| ----------- | ----------------------------------- |
+| Prototype A | ![[prototype-a-inline-grid.png]]    |
+| Prototype B | ![[prototype-b-group-by-group.png]] |
+| Prototype C | ![[prototype-c-race-by-race.png]]   |
 
 These are each semi-functional. I can interact with them and see how the warnings and popups are displayed. Usually the design you want will be a combination of multiple prototypes. Here's the response I gave for this example:
 

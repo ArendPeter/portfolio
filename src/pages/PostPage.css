@@ -60,6 +60,30 @@
   max-width: 100%;
 }
 
+.post-prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.post-prose th,
+.post-prose td {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  text-align: left;
+}
+
+/* Obsidian/GFM tables need a header row; hide it when every cell is blank. */
+.post-prose thead:not(:has(th:not(:empty))) {
+  display: none;
+}
+
+/* Scale screenshots down so a table of them fits on about one screen for comparison. */
+.post-prose td img {
+  max-height: 20rem;
+  width: auto;
+}
+
 .post-prose figcaption {
   font-size: 0.875rem;
   color: var(--color-muted);
