@@ -98,17 +98,17 @@
   padding: 0.05em 0.2em;
 }
 
-.post-prose .shiki {
-  border-radius: 0.375rem;
+/* Covers un-highlighted blocks too: fences without a language skip Shiki.
+   Matches the ProjectCard surface; !important beats Shiki's inline background. */
+.post-prose pre {
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
   padding: 1rem 1.25rem;
   overflow-x: auto;
   font-size: 0.875rem;
   line-height: 1.6;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
-
-/* Applies to un-highlighted blocks too: fences without a language skip Shiki */
-.post-prose pre {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
