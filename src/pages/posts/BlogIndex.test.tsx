@@ -53,7 +53,7 @@ describe('BlogIndex', () => {
     renderBlogIndex()
     expect(screen.getByRole('heading', { level: 1, name: /hi i'm arend/i })).toBeInTheDocument()
     const photos = screen.getAllByRole('img', { name: /arend peter/i })
-    expect(photos[0]).toHaveAttribute('src', '/train_selfie.jpg')
+    expect(photos[0]).toHaveAttribute('src', '/train_selfie.png')
     expect(screen.getByRole('link', { name: /fleet/i })).toHaveAttribute(
       'href',
       'https://fleetdm.com/',

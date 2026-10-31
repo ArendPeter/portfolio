@@ -3,9 +3,9 @@ import type { Post, PostSummary } from './types'
 export const BASE_URL = 'https://arendpeter.com'
 const RSS_URL = `${BASE_URL}/rss.xml`
 
-// selfie.jpg is the professional photo (About Page); train_selfie.jpg is the playful one (blog)
+// selfie.jpg is the professional photo (About Page); train_selfie.png is the playful one (blog)
 export const SELFIE_URL = `${BASE_URL}/selfie.jpg`
-export const TRAIN_SELFIE_URL = `${BASE_URL}/train_selfie.jpg`
+export const TRAIN_SELFIE_URL = `${BASE_URL}/train_selfie.png`
 
 export const BLOG_INDEX_TITLE = 'Arend Peter'
 export const BLOG_INDEX_DESCRIPTION =

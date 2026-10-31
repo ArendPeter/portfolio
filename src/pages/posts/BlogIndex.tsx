@@ -19,7 +19,7 @@ type PhotoProps = React.HTMLAttributes<HTMLDivElement>
 const Photo = ({ className }: PhotoProps) => (
   <div className={cn('shrink-0 w-44 md:w-56 aspect-[3/4] rounded-2xl overflow-hidden', className)}>
     <img
-      src="/train_selfie.jpg"
+      src="/train_selfie.png"
       alt="Arend Peter Castelein on a train"
       className="w-full h-full object-cover"
     />
