@@ -27,7 +27,7 @@ export function Button({
   const base =
     'rounded-md px-4 py-2 font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'
   const variants = {
-    primary: 'bg-accent text-white hover:bg-accent-dark',
+    primary: 'bg-accent text-bg hover:bg-accent-dark',
     secondary: 'border border-accent text-accent hover:bg-accent/10',
   }
   const cls = `${base} ${variants[variant]} ${className}`
