@@ -105,6 +105,12 @@
   font-size: 0.875rem;
   line-height: 1.6;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.post-prose .shiki code {
+  white-space: inherit;
 }
 
 .post-prose .callout {
