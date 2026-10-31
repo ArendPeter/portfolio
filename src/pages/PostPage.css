@@ -105,11 +105,15 @@
   font-size: 0.875rem;
   line-height: 1.6;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Applies to un-highlighted blocks too: fences without a language skip Shiki */
+.post-prose pre {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
-.post-prose .shiki code {
+.post-prose pre code {
   white-space: inherit;
 }
 
