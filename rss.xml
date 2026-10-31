@@ -4,11 +4,17 @@
         <title>Arend Peter's Blog</title>
         <link>https://arendpeter.com/</link>
         <description>Writing by Arend Peter</description>
-        <lastBuildDate>Sun, 18 Oct 2026 06:42:13 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 31 Oct 2026 05:26:23 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <atom:link href="https://arendpeter.com/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[My AI Workflow Part 1 - PLAN]]></title>
+            <link>https://arendpeter.com/blog/my-ai-workflow-part-1-plan</link>
+            <guid>https://arendpeter.com/blog/my-ai-workflow-part-1-plan</guid>
+            <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[5 solutions to AI Pull Request Load]]></title>
             <link>https://arendpeter.com/blog/5-solutions-to-ai-pull-request-load</link>
