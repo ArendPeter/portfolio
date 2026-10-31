@@ -105,6 +105,8 @@ I think you get the idea for the grilling tickets, so I'll spare you the details
 
 Just like the other wayfinder tickets we start with `/mattpocock-skills:wayfinder https://github.com/Equal-Vote/bettervoting/issues/1702`. But then it generates a throw away branch and spends 93k tokens to generate prototype UIs based on my specification. Using the slider I can then click between the following 3 prototypes.
 
+|   |   |
+|---|---|
 | A | ![[prototype-a-inline-grid.png]] |
 | B | ![[prototype-b-group-by-group.png]] |
 | C | ![[prototype-c-race-by-race.png]] |
