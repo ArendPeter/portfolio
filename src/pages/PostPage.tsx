@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { posts, getPostHtml } from 'virtual:posts'
+import { SiteNav } from '../components/SiteNav'
 import './PostPage.css'
 
 function formatDate(dateStr: string): string {
@@ -73,12 +74,15 @@ export function PostPage() {
 
   if (!postSummary) {
     return (
-      <div className="min-h-screen bg-bg text-body font-sans flex flex-col items-center justify-center gap-4">
-        <p className="text-xl">Post not found</p>
-        <Link to="/blog" className="text-accent hover:underline underline-offset-2">
-          ← All posts
-        </Link>
-      </div>
+      <>
+        <SiteNav />
+        <div className="min-h-screen bg-bg text-body font-sans flex flex-col items-center justify-center gap-4">
+          <p className="text-xl">Post not found</p>
+          <Link to="/blog" className="text-accent hover:underline underline-offset-2">
+            ← All posts
+          </Link>
+        </div>
+      </>
     )
   }
 
@@ -87,10 +91,7 @@ export function PostPage() {
 
   return (
     <>
-      <div className="post-sticky-bar">
-        <Link to="/blog">← All posts</Link>
-        <Link to="/">Arend Peter</Link>
-      </div>
+      <SiteNav />
 
       <main className="max-w-2xl mx-auto px-6 py-12 font-sans">
         <header className="mb-10">

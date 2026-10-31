@@ -1,6 +1,6 @@
 # Arend Peter Castelein — Portfolio Site
 
-Personal portfolio and blog for [arendpeter.com](https://arendpeter.com), built with React + Vite and deployed to GitHub Pages.
+Personal blog and portfolio for [arendpeter.com](https://arendpeter.com), built with React + Vite and deployed to GitHub Pages.
 
 ## Stack
 
@@ -25,23 +25,23 @@ npm run dev      # start dev server at http://localhost:5173
 
 ## Scripts
 
-| Command              | What it does                                                               |
-| -------------------- | -------------------------------------------------------------------------- |
-| `npm run dev`        | Start Vite dev server                                                      |
-| `npm run build`      | TypeScript compile + Vite build + copy `dist/index.html` → `dist/404.html` |
-| `npm run preview`    | Serve the production build locally                                         |
-| `npm run test`       | Run all tests with Vitest                                                  |
-| `npm run typecheck`  | TypeScript type-check without emitting                                     |
-| `npm run lint`       | ESLint                                                                     |
-| `npm run format`     | Prettier (writes in place)                                                 |
-| `npm run sandcastle` | Run the Sandcastle AI agent harness                                        |
+| Command              | What it does                                                                    |
+| -------------------- | ------------------------------------------------------------------------------- |
+| `npm run dev`        | Start Vite dev server                                                           |
+| `npm run build`      | TypeScript compile + Vite build (writes static blog/about pages and `404.html`) |
+| `npm run preview`    | Serve the production build locally                                              |
+| `npm run test`       | Run all tests with Vitest                                                       |
+| `npm run typecheck`  | TypeScript type-check without emitting                                          |
+| `npm run lint`       | ESLint                                                                          |
+| `npm run format`     | Prettier (writes in place)                                                      |
+| `npm run sandcastle` | Run the Sandcastle AI agent harness                                             |
 
 ## Project structure
 
 ```
 src/
   components/    # Shared UI components (Button, Nav, ProjectCard, InlineLink, …)
-  pages/         # Page-level components (HomePage, Stylebook)
+  pages/         # Page-level components (AboutPage, Stylebook, PostPage)
   hooks/         # Custom React hooks (useActiveSection, useCardActive, useCardMedia)
   utils/         # Pure utilities (scroll, parseDescriptionLinks, utils)
   App.tsx        # Root router
@@ -78,7 +78,7 @@ Pushing to `main` triggers the GitHub Actions workflow (`.github/workflows/`), w
 2. Publishes `./dist` to the `gh-pages` branch via `peaceiris/actions-gh-pages`.
 3. Sets the CNAME to `arendpeter.com`.
 
-The `build` script copies `dist/index.html` → `dist/404.html` so GitHub Pages serves the SPA fallback for unknown paths.
+The posts plugin writes `dist/404.html` (the bare SPA shell) so GitHub Pages serves the SPA fallback for unknown paths, and overwrites `dist/index.html` with the Homepage's static page. See [0004](docs/adr/0004-swappable-homepage-with-stable-page-urls.md).
 
 > **ITAR note:** GitHub Pages is a US-based service subject to US export controls. Content is public and globally accessible; do not host ITAR-controlled material here.
 
@@ -89,6 +89,7 @@ See [`docs/adr/`](docs/adr/) for recorded decisions:
 - [0001 — Vite over Next.js](docs/adr/0001-vite-over-nextjs.md)
 - [0002 — Base path for GitHub Pages](docs/adr/0002-base-path-portfolio.md) _(superseded)_
 - [0003 — BrowserRouter with build-time static blog pages](docs/adr/0003-browserrouter-with-static-post-pages.md)
+- [0004 — Swappable Homepage with stable page URLs](docs/adr/0004-swappable-homepage-with-stable-page-urls.md)
 
 ## Domain language
 

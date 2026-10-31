@@ -30,8 +30,9 @@ export function generateRss(posts: Post[]): string {
 
 export function generateSitemap(posts: Post[]): string {
   const urls: Array<{ loc: string; lastmod?: string }> = [
-    { loc: `${BASE_URL}/` },
+    // `/` is left out: it repeats the Homepage, whose canonical is its permanent URL
     { loc: `${BASE_URL}/blog` },
+    { loc: `${BASE_URL}/about` },
     ...posts.map((post) => ({
       loc: `${BASE_URL}/blog/${post.slug}`,
       lastmod: post.meta.updated ?? post.meta.date,

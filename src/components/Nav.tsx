@@ -1,3 +1,4 @@
+// Unused: the old section nav, replaced by SiteNav. Kept for reference in case it comes back.
 import { useState } from 'react'
 import { scrollToFragment } from '../utils/scroll'
 import { ExternalLinkIcon } from './ExternalLinkIcon'

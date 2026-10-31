@@ -22,8 +22,14 @@ describe('App routing', () => {
     window.history.pushState({}, '', '/')
   })
 
-  it('renders HomePage at /', () => {
+  it('renders the Blog Index as the Homepage at /', () => {
     window.history.pushState({}, '', '/')
+    render(<App />)
+    expect(screen.getByRole('heading', { level: 1, name: /hi i'm arend/i })).toBeInTheDocument()
+  })
+
+  it('renders AboutPage at /about', () => {
+    window.history.pushState({}, '', '/about')
     render(<App />)
     const selfies = screen.getAllByRole('img', { name: /arend peter/i })
     expect(selfies[0]).toHaveAttribute('src', '/selfie.jpg')
@@ -38,6 +44,6 @@ describe('App routing', () => {
   it('renders BlogIndex at /blog', () => {
     window.history.pushState({}, '', '/blog')
     render(<App />)
-    expect(screen.getByRole('heading', { level: 1, name: /^blog$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: /hi i'm arend/i })).toBeInTheDocument()
   })
 })

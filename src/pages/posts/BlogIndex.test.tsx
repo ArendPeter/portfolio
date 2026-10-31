@@ -49,9 +49,20 @@ describe('BlogIndex', () => {
     postsRef.current = [...samplePosts]
   })
 
+  it('renders the hero with the train selfie', () => {
+    renderBlogIndex()
+    expect(screen.getByRole('heading', { level: 1, name: /hi i'm arend/i })).toBeInTheDocument()
+    const photos = screen.getAllByRole('img', { name: /arend peter/i })
+    expect(photos[0]).toHaveAttribute('src', '/train_selfie.jpg')
+    expect(screen.getByRole('link', { name: /fleet/i })).toHaveAttribute(
+      'href',
+      'https://fleetdm.com/',
+    )
+  })
+
   it('renders posts in the given order (newest first)', () => {
     renderBlogIndex()
-    const items = screen.getAllByRole('listitem')
+    const items = within(screen.getByRole('list', { name: /posts/i })).getAllByRole('listitem')
     expect(within(items[0]).getByText('Newer Post')).toBeInTheDocument()
     expect(within(items[1]).getByText('Older Post')).toBeInTheDocument()
   })
@@ -66,11 +77,11 @@ describe('BlogIndex', () => {
     postsRef.current = []
     renderBlogIndex()
     expect(screen.getByText(/no posts yet/i)).toBeInTheDocument()
-    expect(screen.queryByRole('list')).not.toBeInTheDocument()
+    expect(screen.queryByRole('list', { name: /posts/i })).not.toBeInTheDocument()
   })
 
   it('sets document.title while mounted', () => {
     renderBlogIndex()
-    expect(document.title).toMatch(/blog/i)
+    expect(document.title).toBe('Arend Peter')
   })
 })

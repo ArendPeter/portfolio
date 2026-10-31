@@ -92,10 +92,13 @@ describe('PostPage', () => {
     expect(screen.getByText(/updated feb 1, 2024/i)).toBeInTheDocument()
   })
 
-  it('sticky bar has "← All posts" and "Arend Peter" links', async () => {
+  it('shows the Site Nav', async () => {
     renderAtSlug('test-post')
     await screen.findByRole('heading', { level: 1, name: /test post title/i })
-    expect(screen.getByRole('link', { name: /← all posts/i })).toHaveAttribute('href', '/blog')
-    expect(screen.getByRole('link', { name: /arend peter/i })).toHaveAttribute('href', '/')
+    expect(screen.getByRole('link', { name: /arend peter castelein/i })).toHaveAttribute(
+      'href',
+      '/',
+    )
+    expect(screen.getByRole('link', { name: /about me/i })).toHaveAttribute('href', '/about')
   })
 })

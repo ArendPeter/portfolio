@@ -4,7 +4,9 @@ import {
   generatePostHead,
   generateBlogIndexHead,
   generateBlogIndexBody,
+  generateAboutHead,
   SELFIE_URL,
+  TRAIN_SELFIE_URL,
 } from './generateHead'
 import type { Post, PostSummary } from './types'
 
@@ -181,6 +183,24 @@ describe('generateBlogIndexHead', () => {
     expect(html).toContain('rel="alternate"')
     expect(html).toContain('type="application/rss+xml"')
     expect(html).toContain('https://arendpeter.com/rss.xml')
+  })
+})
+
+describe('generateBlogIndexHead share image', () => {
+  it('uses the train selfie as og:image', () => {
+    expect(generateBlogIndexHead()).toContain(`og:image" content="${TRAIN_SELFIE_URL}"`)
+  })
+})
+
+describe('generateAboutHead', () => {
+  it('includes canonical link to /about', () => {
+    expect(generateAboutHead()).toContain(
+      '<link rel="canonical" href="https://arendpeter.com/about">',
+    )
+  })
+
+  it('uses the professional selfie as og:image', () => {
+    expect(generateAboutHead()).toContain(`og:image" content="${SELFIE_URL}"`)
   })
 })
 

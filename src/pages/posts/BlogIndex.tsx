@@ -1,6 +1,10 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { posts } from 'virtual:posts'
+import { SiteNav } from '../../components/SiteNav'
+import { InlineLink } from '../../components/InlineLink'
+import { BLOG_INDEX_DESCRIPTION, BLOG_INDEX_TITLE } from '../../lib/posts/generateHead'
+import { cn } from '../../utils/utils'
 
 function formatDate(iso: string) {
   // T00:00:00 forces local-time parsing; bare date strings (e.g. "2026-10-01") parse as UTC midnight
@@ -11,10 +15,21 @@ function formatDate(iso: string) {
   })
 }
 
+type PhotoProps = React.HTMLAttributes<HTMLDivElement>
+const Photo = ({ className }: PhotoProps) => (
+  <div className={cn('shrink-0 w-44 md:w-56 aspect-[3/4] rounded-2xl overflow-hidden', className)}>
+    <img
+      src="/train_selfie.jpg"
+      alt="Arend Peter Castelein on a train"
+      className="w-full h-full object-cover"
+    />
+  </div>
+)
+
 export function BlogIndex() {
   useEffect(() => {
     const prev = document.title
-    document.title = 'Blog — Arend Peter'
+    document.title = BLOG_INDEX_TITLE
 
     let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]')
     if (!meta) {
@@ -23,7 +38,7 @@ export function BlogIndex() {
       document.head.appendChild(meta)
     }
     const prevMeta = meta.content
-    meta.content = 'Personal writing by Arend Peter.'
+    meta.content = BLOG_INDEX_DESCRIPTION
 
     const rss = document.createElement('link')
     rss.rel = 'alternate'
@@ -40,25 +55,65 @@ export function BlogIndex() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-bg text-body font-sans">
-      <div className="max-w-2xl mx-auto px-6 py-12">
-        <header className="mb-12">
-          <Link to="/" className="text-sm text-muted hover:text-accent transition-colors">
-            ← arendpeter.com
-          </Link>
-          <h1 className="text-4xl font-bold mt-6">Blog</h1>
-          <p className="text-muted mt-2">Personal writing by Arend Peter.</p>
-          <p className="text-xs text-muted mt-2">
-            <a href="/rss.xml" className="hover:text-accent transition-colors">
-              RSS
-            </a>
-          </p>
-        </header>
+    <>
+      <SiteNav />
+      <div className="min-h-screen bg-bg text-body font-sans max-w-4xl mx-auto px-6 py-12">
+        <section className="flex flex-col md:flex-row items-center gap-8 md:gap-16 mb-12">
+          <div className="flex flex-col min-w-0 text-center items-center md:text-left md:items-start gap-4">
+            <h1 className="text-4xl font-bold">{"Hi I'm Arend 👋"}</h1>
+            <Photo className="md:hidden" />
+            <p className="leading-relaxed">
+              I&apos;ve been writing code for the last 15 years. I&apos;ve developed{' '}
+              <span className="whitespace-nowrap">
+                <InlineLink href="https://stargardengames.com/" external>
+                  video games
+                </InlineLink>
+                ,
+              </span>{' '}
+              led{' '}
+              <span className="whitespace-nowrap">
+                <InlineLink href="https://bettervoting.com/" external>
+                  an open source voting website
+                </InlineLink>
+                ,
+              </span>{' '}
+              worked in{' '}
+              <span className="whitespace-nowrap">
+                <InlineLink
+                  href="https://www.linkedin.com/in/arend-peter-castelein-530a5070/"
+                  external
+                >
+                  big tech
+                </InlineLink>
+                ,
+              </span>{' '}
+              and sometimes I also make{' '}
+              <span className="whitespace-nowrap">
+                <InlineLink href="https://rcvchangedalaska.com/" external>
+                  cool web explainers
+                </InlineLink>
+                .
+              </span>{' '}
+              Currently I&apos;m continuing my open source journey as a software engineer at{' '}
+              <span className="whitespace-nowrap">
+                <InlineLink href="https://fleetdm.com/" external>
+                  Fleet
+                </InlineLink>
+                .
+              </span>
+            </p>
+            <p className="leading-relaxed">
+              I&apos;m committed to growing as an engineer every day, and this blog is an effort to
+              share my learnings. Have fun!
+            </p>
+          </div>
+          <Photo className="hidden md:block" />
+        </section>
 
         {posts.length === 0 ? (
           <p className="text-muted">No posts yet.</p>
         ) : (
-          <ul className="divide-y divide-border">
+          <ul aria-label="Posts" className="divide-y divide-border">
             {posts.map((post) => (
               <li key={post.slug} className="py-6">
                 <Link to={`/blog/${post.slug}`} className="group block">
@@ -75,6 +130,6 @@ export function BlogIndex() {
           </ul>
         )}
       </div>
-    </div>
+    </>
   )
 }

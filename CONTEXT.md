@@ -1,6 +1,6 @@
 # Portfolio Site
 
-A personal site (React + Vite) for Arend Peter: a portfolio showcasing projects, experience, and skills, plus a blog of personal writing that may grow an audience over time.
+A personal site (React + Vite) for Arend Peter: a blog of personal writing that may grow an audience over time, plus an **About Page** showcasing projects, experience, and skills.
 
 ## Language
 
@@ -10,6 +10,17 @@ _Avoid_: article, entry
 
 **Blog Index**:
 The page listing every **Post**. The entry point into the blog; from it (and from any Post) a reader can reach every other Post.
+
+**Homepage**:
+Whatever is shown at `/`. It is always one of the site's pages that also has its own permanent URL (currently the **Blog Index**), so the Homepage can be swapped without ever breaking a link.
+_Avoid_: index (collides with **Blog Index**)
+
+**About Page**:
+The page at `/about` showing Arend's portfolio, experience, skills and contact details. Formerly the site's Homepage.
+_Avoid_: portfolio page (the Portfolio is one section of it)
+
+**Site Nav**:
+The single navigation bar shared by every page: Arend's name on the left (linking to the **Homepage**), and links to the **About Page**, the RSS feed and Arend's socials on the right.
 
 **Vault**:
 Arend's private Obsidian notes, where every **Post** is drafted. A Post is published by copying its note out of the Vault; every other Vault note stays private.

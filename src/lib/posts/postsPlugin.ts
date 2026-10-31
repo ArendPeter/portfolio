@@ -6,7 +6,8 @@ import {
   generatePostHead,
   generateBlogIndexHead,
   generateBlogIndexBody,
-  SELFIE_URL,
+  generateAboutHead,
+  TRAIN_SELFIE_URL,
   BASE_URL,
 } from './generateHead'
 import { generateRss, generateSitemap, generateRobotsTxt } from './generateFeed'
@@ -139,7 +140,7 @@ export function postsPlugin(options: PluginOptions): Plugin {
           const hashedPath = this.getFileName(refId)
           resolvedShareImageUrls.set(post.slug, `${BASE_URL}/${hashedPath}`)
         } else {
-          resolvedShareImageUrls.set(post.slug, SELFIE_URL)
+          resolvedShareImageUrls.set(post.slug, TRAIN_SELFIE_URL)
         }
       }
     },
@@ -150,12 +151,19 @@ export function postsPlugin(options: PluginOptions): Plugin {
       const indexHtmlPath = path.join(outDir, 'index.html')
       if (!fs.existsSync(indexHtmlPath)) return
 
+      // The bare SPA shell, read before index.html is overwritten with the Homepage below
       const indexHtml = fs.readFileSync(indexHtmlPath, 'utf-8')
+      fs.writeFileSync(path.join(outDir, '404.html'), indexHtml)
+      fs.writeFileSync(
+        path.join(outDir, 'about.html'),
+        buildStaticHtml(indexHtml, generateAboutHead(), ''),
+      )
+
       const blogDir = path.join(outDir, 'blog')
       fs.mkdirSync(blogDir, { recursive: true })
 
       for (const post of posts) {
-        const shareImageUrl = resolvedShareImageUrls.get(post.slug) ?? SELFIE_URL
+        const shareImageUrl = resolvedShareImageUrls.get(post.slug) ?? TRAIN_SELFIE_URL
         const twitterCard = post.shareImage !== null ? 'summary_large_image' : 'summary'
         const headHtml = generatePostHead(post, shareImageUrl, twitterCard)
         const staticHtml = buildStaticHtml(indexHtml, headHtml, post.html)
@@ -167,6 +175,9 @@ export function postsPlugin(options: PluginOptions): Plugin {
       const blogIndexHtml = buildStaticHtml(indexHtml, blogIndexHeadHtml, blogIndexBodyHtml)
       fs.writeFileSync(path.join(outDir, 'blog.html'), blogIndexHtml)
       fs.writeFileSync(path.join(blogDir, 'index.html'), blogIndexHtml)
+
+      // Homepage: `/` serves the Blog Index. To swap it, change this line and the `/` route in App.tsx.
+      fs.writeFileSync(indexHtmlPath, blogIndexHtml)
 
       fs.writeFileSync(path.join(outDir, 'rss.xml'), generateRss(posts))
       fs.writeFileSync(path.join(outDir, 'sitemap.xml'), generateSitemap(posts))

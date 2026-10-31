@@ -3,7 +3,13 @@ import type { Post, PostSummary } from './types'
 export const BASE_URL = 'https://arendpeter.com'
 const RSS_URL = `${BASE_URL}/rss.xml`
 
+// selfie.jpg is the professional photo (About Page); train_selfie.jpg is the playful one (blog)
 export const SELFIE_URL = `${BASE_URL}/selfie.jpg`
+export const TRAIN_SELFIE_URL = `${BASE_URL}/train_selfie.jpg`
+
+export const BLOG_INDEX_TITLE = 'Arend Peter'
+export const BLOG_INDEX_DESCRIPTION =
+  "I've been writing code for the last 15 years. This blog is an effort to share my learnings."
 
 function escapeHtml(str: string): string {
   return str
@@ -48,8 +54,8 @@ export function generatePostHead(
 
 export function generateBlogIndexHead(): string {
   const canonicalUrl = `${BASE_URL}/blog`
-  const title = 'Blog | Arend Peter'
-  const description = 'Writing by Arend Peter'
+  const title = escapeHtml(BLOG_INDEX_TITLE)
+  const description = escapeHtml(BLOG_INDEX_DESCRIPTION)
 
   return [
     `<title>${title}</title>`,
@@ -59,7 +65,28 @@ export function generateBlogIndexHead(): string {
     `<meta property="og:title" content="${title}">`,
     `<meta property="og:description" content="${description}">`,
     `<meta property="og:url" content="${canonicalUrl}">`,
+    `<meta property="og:image" content="${TRAIN_SELFIE_URL}">`,
+    `<meta name="twitter:card" content="summary">`,
     `<link rel="alternate" type="application/rss+xml" href="${RSS_URL}" title="Arend Peter's Blog">`,
+  ].join('\n')
+}
+
+export function generateAboutHead(): string {
+  const canonicalUrl = `${BASE_URL}/about`
+  const title = 'About | Arend Peter Castelein'
+  const description =
+    'Arend Peter Castelein: software engineer. Portfolio, experience, skills and contact details.'
+
+  return [
+    `<title>${title}</title>`,
+    `<meta name="description" content="${description}">`,
+    `<link rel="canonical" href="${canonicalUrl}">`,
+    `<meta property="og:type" content="profile">`,
+    `<meta property="og:title" content="${title}">`,
+    `<meta property="og:description" content="${description}">`,
+    `<meta property="og:url" content="${canonicalUrl}">`,
+    `<meta property="og:image" content="${SELFIE_URL}">`,
+    `<meta name="twitter:card" content="summary">`,
   ].join('\n')
 }
 

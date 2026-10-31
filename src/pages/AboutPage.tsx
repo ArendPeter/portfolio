@@ -1,18 +1,14 @@
 import { GitHubCalendar } from 'react-github-calendar'
 import { Button } from '../components/Button'
-import { Nav } from '../components/Nav'
+import { SiteNav } from '../components/SiteNav'
 import { scrollToFragment } from '../utils/scroll'
-import { useActiveSection } from '../hooks/useActiveSection'
 import { ProjectCard } from '../components/ProjectCard'
 import { InlineLink } from '../components/InlineLink'
-import { navLinks } from './homeNavLinks'
 import { cn } from '../utils/utils'
 
 const githubCalendarTheme = {
   dark: ['#1a1a1a', '#3a1f00', '#7a3f00', '#c46200', '#f97316'],
 }
-
-const sectionIds = navLinks.map((l) => l.href.slice(1))
 
 const CALENDLY_URL = 'https://calendly.com/arendpeter/30min'
 const GITHUB_URL = 'https://github.com/ArendPeter/'
@@ -93,15 +89,12 @@ const Photo = ({ className }: PhotoProps) => (
   </div>
 )
 
-export function HomePage() {
-  const activeSectionId = useActiveSection(sectionIds)
-  const activeHref = activeSectionId ? `#${activeSectionId}` : undefined
-
+export function AboutPage() {
   const currentYear = new Date().getFullYear()
 
   return (
     <>
-      <Nav siteName="Arend Peter Castelein" links={navLinks} activeHref={activeHref} />
+      <SiteNav />
       <div className="min-h-screen bg-bg text-body font-sans px-8 py-12 max-w-230 mx-auto flex flex-col gap-16">
         <section id="hero" className="flex gap-16 items-center min-h-[calc(75vh-6rem)]">
           <div className="flex flex-col md:flex-row items-center gap-8 w-full">

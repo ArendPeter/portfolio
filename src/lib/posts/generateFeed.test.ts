@@ -86,13 +86,14 @@ describe('generateSitemap', () => {
     expect(xml).toContain('</urlset>')
   })
 
-  it('includes homepage and blog index entries', () => {
+  it('includes blog index and about page entries, but not the Homepage at /', () => {
     const xml = generateSitemap([])
-    expect(xml).toContain('<loc>https://arendpeter.com/</loc>')
+    expect(xml).not.toContain('<loc>https://arendpeter.com/</loc>')
     expect(xml).toContain('<loc>https://arendpeter.com/blog</loc>')
+    expect(xml).toContain('<loc>https://arendpeter.com/about</loc>')
   })
 
-  it('zero posts produces sitemap with only homepage and blog index', () => {
+  it('zero posts produces sitemap with only blog index and about page', () => {
     const xml = generateSitemap([])
     const urlCount = (xml.match(/<url>/g) ?? []).length
     expect(urlCount).toBe(2)
@@ -124,7 +125,7 @@ describe('generateSitemap', () => {
     ]
     const xml = generateSitemap(posts)
     const urlCount = (xml.match(/<url>/g) ?? []).length
-    expect(urlCount).toBe(4) // / + /blog + 2 posts
+    expect(urlCount).toBe(4) // /blog + /about + 2 posts
     expect(xml).toContain('https://arendpeter.com/blog/post-a')
     expect(xml).toContain('https://arendpeter.com/blog/post-b')
   })

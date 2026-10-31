@@ -1,3 +1,4 @@
+// Unused: the old section nav, replaced by SiteNav. Kept for reference in case it comes back.
 import { useEffect, useState } from 'react'
 
 export function useActiveSection(sectionIds: string[]): string | undefined {
